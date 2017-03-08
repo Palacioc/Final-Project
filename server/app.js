@@ -10,12 +10,30 @@ var users = require('./api/user/user');
 var projects = require('./api/project/project');
 var needs = require('./api/need/need');
 var proposals = require('./api/proposal/proposal');
+var auth = require('./api/auth/auth-controller');
 var cors = require('cors');
+
+const session         = require("express-session");
+const passport        = require("passport");
+
 
 // database connection
 require('./configs/database');
+require('./configs/passport')(passport);
 
 var app = express();
+
+// Configure the session:
+app.use(session({
+  secret: "passport-local-strategy",
+  resave: true,
+  saveUninitialized: true,
+  cookie : { httpOnly: true, maxAge: 2419200000 }
+}));
+
+//Initialize auth modules
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Para comunicación entre los dos puertos
 app.use(cors());
@@ -37,6 +55,8 @@ app.use('/api/users', users);
 app.use('/api/needs', needs);
 app.use('/api/projects', projects);
 app.use('/api/proposals', proposals);
+app.use('/api/auth', auth);
+
 
 
 // catch 404 and forward to error handler
