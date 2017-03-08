@@ -12,6 +12,7 @@ var needs = require('./api/need/need');
 var proposals = require('./api/proposal/proposal');
 var auth = require('./api/auth/auth-controller');
 var cors = require('cors');
+const dotenv = require('dotenv');
 
 const session         = require("express-session");
 const passport        = require("passport");
