@@ -10,11 +10,15 @@ var users = require('./api/user/user');
 var projects = require('./api/project/project');
 var needs = require('./api/need/need');
 var proposals = require('./api/proposal/proposal');
+var cors = require('cors');
 
 // database connection
 require('./configs/database');
 
 var app = express();
+
+// Para comunicación entre los dos puertos
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
