@@ -14,31 +14,31 @@ export class SessionService {
   }
 
   signup(user) {
-    return this.http.post(`/signup`, user)
+    return this.http.post(`http://localhost:3000/api/auth/signup`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   login(user) {
-    return this.http.post(`/login`, user)
+    return this.http.post(`http://localhost:3000/api/auth/login`, user)
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   logout() {
-    return this.http.post(`/logout`, {})
+    return this.http.post(`http://localhost:3000/api/auth/logout`, {})
       .map(res => res.json())
       .catch(this.handleError);
   }
 
   isLoggedIn() {
-    return this.http.get(`/loggedin`)
+    return this.http.get(`http://localhost:3000/api/auth/loggedin`)
       .map(res => res.json())
       .catch((err) => this.handleError(err));
   }
 
   getPrivateData() {
-    return this.http.get(`/private`)
+    return this.http.get(`http://localhost:3000/api/auth/private`)
       .map(res => res.json())
       .catch(this.handleError);
   }
