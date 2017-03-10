@@ -9,10 +9,18 @@ import { SessionService } from "../session.service";
 })
 export class AuthComponent implements OnInit {
 
+  role: string = 'Collaborator';
+
   formInfo = {
     username: '',
     password: ''
   };
+
+  showSignup: boolean = false;
+
+  toggleSignup(){
+    this.showSignup = !this.showSignup;
+  }
 
  user: any;
  error: string;
@@ -28,19 +36,27 @@ export class AuthComponent implements OnInit {
   }
 
  login() {
-   this.session.login(this.formInfo)
-     .subscribe(
-       (user) => this.user = user,
-       (err) => this.error = err
-     );
+   if(!this.showSignup){
+     this.session.login(this.formInfo)
+       .subscribe(
+         (user) => this.user = user,
+         (err) => this.error = err
+       );
+   }else{
+     this.showSignup = false;
+   }
  }
 
  signup() {
-   this.session.signup(this.formInfo)
-     .subscribe(
-       (user) => this.user = user,
-       (err) => this.error = err
-     );
+   if(this.showSignup){
+     this.session.signup(this.formInfo)
+       .subscribe(
+         (user) => this.user = user,
+         (err) => this.error = err
+       );
+   }else{
+     this.showSignup = true;
+   }
  }
 
  logout() {
@@ -50,6 +66,8 @@ export class AuthComponent implements OnInit {
       (err) => this.error = err
     );
   }
+
+  //FALTA FUNCION LOGGEDIN
 
   getPrivateData() {
     this.session.getPrivateData()

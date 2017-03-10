@@ -1,14 +1,48 @@
-<h1> Authentication Sample </h1>
+<h1> Login Component </h1>
 <form>
-  <h2> Login or Signup </h2>
-  <label> Username </label>
+  <h2> Login here: </h2>
+  <div *ngIf="showSignup">
+    <label class="aler-dismissible"> Email </label>
+    <input type="text" class="text"name="email"/>
+  </div>
+  <label class="aler-dismissible"> Username </label>
   <input type="text" [(ngModel)]="formInfo.username" name="username"/>
   <br>
   <label> Password </label>
   <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+  <div *ngIf="showSignup">
+    <label> Role </label>
+    <div [(ngModel)]='role' ngbRadioGroup name="role">
+      <label class="btn btn-success">
+        <input type="radio" [value]="1"> Collaborator
+      </label>
+      <label class="btn btn-success">
+        <input type="radio" [value]="2"> Team Leader
+      </label>
+      <label class="btn btn-success">
+        <input type="radio" [value]="3"> Provider
+      </label>
+    </div>
+    <div class="container" [ngSwitch]="role">
+      <ngb-alert [dismissible]="false" *ngSwitchCase="1"> If you are looking for a good cause to help out this is your role! </ngb-alert>
+      <ngb-alert [dismissible]="false" *ngSwitchCase="2"> Team Leaders use our platform to source and finance their needs in the most transparent way </ngb-alert>
+      <ngb-alert [dismissible]="false" *ngSwitchCase="3"> Engage with leaders to provide for their needs, with the help of collaborators </ngb-alert>
+      <ngb-alert [dismissible]="false" *ngSwitchDefault> Choose a role to see a description </ngb-alert>
+    </div>
+  </div>
+  <div class="container" [ngSwitch]="showSignup">
+    <div *ngSwitchCase="false">
+      <button (click)="login()" class="btn btn-primary"> Login </button>
+      <span> or </span>
+      <button (click)="signup()" class="btn btn-default"> Signup </button>
+    </div>
+    <div *ngSwitchCase="true">
+      <button (click)="signup()" class="btn btn-primary"> Signup </button>
+      <span> or </span>
+      <button (click)="login()" class="btn btn-default"> Login </button>
+    </div>
+  </div>
 
-  <button (click)="login()"> login </button>
-  <button (click)="signup()"> signup </button>
 </form>
 <p class="error"> {{ error }} </p>
 

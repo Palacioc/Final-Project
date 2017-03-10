@@ -53,6 +53,7 @@ authController.post("/signup", (req, res, next) => {
 
 //LOGIN
 authController.post("/login", function(req, res, next) {
+  console.log(req.sessionID);
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err); }
 
@@ -86,10 +87,10 @@ authController.get("/loggedin", function(req, res) {
 
 //PRIVATE MESSAGE que guadefa es esto?
 authController.get("/private", (req, res) => {
+  console.log(req.sessionID);
   if(req.isAuthenticated()) {
     return res.json({ message: 'This is a private message' });
   }
-
   return res.status(403).json({ message: 'Unauthorized' });
 });
 

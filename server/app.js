@@ -29,7 +29,7 @@ app.use(session({
   secret: "passport-local-strategy",
   resave: true,
   saveUninitialized: true,
-  cookie : { httpOnly: true, maxAge: 2419200000 }
+  cookie : { domain:'localhost', maxAge: 2419200000 }
 }));
 
 //Initialize auth modules
@@ -37,7 +37,18 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Para comunicación entre los dos puertos
-app.use(cors());
+var whitelist = [
+    'http://localhost:4200',
+];
+var corsOptions = {
+    origin: function(origin, callback){
+        var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+        callback(null, originIsWhitelisted);
+    },
+    credentials: true
+};
+app.use(cors(corsOptions));
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
