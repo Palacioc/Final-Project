@@ -1,2 +1,10 @@
-{{user.username}}<br><br><br>
+
 ESTE ES EL HOME
+<br><br><br>
+<span *ngIf="user">
+  {{user.username}}
+  <div class="btn btn-success btn-xs">
+    {{user.role}}
+  </div>
+  {{user | json }}
+</span>

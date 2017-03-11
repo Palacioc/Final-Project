@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from "../session.service";
-import { FileUploader } from "ng2-file-upload";
 import { Router } from '@angular/router';
+import { FileUploader } from "ng2-file-upload";
 
 
 
@@ -12,6 +12,10 @@ import { Router } from '@angular/router';
 })
 export class AuthComponent implements OnInit {
 
+  user: any;
+  error: string;
+  privateData: any;
+
   formInfo = {
     username: '',
     password: '',
@@ -21,6 +25,24 @@ export class AuthComponent implements OnInit {
   };
 
   showSignup: boolean = false;
+
+  constructor(private session: SessionService, private router: Router) { }
+
+  feedback: string;
+
+
+  ngOnInit() {
+    this.session.isLoggedIn()
+    .subscribe(
+      (user) => this.successCb(user)
+    );
+    this.uploader.onSuccessItem = (item, response) => {
+      this.feedback = JSON.parse(response).message;
+    };
+    this.uploader.onErrorItem = (item, response, status, headers) => {
+      this.feedback = JSON.parse(response).message;
+    };
+  }
 
   submitForm(theForm){
     if(this.showSignup){
@@ -34,33 +56,12 @@ export class AuthComponent implements OnInit {
     this.showSignup = !this.showSignup;
   }
 
- user: any;
- error: string;
- privateData: any;
 
- constructor(private session: SessionService, private router: Router) { }
 
  uploader: FileUploader = new FileUploader({
     url: `http://localhost:3000/api/auth/signup`
   });
 
-  feedback: string;
-
-  ngOnInit() {
-   this.session.isLoggedIn()
-     .subscribe(
-       (user) => this.successCb(user)
-   );
-
-  this.uploader.onSuccessItem = (item, response) => {
-    this.feedback = JSON.parse(response).message;
-  };
-
-  this.uploader.onErrorItem = (item, response, status, headers) => {
-    this.feedback = JSON.parse(response).message;
-  };
-
-  }
 
  login() {
    console.log(this.formInfo);

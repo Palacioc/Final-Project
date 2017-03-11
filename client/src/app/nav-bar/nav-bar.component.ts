@@ -3,6 +3,7 @@ import { SessionService } from "../session.service";
 import { Router } from '@angular/router';
 
 
+
 @Component({
   selector: 'app-nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -19,7 +20,6 @@ export class NavBarComponent implements OnInit {
       .subscribe(
         (user) => this.successCb(user)
    );
-   console.log(this.session);
   }
 
   logout() {

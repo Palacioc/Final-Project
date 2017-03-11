@@ -1,5 +1,28 @@
+.logo{
+  color: white;
+  margin: auto;
+  width: 100%;
+}
+IMG.logo{
+  width: 50px;
+}
+
+.right-menu{
+  color: rgba(255, 255, 255, .75);
+}
+
+.right-menu:hover{
+  color: white;
+}
+
+.blue{
+  background-color: rgb(89, 165, 145);
+  border: none;
+  border-radius: 0px;
+}
+
 .bs-dark.navbar-inverse {
-  background-color: #222;
+  background-color: rgb(89, 165, 145);
   border-color: #080808;
 }
 .bs-dark .navbar-img {padding:5px 6px !important;}
@@ -8,7 +31,7 @@
   min-width: 200px;
   padding: 5px 0;
   margin: 2px 0 0;
-  background-color: #000;
+  background-color: rgb(89, 165, 145);
   border: 1px solid rgba(0, 0, 0, 0.7);
   border: 1px solid rgba(0, 0, 0, .15);
   -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
@@ -16,7 +39,7 @@
 }
 
 .bs-dark .dropdown-menu .divider {
-  border: 1px solid rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.8);
 }
 .bs-dark .dropdown-menu > li > a {
   padding: 6px 20px;
@@ -24,14 +47,14 @@
 }
 .bs-dark .dropdown-menu > li > a:hover,
 .bs-dark .dropdown-menu > li > a:focus {
-  color: rgba(255,255,255,0.70);
+  color: rgb(89, 165, 145);
   text-decoration: none;
   background-color: transparent;
 }
 .bs-dark .dropdown-menu > .active > a,
 .bs-dark .dropdown-menu > .active > a:hover,
 .bs-dark .dropdown-menu > .active > a:focus {
-  color: rgba(255,255,255,0.70);
+  color: rgb(89, 165, 145);
   text-decoration: none;
   background-color: transparent;
   outline: 0;
@@ -74,7 +97,7 @@
 }
 
 @media (min-width: 768px) {
-    .bs-dark .dropdown:hover {background-color: #000;}
+    .bs-dark .dropdown:hover {background-color: rgb(89, 165, 145);}
 	.bs-dark .dropdown:hover .dropdown-menu {
 	  display: block;
 	}
