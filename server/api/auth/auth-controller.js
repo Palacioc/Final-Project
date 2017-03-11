@@ -8,11 +8,18 @@ const bcryptSalt       = 10;
 
 const User             = require('../user/user.model');
 
-//SIGNUP
-authController.post("/signup", (req, res, next) => {
-  var {username, email, password, role, pic} = req.body;
+const upload = require('../../configs/multer');
 
+//SIGNUP
+authController.post("/signup", upload.single('file'), (req, res, next) => {
+  var {username, email, password, role} = req.body;
+  console.log('1');
+  var pic = 'req.file.path';
+  console.log('2');
+  console.log('all data', username, password, email, role, pic);
   if (!username || !password || !email || !role || !pic) {
+    console.log('3');
+    console.log('Entered 400 why??');
     res.status(400).json({ message: "Please provide all data for user creation" });
     return;
   }
@@ -34,6 +41,7 @@ authController.post("/signup", (req, res, next) => {
       password: hashPass
     });
 
+    console.log('new user pic is' + newUser.pic);
     newUser.save((err) => {
       if (err) {
         res.status(400).json({ message: "Something went wrong" });
@@ -53,7 +61,6 @@ authController.post("/signup", (req, res, next) => {
 
 //LOGIN
 authController.post("/login", function(req, res, next) {
-  console.log(req.sessionID);
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err); }
 
@@ -85,10 +92,10 @@ authController.get("/loggedin", function(req, res) {
   return res.status(403).json({ message: 'Unauthorized' });
 });
 
-//PRIVATE MESSAGE que guadefa es esto?
+//PRIVATE MESSAGE
 authController.get("/private", (req, res) => {
   console.log(req.sessionID);
-  if(req.isAuthenticated()) {
+  if(req.isAuthenticated() && req.user.role==='Contributor') {
     return res.json({ message: 'This is a private message' });
   }
   return res.status(403).json({ message: 'Unauthorized' });

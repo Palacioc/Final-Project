@@ -1,46 +1,65 @@
-<h1> Login Component </h1>
-<form>
-  <h2> Login here: </h2>
-  <div *ngIf="showSignup">
-    <label class="aler-dismissible"> Email </label>
-    <input type="text" class="text"name="email"/>
+<h1> Welcome! </h1>
+<h2> {{showSignup ? 'Signup' : 'Login'}} here: </h2>
+<form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+  <div class="form-group">
+    <label> Username </label>
+    <input type="text" [(ngModel)]="formInfo.username" name="username" #myUsername="ngModel" required/>
+    <span *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+        Username is required, please enter a value
+    </span>
   </div>
-  <label class="aler-dismissible"> Username </label>
-  <input type="text" [(ngModel)]="formInfo.username" name="username"/>
-  <br>
-  <label> Password </label>
-  <input type="password" [(ngModel)]="formInfo.password" name="password"/>
+  <div class="form-group">
+    <label> Password </label>
+    <input type="password" [(ngModel)]="formInfo.password" name="password" #myPassword="ngModel" required/>
+    <span *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+        Password is required, please enter a value
+    </span>
+  </div>
+  <div class='form-group' *ngIf="showSignup">
+    <label> Email </label>
+    <input type="text" [(ngModel)]="formInfo.email" class="text"name="email" #myEmail="ngModel" required/>
+    <span *ngIf="myEmail.errors && (myEmail.dirty || myEmail.touched)">
+        Email is required, please enter a value
+    </span>
+  </div>
   <div *ngIf="showSignup">
-    <label> Role </label>
-    <div [(ngModel)]='role' ngbRadioGroup name="role">
-      <label class="btn btn-success">
-        <input type="radio" [value]="1"> Collaborator
-      </label>
-      <label class="btn btn-success">
-        <input type="radio" [value]="2"> Team Leader
-      </label>
-      <label class="btn btn-success">
-        <input type="radio" [value]="3"> Provider
-      </label>
+    <div class="form-group">
+      <label> Role </label>
+      <div [(ngModel)]='formInfo.role' ngbRadioGroup name="role">
+        <label class="btn btn-success">
+          <input type="radio" value="1"> Collaborator
+        </label>
+        <label class="btn btn-success">
+          <input type="radio" value="2"> Team Leader
+        </label>
+        <label class="btn btn-success">
+          <input type="radio" value="3"> Provider
+        </label>
+      </div>
     </div>
-    <div class="container" [ngSwitch]="role">
+    <div class="container" [ngSwitch]="formInfo.role">
       <ngb-alert [dismissible]="false" *ngSwitchCase="1"> If you are looking for a good cause to help out this is your role! </ngb-alert>
       <ngb-alert [dismissible]="false" *ngSwitchCase="2"> Team Leaders use our platform to source and finance their needs in the most transparent way </ngb-alert>
       <ngb-alert [dismissible]="false" *ngSwitchCase="3"> Engage with leaders to provide for their needs, with the help of collaborators </ngb-alert>
       <ngb-alert [dismissible]="false" *ngSwitchDefault> Choose a role to see a description </ngb-alert>
     </div>
   </div>
-  <div class="container" [ngSwitch]="showSignup">
-    <div *ngSwitchCase="false">
-      <button (click)="login()" class="btn btn-primary"> Login </button>
-      <span> or </span>
-      <button (click)="signup()" class="btn btn-default"> Signup </button>
-    </div>
-    <div *ngSwitchCase="true">
-      <button (click)="signup()" class="btn btn-primary"> Signup </button>
-      <span> or </span>
-      <button (click)="login()" class="btn btn-default"> Login </button>
-    </div>
+  <div class="form-group" *ngIf="showSignup">
+    <label> Profile picture </label>
+    <!-- <input type="text" [(ngModel)]="formInfo.pic" class="text" name="pic" #myPic="ngModel" required/> -->
+     <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+    <!-- <span *ngIf="myPic.errors && (myPic.dirty || myPic.touched)">
+        Profile pic is required
+    </span> -->
+  </div>
+  <div class="form-group">
+    <button class="btn btn-primary" type='submit'>
+      {{showSignup ? 'Signup' : 'Login'}}
+    </button>
+    <span> or </span>
+    <button (click)="toggleSignup()" class="btn btn-default" type='button'>
+       {{showSignup ? 'Login' : 'Signup'}}
+    </button>
   </div>
 
 </form>

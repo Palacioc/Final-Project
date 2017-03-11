@@ -18,7 +18,7 @@ router.post('/', (req, res) => {
   	username: req.body.username,
     email: req.body.email,
     password: req.body.password,
-    role: req.body.role || 'Contributor',
+    role: req.body.role || 'Collaborator',
     pic: req.body.pic || ''
   });
 
