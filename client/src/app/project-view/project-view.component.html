@@ -7,10 +7,10 @@
   -Las necesidades en un desplegable
 </p>
 <div *ngIf="project">
-  <h1> {{project.name}} </h1>
+  <h1> {{project.name}} </h1><span>in {{project.location}}</span>
   <blockquote>
     <p>{{project.description}}</p>
-    <footer>started by {{project._creator}} on {{project.created_at | date}}</footer>
+    <footer>started by {{project._creator.username}} on {{project.created_at | date}}</footer>
   </blockquote>
   {{ project | json }}
 </div>

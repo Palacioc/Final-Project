@@ -34,7 +34,9 @@ router.get('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
-  Project.findById(req.params.id, (err, Projects) => {
+  Project.findById(req.params.id)
+  .populate('_creator')
+  .exec((err, Projects) => {
       if (err) {
         return res.send(err);
       }
