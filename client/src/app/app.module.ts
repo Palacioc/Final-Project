@@ -38,7 +38,7 @@ const routes: Routes = [
     children: [
       { path: 'new', component: ProjectNewComponent },
       { path: 'edit/:id', component: ProjectEditComponent },
-      { path: ':id)', component: ProjectViewComponent }
+      { path: ':id', component: ProjectViewComponent }
     ]
   },
   { path: 'needs',

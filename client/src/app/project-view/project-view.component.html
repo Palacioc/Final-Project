@@ -1,3 +1,16 @@
 <p>
-  project-view works!
+  Cosas que tienen que aparecer aqui:
+  -Foto del proyecto
+  -Titulo del proyecto y subtitulo "By fulano"
+  -Otros detalles como localizacion etc
+  -Un resumen de las necesidades por ejemplo en una barrita
+  -Las necesidades en un desplegable
 </p>
+<div *ngIf="project">
+  <h1> {{project.name}} </h1>
+  <blockquote>
+    <p>{{project.description}}</p>
+    <footer>started by {{project._creator}} on {{project.created_at | date}}</footer>
+  </blockquote>
+  {{ project | json }}
+</div>
