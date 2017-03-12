@@ -1,6 +1,6 @@
 
-<div *ngIf="project" class="col-sm-6 col-sm-offset-3">
-  <h1> {{project.name}} </h1>
+<div *ngIf="project">
+  <h1> {{project.name}} </h1> <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Edit</button>
   <blockquote>
     <p>{{project.description}}</p>
     <footer>in {{project.location}}, started by {{project._creator.username}} on {{project.created_at | date}}</footer>

@@ -37,7 +37,7 @@
         </label>
       </div>
     </div>
-    <div class="container" [ngSwitch]="formInfo.role">
+    <div class="container-fluid" [ngSwitch]="formInfo.role">
       <ngb-alert [dismissible]="false" *ngSwitchCase="1"> If you are looking for a good cause to help out this is your role! </ngb-alert>
       <ngb-alert [dismissible]="false" *ngSwitchCase="2"> Team Leaders use our platform to source and finance their needs in the most transparent way </ngb-alert>
       <ngb-alert [dismissible]="false" *ngSwitchCase="3"> Engage with leaders to provide for their needs, with the help of collaborators </ngb-alert>

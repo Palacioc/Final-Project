@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProjectService } from './../project.service';
 import { NeedService } from './../need.service';
 import { Router } from '@angular/router';
+import { SessionService } from "../session.service";
 
 
 @Component({
@@ -13,6 +14,8 @@ import { Router } from '@angular/router';
 
 export class ProjectViewComponent implements OnInit {
 
+  userIsCreator : boolean = false;
+  user : any;
   arr = Array;
   project : any;
   param : any;
@@ -27,9 +30,15 @@ export class ProjectViewComponent implements OnInit {
   arrayOfColors : Array<any> = [];
 
   constructor(private router: Router, private route: ActivatedRoute,
-    private projectService: ProjectService, private needService: NeedService) { }
+    private projectService: ProjectService, private needService: NeedService, private session: SessionService) { }
 
   ngOnInit() {
+    this.session.isLoggedIn()
+      .subscribe(
+        (user) => {
+          this.successCb(user);
+        }
+   );
     this.route.params.subscribe(params => {
       this.param = params['id'];
       this.getProjectDetails(this.param);
@@ -37,6 +46,7 @@ export class ProjectViewComponent implements OnInit {
       .subscribe((needs)=>{
         this.needs = needs;
         this.setPercentages(needs);
+        this.userIsCreator = this.project._creator._id===this.user._id;
       });
     });
   }
@@ -63,5 +73,12 @@ export class ProjectViewComponent implements OnInit {
       });
   }
 
+  errorCb(err) {
+    this.user.username = 'not logged in';
+  }
+
+  successCb(user) {
+    this.user = user;
+  }
 
 }
