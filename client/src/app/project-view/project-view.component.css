@@ -1,0 +1,27 @@
+.meter{
+  border: 1px solid black;
+}
+
+.green-dot{
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: green;
+}
+
+.blue-dot{
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: blue;
+}
+
+.grey-dot{
+  border: 1px solid black;
+  display: inline-block;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: grey;
+}

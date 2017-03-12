@@ -3,7 +3,7 @@ var router = express.Router();
 const Need = require('./need.model');
 const mongoose = require('mongoose');
 
-/* GET proposal listing. */
+/* GET need listing. */
 router.get('/', (req, res, next) => {
   Need.find({})
   .exec((err, Need) => {
@@ -12,7 +12,21 @@ router.get('/', (req, res, next) => {
   });
 });
 
-/* CREATE a new Proposal. */
+/* GET need listing by projectID. */
+router.get('/by-project/:id', (req, res, next) => {
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: 'Specified id is not valid' });
+  }
+  Need.find({_project : req.params.id})
+  .populate('allocatedProvider')
+  .populate('allocatedContributor')
+  .exec((err, Needs) => {
+    if(err) { return res.send(err); }
+    return res.json(Needs);
+  });
+});
+
+/* CREATE a new Need. */
 router.post('/', (req, res) => {
   const need = new Need({
     _project: req.body.projectID,

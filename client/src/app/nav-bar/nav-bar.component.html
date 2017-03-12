@@ -16,7 +16,7 @@
               <a class="dropdown-toggle navbar-img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                 <span *ngIf="user" class="right-menu">
                   {{user.username}}
-                  <div class="btn btn-success btn-xs">
+                  <div class="btn btn-success btn-xs" [ngClass]="{'btn-success': isGreen }">
                     {{user.role}}
                   </div>
                 </span>

@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 
 import { SessionService } from "./session.service";
+import { ProjectService } from "./project.service";
+import { NeedService } from "./need.service";
 import { AuthComponent } from './auth/auth.component';
 import { RouterModule, Routes } from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -84,7 +86,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
   ],
-  providers: [SessionService],
+  providers: [SessionService, ProjectService, NeedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

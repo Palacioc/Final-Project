@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-need-view',
@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class NeedViewComponent implements OnInit {
+  @Input() need: any;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

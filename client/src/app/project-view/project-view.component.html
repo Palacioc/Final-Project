@@ -1,16 +1,20 @@
-<p>
-  Cosas que tienen que aparecer aqui:
-  -Foto del proyecto
-  -Titulo del proyecto y subtitulo "By fulano"
-  -Otros detalles como localizacion etc
-  -Un resumen de las necesidades por ejemplo en una barrita
-  -Las necesidades en un desplegable
-</p>
-<div *ngIf="project">
-  <h1> {{project.name}} </h1><span>in {{project.location}}</span>
+
+<div *ngIf="project" class="col-sm-6 col-sm-offset-3">
+  <h1> {{project.name}} </h1>
   <blockquote>
     <p>{{project.description}}</p>
-    <footer>started by {{project._creator.username}} on {{project.created_at | date}}</footer>
+    <footer>in {{project.location}}, started by {{project._creator.username}} on {{project.created_at | date}}</footer>
   </blockquote>
-  {{ project | json }}
+  <div class="meter">
+    <div class="green-dot" *ngFor="let i of arr(numberGreen).fill(1)"></div>
+    <div class="blue-dot" *ngFor="let i of arr(numberBlue).fill(1)"></div>
+    <div class="grey-dot" *ngFor="let i of arr(numberGrey).fill(1)"></div>
+
+    Total needs: {{total}}; Percentage covered fully: {{percentageGreen | percent}}<br>
+
+  </div>
+  <div *ngFor="let need of needs">
+    <app-need-view [need]="need"></app-need-view>
+  </div>
+
 </div>

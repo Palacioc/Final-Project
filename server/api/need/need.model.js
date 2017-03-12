@@ -16,7 +16,7 @@ const needSchema = new mongoose.Schema({
     },
     status: {
       type: String,
-      enum : ['Grey', 'Yellow', 'Green', 'Blue'],
+      enum : ['Grey', 'Green', 'Blue'],
       default : 'Grey'
     },
     allocatedProvider: {

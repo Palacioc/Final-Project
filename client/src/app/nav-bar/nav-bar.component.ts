@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class NavBarComponent implements OnInit {
 
   user: any;
+  isGreen: boolean = true;
 
   constructor(private session: SessionService, private router: Router) { }
 

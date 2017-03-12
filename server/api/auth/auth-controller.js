@@ -95,7 +95,7 @@ authController.get("/loggedin", function(req, res) {
 //PRIVATE MESSAGE
 authController.get("/private", (req, res) => {
   console.log(req.sessionID);
-  if(req.isAuthenticated() && req.user.role==='Contributor') {
+  if(req.isAuthenticated() && req.user.role==='Collaborator') {
     return res.json({ message: 'This is a private message' });
   }
   return res.status(403).json({ message: 'Unauthorized' });
