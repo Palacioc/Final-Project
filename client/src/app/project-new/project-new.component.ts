@@ -23,7 +23,7 @@ export class ProjectNewComponent implements OnInit {
 constructor(private session: SessionService, private project: ProjectService, private router: Router) { }
 
   feedback: string;
-  user: string;
+  user: any;
 
   uploader: FileUploader = new FileUploader({
      url: `http://localhost:3000/api/projects`
@@ -44,18 +44,15 @@ constructor(private session: SessionService, private project: ProjectService, pr
 
   submitForm(theForm){
     console.log(this.formInfo);
-    // this.project.createProject(this.formInfo)
-    //   .subscribe(
-    //
-    //   );
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('name', this.formInfo.name);
       form.append('description', this.formInfo.description);
       form.append('location', this.formInfo.location);
       form.append('completed', this.formInfo.completed);
-      form.append('creatorID', this.formInfo.creatorID);
+      form.append('creatorID', this.user._id || this.formInfo.creatorID);
     };
     this.uploader.uploadAll()
+    this.router.navigate(['/projects'])
   }
 
 }
