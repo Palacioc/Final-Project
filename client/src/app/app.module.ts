@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   { path: 'needs',
     children: [
-      { path: 'new', component: NeedNewComponent },
+      { path: 'new/:id', component: NeedNewComponent },
       { path: 'edit/:id', component: NeedEditComponent },
       { path: ':id)', component: NeedViewComponent }
     ]

@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 const Need = require('./need.model');
 const mongoose = require('mongoose');
+const upload = require('../../configs/multer');
+
 
 /* GET need listing. */
 router.get('/', (req, res, next) => {
@@ -19,7 +21,7 @@ router.get('/by-project/:id', (req, res, next) => {
   }
   Need.find({_project : req.params.id})
   .populate('allocatedProvider')
-  .populate('allocatedContributor')
+  .populate('allocatedCollaborator')
   .exec((err, Needs) => {
     if(err) { return res.send(err); }
     return res.json(Needs);
@@ -27,21 +29,21 @@ router.get('/by-project/:id', (req, res, next) => {
 });
 
 /* CREATE a new Need. */
-router.post('/', (req, res) => {
+router.post('/', upload.single('file'), (req, res) => {
   const need = new Need({
     _project: req.body.projectID,
     name: req.body.name,
-    image: req.body.image,
+    image: req.file.path || '',
     description: req.body.description,
     status: req.body.status,
     allocatedProvider: req.body.providerID,
-    allocatedContributor: req.body.contributorID,
+    allocatedCollaborator: req.body.collaboratorID,
     cost: req.body.cost,
   });
 
-  need.save((err) => {
+  need.save((err, need) => {
     if (err) { return res.send(err); }
-    return res.json({ message: 'New need created correctly!' });
+    return res.json(need);
   });
 });
 

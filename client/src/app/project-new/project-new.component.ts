@@ -17,7 +17,7 @@ export class ProjectNewComponent implements OnInit {
     image: '',
     location: '',
     completed: false,
-    creatorID: '58c42216af76346615e20b85'
+    creatorID: ''
   };
 
 constructor(private session: SessionService, private project: ProjectService, private router: Router) { }
@@ -36,13 +36,11 @@ constructor(private session: SessionService, private project: ProjectService, pr
     );
     this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
+      console.log('project created:', JSON.parse(response));
+      this.router.navigate(['/projects/'+JSON.parse(response)._id]);
     };
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
-    };
-    this.uploader.onSuccessItem = (fileItem, response, status, headers)=> {
-      console.log('project created:', JSON.parse(response));
-      this.router.navigate(['/projects/'+JSON.parse(response)._id]);
     };
   }
 
@@ -53,7 +51,7 @@ constructor(private session: SessionService, private project: ProjectService, pr
       form.append('description', this.formInfo.description);
       form.append('location', this.formInfo.location);
       form.append('completed', this.formInfo.completed);
-      form.append('creatorID', this.user._id || this.formInfo.creatorID);
+      form.append('creatorID', this.user._id);
     };
     this.uploader.uploadAll()
   }

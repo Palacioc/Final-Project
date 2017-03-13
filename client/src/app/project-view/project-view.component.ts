@@ -33,12 +33,17 @@ export class ProjectViewComponent implements OnInit {
     private projectService: ProjectService, private needService: NeedService, private session: SessionService) { }
 
   ngOnInit() {
+    this.needService.getDeletedEventEmitter().subscribe(()=>{this.getNeeds()});
     this.session.isLoggedIn()
       .subscribe(
         (user) => {
           this.successCb(user);
         }
-   );
+    );
+    this.getNeeds();
+  }
+
+  getNeeds(){
     this.route.params.subscribe(params => {
 
       this.param = params['id'];
@@ -50,7 +55,7 @@ export class ProjectViewComponent implements OnInit {
         this.setPercentages(needs);
       });
 
-      setTimeout(()=>{this.userIsCreator = this.project._creator._id===this.user._id}, 500);
+      setTimeout(()=>{this.userIsCreator = this.project._creator._id===this.user._id}, 700);
 
     });
   }
@@ -74,6 +79,13 @@ export class ProjectViewComponent implements OnInit {
     this.projectService.get(id)
       .subscribe((project) => {
         this.project = project;
+      });
+  }
+
+  deleteProject(id) {
+    this.projectService.deleteProject(id)
+      .subscribe((response) => {
+        this.router.navigate(['/home']);
       });
   }
 

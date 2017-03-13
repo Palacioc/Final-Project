@@ -1,7 +1,10 @@
 
 <div *ngIf="project">
-  <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Edit project</button>
-  <h1> {{project.name}} </h1>
+  <h1>
+    {{project.name}}
+    <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Edit project</button>
+    <button *ngIf="userIsCreator" class="btn btn-danger" (click)="deleteProject(project._id)">Delete project</button>
+   </h1>
   <blockquote>
     <p>{{project.description}}</p>
     <footer>in {{project.location}}, started by {{project._creator.username}} on {{project.created_at | date}}</footer>
@@ -14,10 +17,8 @@
     Total needs: {{total}}; Percentage covered fully: {{percentageGreen | percent}}<br>
 
   </div>
-  <div *ngFor="let need of needs">
-    <app-need-view [need]="need"></app-need-view>
+  <div *ngFor="let need of needs" class="panel-group">
+    <app-need-view [need]="need" [projectID]="param" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
   </div>
-  <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Add a new need</button>
-
-
+  <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
 </div>

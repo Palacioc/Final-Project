@@ -21,4 +21,9 @@ export class ProjectService {
       .map(res => res.json())
   }
 
+  deleteProject(id){
+    return this.http.delete(`${this.BASEURL}/api/projects/${id}`)
+      .map(res => res.json())
+  }
+
 }

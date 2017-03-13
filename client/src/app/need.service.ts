@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
@@ -8,6 +8,8 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class NeedService {
   BASEURL: string = "http://localhost:3000";
+
+  emitter = new EventEmitter();
 
   constructor(private http: Http) { }
 
@@ -24,6 +26,15 @@ export class NeedService {
   createNeed(info){
     return this.http.post(`${this.BASEURL}/api/needs/`, info)
       .map(res => res.json())
+  }
+
+  deleteNeed(id){
+    return this.http.delete(`${this.BASEURL}/api/needs/${id}`)
+      .map(res => res.json())
+  }
+
+  getDeletedEventEmitter(){
+    return this.emitter;
   }
 
 }

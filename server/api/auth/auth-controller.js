@@ -13,12 +13,9 @@ const upload = require('../../configs/multer');
 //SIGNUP
 authController.post("/signup", upload.single('file'), (req, res, next) => {
   var {username, email, password, role} = req.body;
-  console.log('1');
   var pic = req.file.path;
-  console.log('2');
   console.log('all data', username, password, email, role, pic);
   if (!username || !password || !email || !role || !pic) {
-    console.log('3');
     console.log('Entered 400!!!');
     res.status(400).json({ message: "Please provide all data for user creation" });
     return;
