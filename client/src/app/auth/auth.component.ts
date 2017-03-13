@@ -76,13 +76,20 @@ export class AuthComponent implements OnInit {
    const roles = ['Collaborator', 'Leader', 'Provider'];
    this.formInfo.role = roles[Number(this.formInfo.role)-1];
    console.log(this.formInfo);
-  //  this.uploader.uploadAll();
    if(this.showSignup){
-     this.session.signup(this.formInfo)
-       .subscribe(
-         (user) => {this.successCb(user);},
-         (err) => this.errorCb(err)
-       );
+    //  this.session.signup(this.formInfo)
+    //    .subscribe(
+    //      (user) => {this.successCb(user);},
+    //      (err) => this.errorCb(err)
+    //    );
+    this.uploader.onBuildItemForm = (item, form) => {
+      form.append('username', this.formInfo.username);
+      form.append('email', this.formInfo.email);
+      form.append('password', this.formInfo.password);
+      form.append('pic', this.formInfo.pic);
+      form.append('role', this.formInfo.role);
+    };
+    this.uploader.uploadAll();
    }else{
      this.showSignup = true;
    }

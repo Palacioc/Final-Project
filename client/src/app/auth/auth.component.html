@@ -63,7 +63,7 @@
   </div>
 
 </form>
-<p class="error"> {{ error }} </p>
+<ngb-alert [dismissible]="false" *ngIf="error"> {{ error }} </ngb-alert>
 
 
 <div *ngIf="user">
