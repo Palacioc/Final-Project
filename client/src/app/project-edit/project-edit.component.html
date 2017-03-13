@@ -1,3 +1,31 @@
-<p>
-  project-edit works!
-</p>
+<div *ngIf="project">
+  <h1> Edit project {{project.name}}</h1>
+
+  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+    <div class="form-group">
+      <label> Project name </label>
+      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/><span>(Previous name: {{project.name}})</span>
+      <span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+          You need a name for your project!
+      </span>
+    </div>
+    <div class="form-group">
+      <label> Description </label>
+      <input type="textarea" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/><span>(Previous description: {{project.description}})</span>
+      <span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
+          You need a description for your project!
+      </span>
+    </div>
+    <div class="form-group">
+      <label> Location </label>
+      <input type="text" [(ngModel)]="formInfo.location" name="location" #myLocation="ngModel" required/><span>(Previous location: {{project.location}})</span>
+      <span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
+          You need a location for your project!
+      </span>
+    </div>
+    //Missing status which should be incomplete to begin with
+    <button class="btn btn-primary" type='submit'>
+      Edit Project
+    </button>
+  </form>
+</div>

@@ -26,4 +26,9 @@ export class ProjectService {
       .map(res => res.json())
   }
 
+  editProject(id, info){
+    return this.http.put(`${this.BASEURL}/api/projects/${id}`, info)
+      .map(res => res.json())
+  }
+
 }
