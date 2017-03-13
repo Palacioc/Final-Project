@@ -17,7 +17,7 @@ export class NavBarComponent implements OnInit {
   constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit() {
-    this.session.getLoginEventEmitter().subscribe((user)=>this.user=user);
+    this.session.getLoginEventEmitter().subscribe((user)=>this.user= user.message === 'Success' ? null : user);
     this.session.isLoggedIn()
       .subscribe(
         (user) => this.successCb(user)
