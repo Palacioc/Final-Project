@@ -40,6 +40,10 @@ constructor(private session: SessionService, private project: ProjectService, pr
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
     };
+    this.uploader.onSuccessItem = (fileItem, response, status, headers)=> {
+      console.log('project created:', JSON.parse(response));
+      this.router.navigate(['/projects/'+JSON.parse(response)._id]);
+    };
   }
 
   submitForm(theForm){
@@ -52,7 +56,6 @@ constructor(private session: SessionService, private project: ProjectService, pr
       form.append('creatorID', this.user._id || this.formInfo.creatorID);
     };
     this.uploader.uploadAll()
-    this.router.navigate(['/projects'])
   }
 
 }

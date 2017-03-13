@@ -1,5 +1,5 @@
 
-<div *ngIf="userIsCreator">
+<div *ngIf="project">
   <h1> {{project.name}} </h1> <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Edit</button>
   <blockquote>
     <p>{{project.description}}</p>

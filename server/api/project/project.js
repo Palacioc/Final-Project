@@ -23,9 +23,9 @@ router.post('/', upload.single('file'), (req, res) => {
     completed: req.body.completed || false,
     location: req.body.location,
   });
-  project.save((err) => {
+  project.save((err, project) => {
     if (err) { return res.send(err); }
-    return res.json({ message: 'New project created correctly!' });
+    return res.json(project);
   });
 });
 
