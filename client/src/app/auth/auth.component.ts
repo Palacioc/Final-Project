@@ -42,6 +42,10 @@ export class AuthComponent implements OnInit {
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
     };
+    // Lo mas parecido a un callback que he encontrado
+    this.uploader.onSuccessItem = (fileItem, response, status, headers)=> {
+      this.session.getLoginEventEmitter().emit(JSON.parse(response));
+    };
   }
 
   submitForm(theForm){
@@ -90,9 +94,7 @@ export class AuthComponent implements OnInit {
       form.append('role', this.formInfo.role);
     };
     this.uploader.uploadAll()
-    // .success(res => res.json())
-    // .map(user=>{this.emitter.emit(user);return user});
-    this.session.getLoginEventEmitter().emit(this.user);
+    // this.session.getLoginEventEmitter().emit(this.user);
    }else{
      this.showSignup = true;
    }

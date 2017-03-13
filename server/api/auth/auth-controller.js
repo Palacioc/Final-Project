@@ -80,7 +80,7 @@ authController.post("/login", function(req, res, next) {
 //LOGOUT
 authController.post("/logout", function(req, res) {
   req.logout();
-  res.status(200).json({ message: 'Success' });
+  res.status(200).json({ message: 'Logged out' });
 });
 
 //TO CHECK IF USER IS LOGGED IN

@@ -40,14 +40,18 @@ export class ProjectViewComponent implements OnInit {
         }
    );
     this.route.params.subscribe(params => {
+
       this.param = params['id'];
       this.getProjectDetails(this.param);
+
       this.needService.getByProject(this.param)
       .subscribe((needs)=>{
         this.needs = needs;
         this.setPercentages(needs);
-        this.userIsCreator = this.project._creator._id===this.user._id;
       });
+      
+      this.userIsCreator = true;
+      //  this.project._creator._id===this.user._id;
     });
   }
 
