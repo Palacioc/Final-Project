@@ -22,16 +22,40 @@ export class ProjectNewComponent implements OnInit {
 
 constructor(private session: SessionService, private project: ProjectService, private router: Router) { }
 
+  feedback: string;
+  user: string;
+
+  uploader: FileUploader = new FileUploader({
+     url: `http://localhost:3000/api/projects`
+   });
+
   ngOnInit() {
-    //check if user is logged in with the event emitter
+    this.session.isLoggedIn()
+    .subscribe(
+      (user) => {this.user = user}
+    );
+    this.uploader.onSuccessItem = (item, response) => {
+      this.feedback = JSON.parse(response).message;
+    };
+    this.uploader.onErrorItem = (item, response, status, headers) => {
+      this.feedback = JSON.parse(response).message;
+    };
   }
 
   submitForm(theForm){
     console.log(this.formInfo);
-    this.project.createProject(this.formInfo)
-      .subscribe(
-
-      );
-    }
+    // this.project.createProject(this.formInfo)
+    //   .subscribe(
+    //
+    //   );
+    this.uploader.onBuildItemForm = (item, form) => {
+      form.append('name', this.formInfo.name);
+      form.append('description', this.formInfo.description);
+      form.append('location', this.formInfo.location);
+      form.append('completed', this.formInfo.completed);
+      form.append('creatorID', this.formInfo.creatorID);
+    };
+    this.uploader.uploadAll()
+  }
 
 }

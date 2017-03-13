@@ -20,7 +20,12 @@
                     {{user.role}}
                   </div>
                 </span>
-              <img src="http://placehold.it/150x150" class="img-circle" alt="Profile Image" />
+                <span *ngIf="!user" class="right-menu">
+                  Not logged in
+                </span>
+              <img *ngIf="!user"src="http://placehold.it/150x150" class="img-circle" alt="Profile Image" />
+              <img *ngIf="user" [src]="'http://localhost:3000/'+user.pic" class="img-circle" alt="Profile Image" />
+
               </a>
               <ul *ngIf="user" class="dropdown-menu">
                 <li><a [routerLink]="['/user/id/projects']"><span class="right-menu"><span class="glyphicon glyphicon-star"></span> My projects</span></a></li>

@@ -17,14 +17,11 @@
   </div>
   <div class="form-group">
     <label> Image </label>
-    <input type="text" [(ngModel)]="formInfo.image" name="description" #myImage="ngModel" required/>
-    <span *ngIf="myImage.errors && (myImage.dirty || myImage.touched)">
-        You need a description for your project!
-    </span>
+    <input type="file" name="file" ng2FileSelect [uploader]="uploader"/>
   </div>
   <div class="form-group">
     <label> Location </label>
-    <input type="text" [(ngModel)]="formInfo.location" name="description" #myLocation="ngModel" required/>
+    <input type="text" [(ngModel)]="formInfo.location" name="location" #myLocation="ngModel" required/>
     <span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
         You need a location for your project!
     </span>

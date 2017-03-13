@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { SessionService } from "../session.service";
 import { Router } from '@angular/router';
 import { FileUploader } from "ng2-file-upload";
@@ -89,7 +89,10 @@ export class AuthComponent implements OnInit {
       form.append('pic', this.formInfo.pic);
       form.append('role', this.formInfo.role);
     };
-    this.uploader.uploadAll();
+    this.uploader.uploadAll()
+    // .success(res => res.json())
+    // .map(user=>{this.emitter.emit(user);return user});
+    this.session.getLoginEventEmitter().emit(this.user);
    }else{
      this.showSignup = true;
    }
