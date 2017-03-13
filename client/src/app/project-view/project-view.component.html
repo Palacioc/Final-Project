@@ -1,6 +1,7 @@
 
 <div *ngIf="project">
-  <h1> {{project.name}} </h1> <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Edit</button>
+  <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Edit project</button>
+  <h1> {{project.name}} </h1>
   <blockquote>
     <p>{{project.description}}</p>
     <footer>in {{project.location}}, started by {{project._creator.username}} on {{project.created_at | date}}</footer>
@@ -16,5 +17,7 @@
   <div *ngFor="let need of needs">
     <app-need-view [need]="need"></app-need-view>
   </div>
+  <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Add a new need</button>
+
 
 </div>

@@ -50,7 +50,7 @@ export class ProjectViewComponent implements OnInit {
         this.setPercentages(needs);
       });
 
-      setTimeout(()=>{this.userIsCreator = this.project._creator._id===this.user._id}, 300);
+      setTimeout(()=>{this.userIsCreator = this.project._creator._id===this.user._id}, 500);
 
     });
   }
