@@ -16,4 +16,9 @@ export class ProjectService {
       .map((res) => res.json());
   }
 
+  createProject(info){
+    return this.http.post(`${this.BASEURL}/api/projects/`, info)
+      .map(res => res.json())
+  }
+
 }

@@ -1,3 +1,46 @@
-<p>
-  need-new works!
-</p>
+<h1> New need </h1>
+
+<form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+  <div class="form-group">
+    <label> Need name </label>
+    <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
+    <span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+        You need a name for this need!
+    </span>
+  </div>
+  <div class="form-group">
+    <label> Description </label>
+    <input type="textarea" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/>
+    <span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
+        You need a description for this need!
+    </span>
+  </div>
+  <div class="form-group">
+    <label> Image </label>
+    <input type="text" [(ngModel)]="formInfo.image" name="image" #myImage="ngModel" required/>
+    <span *ngIf="myImage.errors && (myImage.dirty || myImage.touched)">
+        You need a description for this need!
+    </span>
+  </div>
+  <div class="form-group">
+    <label> Cost </label>
+    <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
+    <span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
+        You need a cost for this need!
+    </span>
+  </div>
+  <div class="form-group">
+    <label> Allocated provider ID </label>
+    <input type="text" [(ngModel)]="formInfo.provider" name="description" #myProvider="ngModel"/>
+  </div>
+  <div class="form-group">
+    <label> Allocated collaborator ID </label>
+    <input type="text" [(ngModel)]="formInfo.collaborator" name="description" #myCollaborator="ngModel"/>
+
+  </div>
+  // No olvidar establecer el color/status en funcion de si allocated provider/collaborator
+  // No olvidar establecer el project ID en funcion de la variable que le pase el padre
+  <br><button class="btn btn-primary" type='submit'>
+    Create Need
+  </button>
+</form>

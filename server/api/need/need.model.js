@@ -23,7 +23,7 @@ const needSchema = new mongoose.Schema({
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    allocatedContributor: {
+    allocatedCollaborator: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     },

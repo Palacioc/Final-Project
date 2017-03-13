@@ -21,4 +21,9 @@ export class NeedService {
       .map((res) => res.json());
   }
 
+  createNeed(info){
+    return this.http.post(`${this.BASEURL}/api/needs/`, info)
+      .map(res => res.json())
+  }
+
 }
