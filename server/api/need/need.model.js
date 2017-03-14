@@ -19,11 +19,11 @@ const needSchema = new mongoose.Schema({
       enum : ['Grey', 'Green', 'Blue'],
       default : 'Grey'
     },
-    allocatedProvider: {
+    _allocatedProvider: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    allocatedCollaborator: {
+    _allocatedCollaborator: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     },

@@ -17,6 +17,10 @@
     <p>{{proposal.comment}}</p>
     <footer> by {{proposal._contributor.username}} on {{proposal.created_at | date}}</footer>
   </blockquote>
+  <div *ngIf="need && user && need.allocatedCollaborator">
+
+    <div *ngIf="need._allocatedCollaborator._id && user._id===need._allocatedCollaborator._id"> The leader of this project accepted your proposal. You can now make the payment of {{need.cost}} Eur to {{need._allocatedProvider.username}}'s bank account: {{proposal.accountNo}} </div>
+  </div>
 
 
   <button *ngIf="userIsCreator && !proposal.status" class="btn btn-success" (click)="acceptProposal()">Accept proposal</button>

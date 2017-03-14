@@ -20,8 +20,8 @@ router.get('/by-project/:id', (req, res, next) => {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
   Need.find({_project : req.params.id})
-  .populate('allocatedProvider')
-  .populate('allocatedCollaborator')
+  .populate('_allocatedProvider')
+  .populate('_allocatedCollaborator')
   .populate('_project')
   .exec((err, Needs) => {
     if(err) { return res.send(err); }
@@ -55,6 +55,8 @@ router.get('/:id', (req, res) => {
   }
   Need.findById(req.params.id)
   .populate('_project')
+  .populate('_allocatedProvider')
+  .populate('_allocatedCollaborator')
   .exec((err, Needs) => {
       if (err) {
         return res.send(err);

@@ -53,6 +53,7 @@ export class ProposalNewComponent implements OnInit {
       this.needService.get(id)
         .subscribe((need) => {
           this.need = need;
+          console.log(this.need);
           if(this.need.status==="Grey"){
             this.type = "sourcing";
           }

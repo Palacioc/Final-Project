@@ -16,18 +16,19 @@
     </div>
 
     <div *ngIf="type==='funding'" class="form-group">
-      <!-- The chosen provider for this need is {{need._allocatedProvider.username}} -->
+      The allocated provider for this need is: {{need._allocatedProvider.username}}<br>
+      {{need._allocatedProvider.username}} offered to source this need for {{need.cost}} Eur
     </div>
 
     <div class="form-group">
-      <label> Comment or description </label>
+      <label> Add a comment </label>
       <input type="text" [(ngModel)]="formInfo.comment" name="comment" #myComment="ngModel" required/>
       <span *ngIf="myComment.errors && (myComment.dirty || myComment.touched)">
           Please make a brief comment of how you plan to source this need
       </span>
     </div>
 
-    <div class="form-group">
+    <div *ngIf="type==='sourcing'" class="form-group" class="form-group">
       <label> Your bank account number </label>
       <input type="textarea" [(ngModel)]="formInfo.accountNo" name="accountNo" #myAccountNo="ngModel" required/>
       <span *ngIf="myAccountNo.errors && (myAccountNo.dirty || myAccountNo.touched)">
