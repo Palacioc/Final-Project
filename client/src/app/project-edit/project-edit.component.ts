@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SessionService } from "../session.service";
 import { ProjectService } from "../project.service";
 import { Router } from '@angular/router';
-import { FileUploader } from "ng2-file-upload";
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -26,11 +25,6 @@ export class ProjectEditComponent implements OnInit {
   project: any;
 
   constructor(private session: SessionService, private projectService: ProjectService, private route: ActivatedRoute, private router: Router) { }
-
-
-  uploader: FileUploader = new FileUploader({
-     url: `http://localhost:3000/api/projects/edit/${this.projectID}`
-   });
 
    ngOnInit() {
      this.session.isLoggedIn()

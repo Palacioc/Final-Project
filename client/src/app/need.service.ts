@@ -36,5 +36,10 @@ export class NeedService {
   getDeletedEventEmitter(){
     return this.emitter;
   }
+  
+  editNeed(id, info){
+    return this.http.put(`${this.BASEURL}/api/needs/${id}`, info)
+      .map(res => res.json())
+  }
 
 }
