@@ -17,9 +17,10 @@ router.post('/', (req, res) => {
   const proposal = new Proposal({
     _need: req.body.needID,
     _contributor: req.body.contributorID,
-    coverage: req.body.coverage || 'Green',
+    coverage: req.body.coverage || 'Blue',
     comment: req.body.comment || 'I am happy to help to this cause!',
-    amount: req.body.amount || 0,
+    cost: req.body.cost || 0,
+    accountNo: req.body.accountNo || 0,
   });
 
   proposal.save((err) => {

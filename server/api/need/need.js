@@ -22,6 +22,7 @@ router.get('/by-project/:id', (req, res, next) => {
   Need.find({_project : req.params.id})
   .populate('allocatedProvider')
   .populate('allocatedCollaborator')
+  .populate('_project')
   .exec((err, Needs) => {
     if(err) { return res.send(err); }
     return res.json(Needs);

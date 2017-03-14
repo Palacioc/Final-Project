@@ -52,7 +52,7 @@ const routes: Routes = [
   },
   { path: 'proposals',
     children: [
-      { path: 'new', component: ProposalNewComponent },
+      { path: 'new/:id', component: ProposalNewComponent },
       { path: 'edit/:id', component: ProposalEditComponent },
       { path: ':id)', component: ProposalViewComponent }
     ]

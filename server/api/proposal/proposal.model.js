@@ -11,16 +11,23 @@ const proposalSchema = new mongoose.Schema({
     coverage: {
       type: String,
       enum : ['Green', 'Blue'],
-      default : 'Green'
+      default : 'Blue',
+      required: [true, 'A proposal type is required']
     },
     comment: {
       type: String,
-      required: [true, 'A project description is required']
+      required: [true, 'A proposal description is required']
     },
-    amount: {
+    cost: {
       type: Number,
       default: 0
+    },
+    accountNo: {
+      type: String,
+      default: 0,
+      required: [true, 'A bank account number is required to receive payment for your service']
     }
+
   },{
     timestamps: {
       createdAt: "created_at",

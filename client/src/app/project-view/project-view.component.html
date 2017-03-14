@@ -18,7 +18,7 @@
 
   </div>
   <div *ngFor="let need of needs" class="panel-group">
-    <app-need-view [need]="need" [projectID]="param" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
+    <app-need-view [need]="need" [project]="project" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
   </div>
   <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
 </div>

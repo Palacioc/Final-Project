@@ -13,7 +13,7 @@ export class NeedViewComponent implements OnInit {
   @Input() need: any;
   @Input() userIsCreator: boolean;
   @Input() user: boolean;
-  @Input() projectID: string;
+  @Input() project: any;
 
 
   constructor(private router: Router, private needService: NeedService) { }
