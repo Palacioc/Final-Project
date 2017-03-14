@@ -9,18 +9,31 @@
         <span *ngSwitchCase="'Blue'"><button class="btn btn-xs btn-info" > Sourced </button> <button class="btn btn-xs btn-success"> Not financed </button></span>
         <span *ngSwitchCase="'Green'"><button class="btn btn-xs btn-info"> Sourced </button> <button class="btn btn-xs btn-success"> Financed </button></span>
       </span>
+      <button *ngIf="userIsCreator" class="btn btn-warning btn-xs" [routerLink]="['/needs/edit/']+[need._id]">Edit need</button>
+      <button *ngIf="userIsCreator" class="btn btn-danger btn-xs" (click)="deleteNeed(need._id)">Delete need</button>
+      <br>
       {{need.image}}<br>
       Created on: {{need.created_at | date}}<br>
       Cost: {{need.cost}}<br>
       {{need.description}}<br>
-      Status: {{need.status}}<br>
+      Status: {{need.status}}
+      <br><br>
+      <h4>Proposals:</h4>
+      <h5>{{sourcingProposals.length}} sourcing proposals received</h5>
+      <div *ngFor="let prop of sourcingProposals">
+        {{prop._contributor.username}} can source this need for {{prop.cost}} Eur
+      </div>
+      <h5>{{fundingProposals.length}} funding proposals received</h5>
+      <div *ngFor="let prop of fundingProposals">
+        {{prop._contributor.username}} can finance this need
+      </div>
       <span class="container-fluid" [ngSwitch]="need.status">
         <span *ngSwitchCase="'Grey'">We need to find a provider for this need, before it can be funded. Think you can help {{project._creator.username}} source this need? <br><button class="btn btn-xs btn-info" [routerLink]="['/proposals/new/']+[need._id]"> Make sourcing proposal </button></span>
         <span *ngSwitchCase="'Blue'">Yay! This need has an allocated provider. Can you help {{project._creator.username}} fund this need? <br><button class="btn btn-xs btn-success" [routerLink]="['/proposals/new/']+[need._id]"> Make financing proposal </button></span>
         <span *ngSwitchCase="'Green'">Yay! This need is on the works!</span>
       </span>
-      <button *ngIf="userIsCreator" class="btn btn-default btn-xs" [routerLink]="['/needs/edit/']+[need._id]">Edit need</button>
-      <button *ngIf="userIsCreator" class="btn btn-danger btn-xs" (click)="deleteNeed(need._id)">Delete need</button>
+
+
     </template>
   </ngb-panel>
 </ngb-accordion>

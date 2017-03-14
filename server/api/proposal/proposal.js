@@ -12,6 +12,21 @@ router.get('/', (req, res, next) => {
   });
 });
 
+/* GET proposal listing by needID. */
+router.get('/by-need/:id', (req, res, next) => {
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: 'Specified id is not valid' });
+  }
+  Proposal.find({_need : req.params.id})
+  .populate('_need')
+  .populate('_contributor')
+  .exec((err, Proposals) => {
+    if(err) { return res.send(err); }
+    return res.json(Proposals);
+  });
+});
+
+
 /* CREATE a new Proposal. */
 router.post('/', (req, res) => {
   const proposal = new Proposal({
