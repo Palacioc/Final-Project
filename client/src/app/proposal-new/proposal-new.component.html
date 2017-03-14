@@ -1,3 +1,38 @@
-<p>
-  proposal-new works!
-</p>
+<div *ngIf="need">
+  {{need | json}}
+  <h1> New {{type}} proposal for need {{need.name}} (project {{need._project.name}}), from {{user.username}}</h1>
+
+  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+
+    <div class="form-group">
+      <label> Cost of sourcing this need </label>
+      <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
+      <span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
+          Please indicate how much funding you will need to source this need
+      </span>
+      <br><span>The leader of this project estimated that this need would cost {{need.cost}} Euros to be funded</span>
+      <br><span *ngIf="formInfo.cost && formInfo.cost<need.cost">You are saving this project {{need.cost-formInfo.cost}} Euros, thank you!</span>
+    </div>
+
+    <div class="form-group">
+      <label> Comment or description </label>
+      <input type="text" [(ngModel)]="formInfo.comment" name="comment" #myComment="ngModel" required/>
+      <span *ngIf="myComment.errors && (myComment.dirty || myComment.touched)">
+          Please make a brief comment of how you plan to source this need
+      </span>
+    </div>
+
+    <div class="form-group">
+      <label> Your bank account number </label>
+      <input type="textarea" [(ngModel)]="formInfo.accountNo" name="accountNo" #myAccountNo="ngModel" required/>
+      <span *ngIf="myAccountNo.errors && (myAccountNo.dirty || myAccountNo.touched)">
+          You need an account number to receive payment
+      </span>
+    </div>
+
+    <br><button class="btn btn-primary" type='submit'>
+      Create proposal
+    </button>
+
+  </form>
+</div>

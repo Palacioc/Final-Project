@@ -6,30 +6,29 @@ import { Observable } from 'rxjs/Rx';
 
 
 @Injectable()
-export class ProjectService {
-  
+export class ProposalService {
+
   BASEURL: string = "http://localhost:3000";
 
   constructor(private http: Http) { }
 
   get(id) {
-    return this.http.get(`${this.BASEURL}/api/projects/${id}`)
+    return this.http.get(`${this.BASEURL}/api/proposals/${id}`)
       .map((res) => res.json());
   }
 
-  createProject(info){
-    return this.http.post(`${this.BASEURL}/api/projects/`, info)
+  createProposal(info){
+    return this.http.post(`${this.BASEURL}/api/proposals/`, info)
       .map(res => res.json())
   }
 
-  deleteProject(id){
-    return this.http.delete(`${this.BASEURL}/api/projects/${id}`)
+  deleteProposal(id){
+    return this.http.delete(`${this.BASEURL}/api/proposals/${id}`)
       .map(res => res.json())
   }
 
-  editProject(id, info){
-    return this.http.put(`${this.BASEURL}/api/projects/${id}`, info)
+  editProposal(id, info){
+    return this.http.put(`${this.BASEURL}/api/proposals/${id}`, info)
       .map(res => res.json())
   }
-
 }
