@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse bs-dark blue">
+<nav class="navbar navbar-inverse bs-dark blue" id="nav-bar">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
             <span class="sr-only">Toggle navigation</span>
@@ -9,7 +9,6 @@
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <img src="../../assets/logo.png" class="logo">
           <a class="logo">[Insert Name Here]</a>
           <ul class="nav navbar-nav navbar-right">
             <li class="dropdown">
@@ -24,8 +23,7 @@
                   <a [routerLink]="['/auth']">Not logged in</a>
                 </span>
               <img *ngIf="!user"src="http://placehold.it/150x150" class="img-circle" alt="Profile Image" />
-              <img *ngIf="user" [src]="'http://localhost:3000/'+user.pic" class="img-circle" alt="Profile Image" />
-
+              <img *ngIf="user" id="profile-pic" [src]="'http://localhost:3000/'+user.pic" class="profile-img" alt="Profile Image" />
               </a>
               <ul *ngIf="user" class="dropdown-menu">
                 <li><a [routerLink]="['/user/id/projects']"><span class="right-menu"><span class="glyphicon glyphicon-star"></span> My projects</span></a></li>

@@ -26,9 +26,11 @@ import { ProposalViewComponent } from './proposal-view/proposal-view.component';
 import { ProposalEditComponent } from './proposal-edit/proposal-edit.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
+import { LandingComponent } from './landing/landing.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  { path: 'landing',  component: LandingComponent },
   { path: 'auth',  component: AuthComponent },
   { path: 'home',  component: HomeComponent },
   { path: 'user',
@@ -79,6 +81,7 @@ const routes: Routes = [
     ProposalEditComponent,
     UserViewComponent,
     UserEditComponent,
+    LandingComponent,
   ],
   imports: [
     BrowserModule,

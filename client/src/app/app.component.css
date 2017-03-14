@@ -25,3 +25,7 @@
 .fadeIn {
  animation-name: fadeIn;
 }
+
+.spacer-top{
+  height: 50px;
+}
