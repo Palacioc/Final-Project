@@ -8,12 +8,17 @@
    <div>
      {{proposal._contributor.username}} can source this need for {{proposal.cost}} Eur
    </div>
+   <div status>
+     Status:
+     <span *ngIf="proposal.status"> Accepted </span>
+     <span *ngIf="!proposal.status"> Pending acceptance </span>
+   </div>
   <blockquote>
     <p>{{proposal.comment}}</p>
     <footer> by {{proposal._contributor.username}} on {{proposal.created_at | date}}</footer>
   </blockquote>
 
 
-  <button *ngIf="userIsCreator" class="btn btn-success" (click)="acceptProposal()">Accept proposal</button>
+  <button *ngIf="userIsCreator && !proposal.status" class="btn btn-success" (click)="acceptProposal()">Accept proposal</button>
   <button class="btn btn-default" [routerLink]="['/projects/']+[need._project._id]">Back to project</button>
 </div>

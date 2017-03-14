@@ -52,7 +52,21 @@ export class ProposalViewComponent implements OnInit {
     }
 
     acceptProposal(){
-      console.log("Accept!")
+      console.log(this.proposal._id)
+      this.proposalService.editProposal(this.proposal._id, { 'status' : true } );
+      switch (this.proposal.coverage) {
+        case 'Blue':
+          console.log('We make the need blue')
+          console.log(this.proposal._contributor._id);
+          this.needService.editNeed(this.need._id, { 'status' : 'Blue' , 'allocatedProvider' : this.proposal._contributor._id });
+          break;
+        case 'Green':
+          console.log('We make the need green')
+          this.needService.editNeed(this.need._id, { 'status' : 'Green' , 'allocatedCollaborator' : this.proposal._contributor._id });
+          break;
+        default:
+      }
+      setTimeout(()=>{this.router.navigate(['/projects/'+this.need._project._id]);}, 200);
     }
 
     errorCb(err) {

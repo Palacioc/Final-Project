@@ -26,6 +26,10 @@ const proposalSchema = new mongoose.Schema({
       type: String,
       default: 0,
       required: [true, 'A bank account number is required to receive payment for your service']
+    },
+    status: {
+      type: Boolean,
+      default: false,
     }
 
   },{

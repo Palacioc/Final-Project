@@ -28,12 +28,13 @@ export class ProposalService {
   }
 
   editProposal(id, info){
-    return this.http.put(`${this.BASEURL}/api/proposals/${id}`, info)
-      .map(res => res.json())
+    this.http.put(`${this.BASEURL}/api/proposals/${id}`, info)
+      .map(res => res.json()).subscribe((response)=>{console.log('response is', response)})
   }
 
   getByNeed(id) {
     return this.http.get(`${this.BASEURL}/api/proposals/by-need/${id}`)
       .map((res) => res.json());
   }
+
 }

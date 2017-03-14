@@ -4,7 +4,8 @@
 
   <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
 
-    <div class="form-group">
+
+    <div *ngIf="type==='sourcing'" class="form-group">
       <label> Cost of sourcing this need </label>
       <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
       <span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
@@ -12,6 +13,10 @@
       </span>
       <br><span>The leader of this project estimated that this need would cost {{need.cost}} Euros to be funded</span>
       <br><span *ngIf="formInfo.cost && formInfo.cost<need.cost">You are saving this project {{need.cost-formInfo.cost}} Euros, thank you!</span>
+    </div>
+
+    <div *ngIf="type==='funding'" class="form-group">
+      <!-- The chosen provider for this need is {{need._allocatedProvider.username}} -->
     </div>
 
     <div class="form-group">
