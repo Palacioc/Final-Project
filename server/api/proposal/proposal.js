@@ -49,7 +49,10 @@ router.get('/:id', (req, res) => {
   if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
     return res.status(400).json({ message: 'Specified id is not valid' });
   }
-  Proposal.findById(req.params.id, (err, Proposals) => {
+  Proposal.findById(req.params.id)
+  .populate('_need')
+  .populate('_contributor')
+  .exec((err, Proposals) => {
       if (err) {
         return res.send(err);
       }

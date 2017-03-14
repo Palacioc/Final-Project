@@ -48,14 +48,14 @@ const routes: Routes = [
     children: [
       { path: 'new/:id', component: NeedNewComponent },
       { path: 'edit/:id', component: NeedEditComponent },
-      { path: ':id)', component: NeedViewComponent }
+      { path: ':id', component: NeedViewComponent }
     ]
   },
   { path: 'proposals',
     children: [
       { path: 'new/:id', component: ProposalNewComponent },
       { path: 'edit/:id', component: ProposalEditComponent },
-      { path: ':id)', component: ProposalViewComponent }
+      { path: ':id', component: ProposalViewComponent }
     ]
   }
 ];

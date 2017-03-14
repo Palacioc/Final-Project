@@ -22,6 +22,7 @@
       <h5>{{sourcingProposals.length}} sourcing proposals received</h5>
       <div *ngFor="let prop of sourcingProposals">
         {{prop._contributor.username}} can source this need for {{prop.cost}} Eur
+        <button *ngIf="userIsCreator && need.status==='Grey'" class="btn btn-info btn-xs" [routerLink]="['/proposals/']+[prop._id]">Review</button>
       </div>
       <h5>{{fundingProposals.length}} funding proposals received</h5>
       <div *ngFor="let prop of fundingProposals">

@@ -1,3 +1,19 @@
-<p>
-  proposal-view works!
-</p>
+
+<div *ngIf="proposal && need">
+  <h1>
+    <span *ngIf="proposal.coverage==='Blue'">Sourcing </span>
+    <span *ngIf="proposal.coverage==='Green'">Funding </span>
+    proposal for need {{need.name}}:
+   </h1>
+   <div>
+     {{proposal._contributor.username}} can source this need for {{proposal.cost}} Eur
+   </div>
+  <blockquote>
+    <p>{{proposal.comment}}</p>
+    <footer> by {{proposal._contributor.username}} on {{proposal.created_at | date}}</footer>
+  </blockquote>
+
+
+  <button *ngIf="userIsCreator" class="btn btn-success" (click)="acceptProposal()">Accept proposal</button>
+  <button class="btn btn-default" [routerLink]="['/projects/']+[need._project._id]">Back to project</button>
+</div>
