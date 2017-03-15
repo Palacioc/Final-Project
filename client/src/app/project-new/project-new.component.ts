@@ -10,7 +10,7 @@ import { FileUploader } from "ng2-file-upload";
   styles: []
 })
 export class ProjectNewComponent implements OnInit {
-
+  model = 1;
   formInfo = {
     name: '',
     description: '',

@@ -15,13 +15,14 @@ export class AuthComponent implements OnInit {
   user: any;
   error: string;
   privateData: any;
+  model = 1;
 
   formInfo = {
     username: '',
     password: '',
     email: '',
     pic: '',
-    role: '1',
+    role: '',
   };
 
   showSignup: boolean = false;
@@ -78,14 +79,9 @@ export class AuthComponent implements OnInit {
 
  signup() {
    const roles = ['Collaborator', 'Leader', 'Provider'];
+   console.log('the number captured',this.formInfo.role);
    this.formInfo.role = roles[Number(this.formInfo.role)-1];
-   console.log(this.formInfo);
    if(this.showSignup){
-    //  this.session.signup(this.formInfo)
-    //    .subscribe(
-    //      (user) => {this.successCb(user);},
-    //      (err) => this.errorCb(err)
-    //    );
     this.uploader.onBuildItemForm = (item, form) => {
       form.append('username', this.formInfo.username);
       form.append('email', this.formInfo.email);

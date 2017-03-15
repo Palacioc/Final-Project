@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styles: []
 })
 export class UserViewComponent implements OnInit {
-
+  model = 1;
   constructor() { }
 
   ngOnInit() {
