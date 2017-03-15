@@ -9,13 +9,30 @@
 	text-shadow:none;
 }
 
+#carousel-title {
+  left:0;
+	right:0;
+	bottom:0;
+  top: 0;
+	text-align: center;
+	text-shadow: 2px 2px 4px black;
+  font-size: 70px;
+}
+
+.carousel-caption{
+    background: rgba(0,0,0,0.5);
+    border-radius: 6px;
+}
+.center{
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
 #bkg{
   object-fit: cover;
   width: 100%;
-}
-
-.meter{
-  border: 1px solid black;
+  height: 500px;
 }
 
 .green-dot{
@@ -24,6 +41,9 @@
   border-radius: 50%;
   padding: 5px;
   background-color: green;
+}
+.mini-space{
+  margin-top: 10px;
 }
 
 .blue-dot{

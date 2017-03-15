@@ -65,14 +65,15 @@ export class ProjectViewComponent implements OnInit {
       if(elem.status==='Green'){this.numberGreen++};
       if(elem.status==='Blue'){this.numberBlue++};
       if(elem.status==='Grey'){this.numberGrey++};
+    })
       this.total = this.numberGreen + this.numberGrey + this.numberBlue;
+      this.numberBlue= this.numberGreen + this.numberBlue;
       this.percentageGreen = this.numberGreen / this.total;
       this.percentageGrey = this.numberGrey / this.total;
       this.percentageBlue = this.numberBlue / this.total;
       for (let i = 0; i < this.numberGreen; i++) {this.arrayOfColors.push('G')};
       for (let i = 0; i < this.numberGrey; i++) {this.arrayOfColors.push('-')};
       for (let i = 0; i < this.numberBlue; i++) {this.arrayOfColors.push('B')};
-    })
   }
 
   getProjectDetails(id) {

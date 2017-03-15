@@ -1,34 +1,54 @@
-<div class="container">
-    <div id="myCarousel" class="carousel slide" data-ride="carousel">
-      <div class="carousel-inner">
-        <div class="item active">
-          <img src="http://placehold.it/760x400/cccccc/ffffff" id="bkg">
-           <div class="carousel-caption">
-            <h4><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></h4>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
-          </div>
+
+<div class="container" *ngIf="project">
+  <ngb-carousel>
+    <template ngbSlide>
+      <img [src]="'http://localhost:3000/'+project.image" id="bkg">
+      <div class="carousel-caption">
+        <h1 class="carousel-title" id="carousel-title">{{project.name}}</h1>
+        <blockquote>
+          <p>{{project.description}}</p>
+          <footer>- {{project._creator.username}}, in {{project.location}}, {{project.created_at | date}}</footer>
+        </blockquote>
+        <div class="center" *ngIf="userIsCreator">
+          <button class="btn btn-warning" [routerLink]="['/projects/edit/']+[param]">Edit project</button>
+          <button class="btn btn-danger" (click)="deleteProject(project._id)">Delete project</button>
         </div>
-    </div>
-</div>
-  <h1>
-    {{project.name}}
-    <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/projects/edit/']+[param]">Edit project</button>
-    <button *ngIf="userIsCreator" class="btn btn-danger" (click)="deleteProject(project._id)">Delete project</button>
-   </h1>
-  <blockquote>
-    <p>{{project.description}}</p>
-    <footer>in {{project.location}}, started by {{project._creator.username}} on {{project.created_at | date}}</footer>
-  </blockquote>
+      </div>
+    </template>
+  </ngb-carousel>
   <div class="meter">
-    <div class="green-dot" *ngFor="let i of arr(numberGreen).fill(1)"></div>
+    <div class="progress">
+      <div class="progress-bar bg-success progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberBlue}} sourced</div>
+    </div>
+    <div class="progress">
+      <div class="progress-bar bg-info progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberGreen}} funded</div>
+    </div>
+    <!-- <div class="green-dot" *ngFor="let i of arr(numberGreen).fill(1)"></div>
     <div class="blue-dot" *ngFor="let i of arr(numberBlue).fill(1)"></div>
-    <div class="grey-dot" *ngFor="let i of arr(numberGrey).fill(1)"></div>
-
-    Total needs: {{total}}; Percentage covered fully: {{percentageGreen | percent}}<br>
-
+    <div class="grey-dot" *ngFor="let i of arr(numberGrey).fill(1)"></div> -->
   </div>
-  <div *ngFor="let need of needs" class="panel-group">
-    <app-need-view [need]="need" [project]="project" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
+  <div class="row mini-space">
+    <div class="col-sm-3">
+      <div class="card">
+        <div class="card-block">
+          <div class="progress">
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberBlue}} sourced</div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberGreen}} funded</div>
+          </div>
+          <p>Started by {{project._creator.username}}</p>
+          <p>Last time updated: {{project.updated_at | date}}</p>
+          <p>Total number of needs: {{total}}</p>
+          <a class="btn btn-outline-warning" [routerLink]="['/home/']+[param]">Back to my projects</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-9">
+      <div *ngFor="let need of needs" class="panel-group">
+        <app-need-view [need]="need" [project]="project" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
+      </div>
+      <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
+    </div>
   </div>
-  <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
 </div>
