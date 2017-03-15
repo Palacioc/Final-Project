@@ -36,6 +36,10 @@ body { padding-top: 50px; }
 .mini-space{
   margin-top: 10px;
 }
+
+.maxi-space{
+  margin-top: 50px;
+}
 .center{
   text-align: center;
   display: block;

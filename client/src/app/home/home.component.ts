@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NeedService } from "../need.service";
 import { ProjectService } from "../project.service";
 import { ProposalService } from "../proposal.service";
-
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
@@ -14,8 +14,9 @@ import { ProposalService } from "../proposal.service";
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private session: SessionService, private router: Router, private projectService: ProjectService, private needService: NeedService, private proposalService: ProposalService) { }
+  constructor(private modalService: NgbModal, private session: SessionService, private router: Router, private projectService: ProjectService, private needService: NeedService, private proposalService: ProposalService) { }
 
+  closeResult: string;
   user: any;
   error: string;
   need: any;
@@ -25,9 +26,29 @@ export class HomeComponent implements OnInit {
     status: 'All',
     coverage: 'All',
   };
+  currentProp: any;
 
   shouldFilterByStatus: boolean = this.model.status!=='All';
   shouldFilterByType: boolean = this.model.coverage!=='All';
+
+  open(content, prop) {
+    this.currentProp = prop;
+    this.modalService.open(content).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
+  }
 
   returnType(string){
     return string==='Green' ? 'fund' : 'source'
