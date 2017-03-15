@@ -37,4 +37,9 @@ export class ProposalService {
       .map((res) => res.json());
   }
 
+  getByCreator(id) {
+    return this.http.get(`${this.BASEURL}/api/proposals/by-creator/${id}`)
+      .map((res) => res.json());
+  }
+
 }

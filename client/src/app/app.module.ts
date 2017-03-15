@@ -27,6 +27,10 @@ import { ProposalEditComponent } from './proposal-edit/proposal-edit.component';
 import { UserViewComponent } from './user-view/user-view.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { LandingComponent } from './landing/landing.component';
+import { IsProviderPipe } from './pipes/isProvider.pipe';
+import { IsAcceptedPipe } from './pipes/isAccepted.pipe';
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'landing', pathMatch: 'full' },
@@ -82,6 +86,8 @@ const routes: Routes = [
     UserViewComponent,
     UserEditComponent,
     LandingComponent,
+    IsProviderPipe,
+    IsAcceptedPipe,
   ],
   imports: [
     BrowserModule,

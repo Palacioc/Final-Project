@@ -1,38 +1,46 @@
-<nav class="navbar navbar-inverse bs-dark blue" id="nav-bar">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
+<nav id="nav-bar"class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" [routerLink]="['/landing']">
+    <img src="../../assets/logo.png" height="30" alt="">
+  </a>
 
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <a class="logo">[Insert Name Here]</a>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a class="dropdown-toggle navbar-img" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <span *ngIf="user" class="right-menu">
-                  {{user.username}}
-                  <div class="btn btn-success btn-xs" [ngClass]="{'btn-success': isGreen }">
-                    {{user.role}}
-                  </div>
-                </span>
-                <span *ngIf="!user" class="right-menu">
-                  <a [routerLink]="['/auth']">Not logged in</a>
-                </span>
-              <img *ngIf="!user"src="http://placehold.it/150x150" class="img-circle" alt="Profile Image" />
-              <img *ngIf="user" id="profile-pic" [src]="'http://localhost:3000/'+user.pic" class="profile-img" alt="Profile Image" />
-              </a>
-              <ul *ngIf="user" class="dropdown-menu">
-                <li><a [routerLink]="['/user/id/projects']"><span class="right-menu"><span class="glyphicon glyphicon-star"></span> My projects</span></a></li>
-                <li><a [routerLink]="['/user/id/']"><span class="right-menu"><span class="glyphicon glyphicon-user"></span> Profile</span></a></li>
-                <li><a [routerLink]="['/user/edit/id/']"><span class="right-menu"><span class="glyphicon glyphicon-cog"></span> Account settings</span></a></li>
-                <li role="separator" class="divider"></li>
-                <li><a (click)="logout()"><span class="right-menu"><span class="glyphicon glyphicon-off"></span> Logout </span></a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-    </nav>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" [routerLink]="['/home']">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/landing']">About</a>
+      </li>
+      <li class="nav-item dropdown right-menu" *ngIf="user">
+          <button class="btn btn-outline-success btn-xs nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            {{user.username}}
+            ({{user.role}})
+          </button>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <img id="profile-pic" [src]="'http://localhost:3000/'+user.pic" class="profile-img" alt="Profile Image" />
+            <div id="details">
+              {{user.username}}<br>
+              Email: {{user.email}}<br>
+              Role: {{user.role}}
+            </div>
+            <hr>
+            <a class="dropdown-item" [routerLink]="['/home']">My projects</a>
+            <a class="dropdown-item" [routerLink]="['/user/edit/id/']">Account settings</a>
+            <a class="dropdown-item" (click)="logout()">Logout</a>
+          </div>
+        </li>
+        <li class="nav-item right-menu" *ngIf="!user">
+          <button class="btn btn-outline-success btn-xs" [routerLink]="['/auth']">
+            Not logged in
+          </button>
+        </li>
+    </ul>
+    <!-- <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form> -->
+  </div>
+</nav>
