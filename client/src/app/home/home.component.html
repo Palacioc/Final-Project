@@ -8,9 +8,10 @@
           <img [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
           <div class="card-block">
             <h4 class="card-title">{{user.username}}</h4>
-            <p class="card-text">Role: </p>
-            <p class="card-text">Proposals: </p>
-            <a href="#" class="btn btn-outline-warning" [routerLink]="['/projects/new/']+[param]">Start a project</a>
+            <span>Role: {{user.role}}</span><br>
+            <span>Email: {{user.email}}</span><br>
+            <span *ngIf="projects">Projects: {{projects.length}}</span><br>
+            <span *ngIf="proposals">Proposals: {{proposals.length}}</span><br>
           </div>
         </div>
       </div>
@@ -43,12 +44,8 @@
                 </tbody>
               </table>
             </div>
-
-
-            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+            <p *ngIf="projects && projects.length===0">You haven't created any projects yet, why not give it a try?:</p>
+            <a class="btn btn-outline-warning center" [routerLink]="['/projects/new/']+[param]">Start a project</a>
           </div>
         </div>
         <div class="row card mini-space">
