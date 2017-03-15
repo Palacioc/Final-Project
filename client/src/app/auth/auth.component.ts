@@ -39,13 +39,10 @@ export class AuthComponent implements OnInit {
     );
     this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
+      this.session.getLoginEventEmitter().emit(JSON.parse(response));
     };
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
-    };
-    // Lo mas parecido a un callback que he encontrado
-    this.uploader.onSuccessItem = (fileItem, response, status, headers)=> {
-      this.session.getLoginEventEmitter().emit(JSON.parse(response));
     };
   }
 

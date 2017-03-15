@@ -13,6 +13,7 @@ export class NavBarComponent implements OnInit {
 
   user: any;
   isGreen: boolean = true;
+  isNavbarCollapsed: boolean = true;
 
   constructor(private session: SessionService, private router: Router) { }
 
