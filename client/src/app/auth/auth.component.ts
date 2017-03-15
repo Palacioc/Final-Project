@@ -40,6 +40,7 @@ export class AuthComponent implements OnInit {
     this.uploader.onSuccessItem = (item, response) => {
       this.feedback = JSON.parse(response).message;
       this.session.getLoginEventEmitter().emit(JSON.parse(response));
+      this.router.navigate(['/home']);
     };
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
@@ -87,7 +88,6 @@ export class AuthComponent implements OnInit {
       form.append('role', this.formInfo.role);
     };
     this.uploader.uploadAll()
-    // this.session.getLoginEventEmitter().emit(this.user);
    }else{
      this.showSignup = true;
    }

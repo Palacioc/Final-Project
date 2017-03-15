@@ -30,6 +30,7 @@ import { LandingComponent } from './landing/landing.component';
 import { IsProviderPipe } from './pipes/isProvider.pipe';
 import { IsAcceptedPipe } from './pipes/isAccepted.pipe';
 import { AlertModule } from 'ng2-bootstrap';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -89,6 +90,7 @@ const routes: Routes = [
     LandingComponent,
     IsProviderPipe,
     IsAcceptedPipe,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

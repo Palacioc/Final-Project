@@ -21,18 +21,19 @@
       </button>
     </div>
     <div ngbDropdown class="d-inline-block" *ngIf="user">
-      <button class="btn btn-outline-success btn-xs nav-link dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle>{{user.username}} ({{user.role}})</button>
+      <button class="btn btn-outline-success btn-xs nav-link dropdown-toggle" id="dropdownMenu1" ngbDropdownToggle><i class="fa fa-user" aria-hidden="true"></i> {{user.username}} ({{user.role}})</button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
         <img id="profile-pic" [src]="'http://localhost:3000/'+user.pic" class="profile-img" alt="Profile Image" />
         <div id="details">
+          <i class="fa fa-user" aria-hidden="true"></i>
           {{user.username}}<br>
-          Email: {{user.email}}<br>
-          Role: {{user.role}}
+          <i class="fa fa-envelope-o" aria-hidden="true"></i> {{user.email}}<br>
+          <i class="fa fa-id-badge" aria-hidden="true"></i> {{user.role}}
         </div>
         <hr>
-        <button class="dropdown-item" [routerLink]="['/home']">My projects</button>
-        <button class="dropdown-item" [routerLink]="['/user/edit/id/']">Account settings</button>
-        <button class="dropdown-item" (click)="logout()">Logout</button>
+        <button class="dropdown-item" [routerLink]="['/home']"><i class="fa fa-list-ol" aria-hidden="true"></i> My projects</button>
+        <button class="dropdown-item" [routerLink]="['/user/edit/id/']"><i class="fa fa-cog" aria-hidden="true"></i> Account settings</button>
+        <button class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</button>
       </div>
     </div>
     <!-- <form class="form-inline my-2 my-lg-0">
