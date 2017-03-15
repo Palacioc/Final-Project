@@ -12,16 +12,22 @@
   display: block;
 }
 
+.buttons{
+  margin:auto;
+  display: block;
+  text-align: center;
+}
+
 h1{
   margin: auto;
   display: block;
   text-align: center;
-  padding-top: 20px;
+  padding-top: 40px;
   padding-bottom: 50px;
 }
 
 p{
-  margin: 40px;
+  margin: 0px 40px;
 }
 
 .quote{
