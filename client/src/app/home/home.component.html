@@ -1,18 +1,43 @@
 <div class="spacer">
-
 </div>
-<div *ngIf="user" class="container col-sm-8 col-sm-offset-2 animated fadeIn">
-  <h1>Hi {{user.username}}</h1>
-  <div *ngIf="proposals">
-    <ul>
-      <li *ngFor="let prop of proposals | filter: 'coverage' : 'Green' ; let i = index">
-        {{ i+1 }}) {{ prop.coverage  }}
-      </li>
-      <li *ngFor="let prop of proposals | filterBoolean: 'status' : false ; let i = index">
-        {{ i+1 }}) {{ prop.status  }}
-      </li>
-    </ul>
-
-
+<div *ngIf="user" class="container col-sm-10 col-sm-offset-1 animated fadeIn">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <img [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
+          <div class="card-block">
+            <h4 class="card-title">{{user.username}}</h4>
+            <p class="card-text">Role: </p>
+            <p class="card-text">Proposals: </p>
+            <a href="#" class="btn btn-outline-warning" [routerLink]="['/projects/new/']+[param]">Start a project</a>
+          </div>
+        </div>
+      </div>
+      <div id="myCarousel" class="carousel slide col-sm-9" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="item active">
+            <img src="http://placehold.it/760x400/cccccc/ffffff" id="bkg">
+             <div class="carousel-caption">
+              <h4><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></h4>
+              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    <div *ngIf="proposals">
+      <ul>
+        <li *ngFor="let prop of proposals | filter: 'coverage' : 'Green' ; let i = index">
+          {{ i+1 }}) {{ prop.coverage  }}
+        </li>
+        <li *ngFor="let prop of proposals | filterBoolean: 'status' : 'true' ; let i = index">
+          {{ i+1 }}) {{ prop.status  }}
+        </li>
+      </ul>
+    </div>
   </div>
+
+
 </div>

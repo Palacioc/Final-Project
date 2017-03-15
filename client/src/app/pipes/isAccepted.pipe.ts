@@ -13,7 +13,10 @@ export class IsAcceptedPipe implements PipeTransform {
     if (!value) {
       return items;
     }
-
-    return items.filter(it => it[field]===value);
+    console.log("pipe");
+    console.log(value)
+    return items.filter(it => {
+      return (value == 'true')==it[field]
+    });
   }
 }
