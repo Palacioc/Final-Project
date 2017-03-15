@@ -13,6 +13,17 @@ router.get('/', (req, res, next) => {
   });
 });
 
+router.get('/by-creator/:id', (req, res, next) => {
+  if(!mongoose.Types.ObjectId.isValid(req.params.id)) {
+    return res.status(400).json({ message: 'Specified id is not valid' });
+  }
+  Project.find({_creator : req.params.id}, (err, Projects) => {
+    if(err) { return res.send(err); }
+    return res.json(Projects);
+  });
+});
+
+
 /* CREATE a new Project. */
 router.post('/', upload.single('file'), (req, res) => {
   const project = new Project({

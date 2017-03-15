@@ -70,7 +70,7 @@ export class AuthComponent implements OnInit {
    console.log(this.formInfo);
    this.session.login(this.formInfo)
      .subscribe(
-       (user) => {this.successCb(user);},
+       (user) => {this.successCb(user);this.router.navigate(['/home']);},
        (err) => {this.errorCb(err)}
      );
  }

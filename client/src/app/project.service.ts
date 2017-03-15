@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Rx';
 
 @Injectable()
 export class ProjectService {
-  
+
   BASEURL: string = "http://localhost:3000";
 
   constructor(private http: Http) { }
@@ -30,6 +30,11 @@ export class ProjectService {
   editProject(id, info){
     return this.http.put(`${this.BASEURL}/api/projects/${id}`, info)
       .map(res => res.json())
+  }
+
+  getByCreator(id) {
+    return this.http.get(`${this.BASEURL}/api/projects/by-creator/${id}`)
+      .map((res) => res.json());
   }
 
 }

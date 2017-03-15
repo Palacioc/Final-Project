@@ -15,28 +15,101 @@
         </div>
       </div>
       <div id="myCarousel" class="carousel slide col-sm-9" data-ride="carousel">
-        <div class="carousel-inner">
-          <div class="item active">
-            <img src="http://placehold.it/760x400/cccccc/ffffff" id="bkg">
-             <div class="carousel-caption">
-              <h4><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></h4>
-              <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
+
+        <div class="row">
+          <div class="carousel-inner">
+            <div class="item active">
+              <img src="http://placehold.it/760x400/cccccc/ffffff" id="bkg">
+               <div class="carousel-caption">
+                <h4><a href="#">Lorem ipsum dolor sit amet consetetur sadipscing</a></h4>
+                <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat. <a class="label label-primary" href="http://sevenx.de/demo/bootstrap-carousel/" target="_blank">Free Bootstrap Carousel Collection</a></p>
+              </div>
             </div>
           </div>
         </div>
+        <div class="row card mini-space">
+          <div class="card-block">
+            <h4 class="card-title">Your projects</h4>
+            <div *ngIf="projects">
+              <table class="table">
+                <tbody>
+                <ng-container class="card mini-space" *ngFor="let proj of projects">
+                  <tr>
+                    <td class="image-col"><img [src]="'http://localhost:3000/'+proj.image" class="project-thumb"></td>
+                    <td>{{proj.name}}, {{proj.location}}, on {{proj.created_at | date}}</td>
+                    <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[proj._id]">Review</button></td>
+                  </tr>
+                </ng-container>
+                </tbody>
+              </table>
+            </div>
+
+
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <div class="row card mini-space">
+          <div class="card-block">
+            <h4 class="card-title">Your engagement with other projects</h4>
+            <h6 class="card-subtitle mb-2 text-muted center">Filters:</h6>
+            <div class="row center">
+                <div [(ngModel)]="model.status" ngbRadioGroup name="radioBasic">
+                  <label class="btn btn-sm btn-outline-primary">
+                    <input type="radio" value="All"> All
+                  </label>
+                  <label class="btn btn-sm btn-outline-success">
+                    <input type="radio" value="Accepted"> Accepted
+                  </label>
+                  <label class="btn btn-sm btn-outline-warning">
+                    <input type="radio" value="Pending"> Pending
+                  </label>
+                </div>
+
+
+                <div [(ngModel)]="model.coverage" ngbRadioGroup name="radioBasic">
+                  <label class="btn btn-sm btn-outline-primary">
+                    <input type="radio" value="All"> All
+                  </label>
+                  <label class="btn btn-sm btn-outline-info">
+                    <input type="radio" value="Blue"> Soucing
+                  </label>
+                  <label class="btn btn-sm btn-outline-success">
+                    <input type="radio" value="Green"> Funding
+                  </label>
+                </div>
+            </div>
+
+            <div *ngIf="proposals">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Need</th>
+                    <th>Status</th>
+                    <th>Username</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
+                  <tr>
+                    <td>{{ prop._need.name }} ({{prop._need.cost}} to {{ returnType(prop.coverage) }})</td>
+                    <td>{{ returnStatus(prop.status) }}</td>
+                    <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[prop._need._project]">Review</button></td>
+                  </tr>
+                </ng-container>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+
+        </div>
+
       </div>
     </div>
     <div class="row">
-    <div *ngIf="proposals">
-      <ul>
-        <li *ngFor="let prop of proposals | filter: 'coverage' : 'Green' ; let i = index">
-          {{ i+1 }}) {{ prop.coverage  }}
-        </li>
-        <li *ngFor="let prop of proposals | filterBoolean: 'status' : 'true' ; let i = index">
-          {{ i+1 }}) {{ prop.status  }}
-        </li>
-      </ul>
-    </div>
   </div>
 
 

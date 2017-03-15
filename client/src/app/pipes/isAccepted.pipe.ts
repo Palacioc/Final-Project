@@ -15,8 +15,16 @@ export class IsAcceptedPipe implements PipeTransform {
     }
     console.log("pipe");
     console.log(value)
-    return items.filter(it => {
-      return (value == 'true')==it[field]
-    });
+    if(value==='All'){
+      return items;
+    }else if(value==='Accepted'){
+      return items.filter(it => {
+        return it[field]
+      });
+    }else if(value==='Pending'){
+      return items.filter(it => {
+        return !it[field]
+      });
+    }
   }
 }

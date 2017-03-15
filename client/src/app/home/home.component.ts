@@ -20,7 +20,22 @@ export class HomeComponent implements OnInit {
   error: string;
   need: any;
   proposals: any;
-  tru:boolean = false;
+  projects: any;
+  model = {
+    status: 'All',
+    coverage: 'All',
+  };
+
+  shouldFilterByStatus: boolean = this.model.status!=='All';
+  shouldFilterByType: boolean = this.model.coverage!=='All';
+
+  returnType(string){
+    return string==='Green' ? 'fund' : 'source'
+  }
+
+  returnStatus(bool){
+    return bool ? 'Accepted' : 'Pending'
+  }
 
   ngOnInit() {
    this.session.isLoggedIn()
@@ -35,6 +50,9 @@ export class HomeComponent implements OnInit {
   };
 
   getAllInfo(user){
+    this.projectService.getByCreator(user._id).subscribe((projects)=>{
+      this.projects = projects;
+    })
     this.proposalService.getByCreator(user._id)
     .subscribe((proposals)=>{
       this.proposals = proposals;

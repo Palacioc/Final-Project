@@ -5,12 +5,16 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class IsProviderPipe implements PipeTransform {
 
-  transform(items: any[], field: string, value: string): any[] {
+  transform(items: any[], field: string, value: string, shouldFilter: string): any[] {
     if (!items) {
       return [];
     }
 
     if (!value) {
+      return items;
+    }
+
+    if(value==='All'){
       return items;
     }
 

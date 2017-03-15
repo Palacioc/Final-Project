@@ -9,6 +9,20 @@ body { padding-top: 50px; }
 	text-shadow:none;
 }
 
+.project-thumb{
+  object-fit: cover;
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+}
+.float{
+  float: left;
+}
+
+.image-col{
+  width: 50px;
+}
+
 #bkg{
   object-fit: cover;
   width: 100%;
@@ -17,4 +31,13 @@ body { padding-top: 50px; }
 #profile-left{
   object-fit: cover;
   height: 150px;
+}
+
+.mini-space{
+  margin-top: 10px;
+}
+.center{
+  text-align: center;
+  display: block;
+  margin: auto;
 }
