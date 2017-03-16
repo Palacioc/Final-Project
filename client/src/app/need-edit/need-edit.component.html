@@ -3,22 +3,22 @@
 
   <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
     <div class="form-group">
-      <label> Need title </label>
-      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/><span>(Previous name: {{need.name}})</span>
+      <label> Need title (Previously {{need.name}})</label>
+      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
       <span *ngIf="myName.errors && (myName.dirty || myName.touched)">
           You need a name for your need!
       </span>
     </div>
     <div class="form-group">
-      <label> Description </label>
-      <input type="textarea" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/><span>(Previous description: {{need.description}})</span>
+      <label> Description (Previously: {{need.description}})</label>
+      <textarea rows="8" cols="80" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required></textarea>
       <span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
           You need a description for your need!
       </span>
     </div>
     <div class="form-group">
-      <label> Estimated cost </label>
-      <input type="textarea" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/><span>(Previous cost: {{need.cost}})</span>
+      <label> Estimated cost (Previously {{need.cost}} Euro)</label>
+      <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
       <span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
           You need a cost for your need!
       </span>

@@ -58,7 +58,7 @@ export class ProposalViewComponent implements OnInit {
         case 'Blue':
           console.log('We make the need blue')
           console.log(this.proposal._contributor._id);
-          this.needService.editNeed(this.need._id, { 'status' : 'Blue' , '_allocatedProvider' : this.proposal._contributor._id });
+          this.needService.editNeed(this.need._id, { 'status' : 'Blue' , '_allocatedProvider' : this.proposal._contributor._id, 'accNo' : this.proposal.accountNo, 'cost' : this.proposal.cost});
           break;
         case 'Green':
           console.log('We make the need green')

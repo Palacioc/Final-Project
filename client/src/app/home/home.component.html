@@ -1,12 +1,12 @@
 <div class="spacer">
 </div>
-<div *ngIf="user" class="container col-sm-10 col-sm-offset-1 animated fadeIn">
+<div class="container col-sm-10 col-sm-offset-1 animated fadeIn">
   <div class="container">
     <div class="row">
       <div class="col-sm-3">
         <div class="card">
-          <img [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
-          <div class="card-block">
+          <img *ngIf="user" [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
+          <div *ngIf="user" class="card-block">
             <h4 class="card-title">{{user.username}}</h4>
             <span>Role: {{user.role}}</span><br>
             <span>Email: {{user.email}}</span><br>
@@ -118,7 +118,12 @@
     </div>
     <div class="modal-body" *ngIf="currentProp">
       <p>Please make a payment of <strong>{{currentProp.cost}} Euro </strong>to the following bank account:</p>
-      <h3>{{currentProp.accountNo}}</h3>
+      <h3 class="center"><code>{{currentProp._need.accNo}}</code></h3><br>
+      <div class="center">
+        <button class="btn btn-outline-primary"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+        <button class="btn btn-outline-primary"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Visa</button>
+        <button class="btn btn-outline-primary"><i class="fa fa-cc-paypal" aria-hidden="true"></i> Paypal</button>
+      </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>

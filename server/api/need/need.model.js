@@ -10,6 +10,9 @@ const needSchema = new mongoose.Schema({
     image: {
       type: String, default: ''
     },
+    accNo: {
+      type: String, default: ''
+    },
     description: {
       type: String,
       required: [true, 'A project description is required']

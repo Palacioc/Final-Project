@@ -1,7 +1,7 @@
 
-<div class="container" *ngIf="project">
+<div class="container">
   <ngb-carousel>
-    <template ngbSlide>
+    <template *ngIf="project" ngbSlide>
       <img [src]="'http://localhost:3000/'+project.image" id="bkg">
       <div class="carousel-caption">
         <h1 class="carousel-title" id="carousel-title">{{project.name}}</h1>
@@ -18,10 +18,10 @@
   </ngb-carousel>
   <div class="meter">
     <div class="progress">
-      <div class="progress-bar bg-success progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberBlue}} sourced</div>
+      <div class="progress-bar bg-success progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberGreen}} funded</div>
     </div>
     <div class="progress">
-      <div class="progress-bar bg-info progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberGreen}} funded</div>
+      <div class="progress-bar bg-info progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberBlue}} sourced</div>
     </div>
     <!-- <div class="green-dot" *ngFor="let i of arr(numberGreen).fill(1)"></div>
     <div class="blue-dot" *ngFor="let i of arr(numberBlue).fill(1)"></div>
@@ -30,16 +30,21 @@
   <div class="row mini-space">
     <div class="col-sm-3">
       <div class="card">
-        <div class="card-block">
+        <div class="card-block" *ngIf="project">
           <div class="progress">
-            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberBlue}} sourced</div>
+            <div class="progress-bar bg-success progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberGreen}} funded</div>
           </div>
           <div class="progress">
-            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberGreen}} funded</div>
+            <div class="progress-bar bg-info progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberBlue}} sourced</div>
           </div>
           <p>Started by {{project._creator.username}}</p>
           <p>Last time updated: {{project.updated_at | date}}</p>
           <p>Total number of needs: {{total}}</p>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200/'+router.url">
+          </div>
+          <br>
           <a class="btn btn-outline-warning" [routerLink]="['/home/']">Back to my projects</a>
         </div>
       </div>
