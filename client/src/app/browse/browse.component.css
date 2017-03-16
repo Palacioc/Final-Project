@@ -77,6 +77,8 @@ h2{
 
 .right-height{
     height: 300px;
+    border-radius: 10px;
+    border: none;
 }
 
 .over{
@@ -88,6 +90,7 @@ h2{
   bottom: 0px;
   left: 0px;
   right: 0px;
+  border-radius: 0px 0px 10px 10px;
 }
 
 
