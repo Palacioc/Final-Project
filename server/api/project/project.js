@@ -23,6 +23,26 @@ router.get('/by-creator/:id', (req, res, next) => {
   });
 });
 
+router.get('/search/:term', (req, res, next) => {
+  if((req.params.term)==='') {
+    return res.status(400).json({ message: 'No search term' });
+  }
+  Project.find({ "name": { "$regex": req.params.term, "$options": "i" } }, (err, Projects) => {
+    if(err) { return res.send(err); }
+    return res.json(Projects);
+  });
+});
+
+router.get('/four-latest', (req, res, next) => {
+  Project.find({})
+  .sort({'updated_at': -1})
+  .limit(8)
+  .exec((err, Projects) => {
+    if(err) { return res.send(err); }
+    return res.json(Projects);
+  });
+});
+
 
 /* CREATE a new Project. */
 router.post('/', upload.single('file'), (req, res) => {

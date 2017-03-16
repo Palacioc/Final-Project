@@ -37,4 +37,14 @@ export class ProjectService {
       .map((res) => res.json());
   }
 
+  search(term) {
+    return this.http.get(`${this.BASEURL}/api/projects/search/${term}`)
+      .map((res) => res.json());
+  }
+
+  getFourLatest() {
+    return this.http.get(`${this.BASEURL}/api/projects/four-latest`)
+      .map((res) => res.json());
+  }
+
 }

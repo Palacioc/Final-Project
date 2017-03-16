@@ -30,6 +30,7 @@ import { LandingComponent } from './landing/landing.component';
 import { IsProviderPipe } from './pipes/isProvider.pipe';
 import { IsAcceptedPipe } from './pipes/isAccepted.pipe';
 import { FooterComponent } from './footer/footer.component';
+import { BrowseComponent } from './browse/browse.component';
 
 
 
@@ -64,7 +65,8 @@ const routes: Routes = [
       { path: 'edit/:id', component: ProposalEditComponent },
       { path: ':id', component: ProposalViewComponent }
     ]
-  }
+  },
+  { path: 'browse', component: BrowseComponent},
 ];
 
 
@@ -90,6 +92,7 @@ const routes: Routes = [
     IsProviderPipe,
     IsAcceptedPipe,
     FooterComponent,
+    BrowseComponent,
   ],
   imports: [
     BrowserModule,

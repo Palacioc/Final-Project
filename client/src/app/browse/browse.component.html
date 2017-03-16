@@ -1,0 +1,49 @@
+<div class="container header">
+  <h1>Your journey starts here</h1>
+  <div class="searcher">
+    <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+      <div class="form-group">
+        <input id="slim" type="text" [(ngModel)]="formInfo" name="search" #mySearch="ngModel" required/>
+      </div>
+      <button id="slim-two" class="btn btn-primary" type="submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+    </form>
+  </div>
+</div>
+<div class="backgr">
+
+
+  <div *ngIf="searchResult" class="container col-sm-10 col-sm-offset-1 animated fadeIn card verdecillo">
+    <div class="row">
+      <h2>Search results</h2>
+      <hr>
+      <div class="card right-height" style="col-sm-3" *ngFor="let proj of searchResult">
+        <div class="card-block over">
+          <h4 class="card-title">{{proj.name}}</h4>
+          <p class="card-text">{{proj.description}}</p>
+          <a href="#" class="btn btn-outline-primary">View project</a>
+        </div>
+        <img class="latest-thumbnail" [src]="'http://localhost:3000/'+proj.image" alt="Card image cap">
+      </div>
+    </div>
+  </div>
+
+
+  <div class="container col-sm-10 col-sm-offset-1 animated fadeIn card verdecillo">
+    <div class="row">
+      <h2>Recently created projects</h2>
+      <div *ngIf="fourLatest">
+        <div class="card right-height" style="col-sm-3" *ngFor="let proj of fourLatest">
+          <div class="card-block over">
+            <h4 class="card-title">{{proj.name}}</h4>
+            <p class="card-text">{{proj.description}}</p>
+            <a href="#" class="btn btn-outline-primary">View project</a>
+          </div>
+          <img class="latest-thumbnail" [src]="'http://localhost:3000/'+proj.image" alt="Card image cap">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

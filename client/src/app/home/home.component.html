@@ -1,132 +1,134 @@
-<div class="spacer">
-</div>
-<div class="container col-sm-10 col-sm-offset-1 animated fadeIn">
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-3">
-        <div class="card">
-          <img *ngIf="user" [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
-          <div *ngIf="user" class="card-block">
-            <h4 class="card-title">{{user.username}}</h4>
-            <span>Role: {{user.role}}</span><br>
-            <span>Email: {{user.email}}</span><br>
-            <span *ngIf="projects">Projects: {{projects.length}}</span><br>
-            <span *ngIf="proposals">Proposals: {{proposals.length}}</span><br>
+<div class="container backgr">
+  <div class="spacer">
+  </div>
+  <div class="container col-sm-10 col-sm-offset-1 animated fadeIn">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="card">
+            <img *ngIf="user" [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
+            <div *ngIf="user" class="card-block">
+              <h4 class="card-title">{{user.username}}</h4>
+              <span>Role: {{user.role}}</span><br>
+              <span>Email: {{user.email}}</span><br>
+              <span *ngIf="projects">Projects: {{projects.length}}</span><br>
+              <span *ngIf="proposals">Proposals: {{proposals.length}}</span><br>
+            </div>
           </div>
         </div>
-      </div>
-      <div id="myCarousel" class="carousel slide col-sm-9" data-ride="carousel">
+        <div id="myCarousel" class="carousel slide col-sm-9" data-ride="carousel">
 
-        <div class="row">
-          <div class="carousel-inner">
-            <div class="item active">
-              <img src="../../assets/featured.jpg" id="bkg">
-               <div class="carousel-caption">
-                <h4>Featured project: Götze Foundation </h4>
-                <p>Learn how the Götze Foundation family uses IDTM to fund their weekly escapades with their Guests<a> More</a></p>
+          <div class="row">
+            <div class="carousel-inner">
+              <div class="item active">
+                <img src="../../assets/featured.jpg" id="bkg">
+                 <div class="carousel-caption">
+                  <h4>Featured project: Götze Foundation </h4>
+                  <p>Learn how the Götze Foundation family uses IDTM to fund their weekly escapades with their Guests<a> More</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row card mini-space">
+            <div class="card-block">
+              <h4 class="card-title">Your projects</h4>
+              <div *ngIf="projects">
+                <table class="table">
+                  <tbody>
+                  <ng-container class="card mini-space" *ngFor="let proj of projects">
+                    <tr>
+                      <td class="image-col"><img [src]="'http://localhost:3000/'+proj.image" class="project-thumb"></td>
+                      <td>{{proj.name}}, {{proj.location}}, on {{proj.created_at | date}}</td>
+                      <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[proj._id]">Review</button></td>
+                    </tr>
+                  </ng-container>
+                  </tbody>
+                </table>
+              </div>
+              <p *ngIf="projects && projects.length===0">You haven't created any projects yet, why not give it a try?:</p>
+              <a class="btn btn-outline-warning center" [routerLink]="['/projects/new/']+[param]">Start a project</a>
+            </div>
+          </div>
+          <div class="row card mini-space">
+            <div class="card-block">
+              <h4 class="card-title">Your engagement with other projects</h4>
+              <h6 class="card-subtitle mb-2 text-muted center">Filters:</h6>
+              <div class="row center">
+                  <div [(ngModel)]="model.status" ngbRadioGroup name="radioBasic">
+                    <label class="btn btn-sm btn-outline-primary">
+                      <input type="radio" value="All"> All
+                    </label>
+                    <label class="btn btn-sm btn-outline-success">
+                      <input type="radio" value="Accepted"> Accepted
+                    </label>
+                    <label class="btn btn-sm btn-outline-warning">
+                      <input type="radio" value="Pending"> Pending
+                    </label>
+                  </div>
+
+
+                  <div [(ngModel)]="model.coverage" ngbRadioGroup name="radioBasic">
+                    <label class="btn btn-sm btn-outline-primary">
+                      <input type="radio" value="All"> All
+                    </label>
+                    <label class="btn btn-sm btn-outline-info">
+                      <input type="radio" value="Blue"> Soucing
+                    </label>
+                    <label class="btn btn-sm btn-outline-success">
+                      <input type="radio" value="Green"> Funding
+                    </label>
+                  </div>
+              </div>
+
+              <div *ngIf="proposals">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Need</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
+                    <tr>
+                      <td>{{ prop._need.name }} ({{prop._need.cost}} to {{ returnType(prop.coverage) }})</td>
+                      <td>{{ returnStatus(prop.status) }}</td>
+                      <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[prop._need._project]">Review</button>
+                      <button *ngIf="prop.status && prop.coverage==='Green'" class="btn btn-sm btn-outline-success" (click)="open(content, prop)">Fund</button></td>
+                    </tr>
+                  </ng-container>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
         </div>
-        <div class="row card mini-space">
-          <div class="card-block">
-            <h4 class="card-title">Your projects</h4>
-            <div *ngIf="projects">
-              <table class="table">
-                <tbody>
-                <ng-container class="card mini-space" *ngFor="let proj of projects">
-                  <tr>
-                    <td class="image-col"><img [src]="'http://localhost:3000/'+proj.image" class="project-thumb"></td>
-                    <td>{{proj.name}}, {{proj.location}}, on {{proj.created_at | date}}</td>
-                    <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[proj._id]">Review</button></td>
-                  </tr>
-                </ng-container>
-                </tbody>
-              </table>
-            </div>
-            <p *ngIf="projects && projects.length===0">You haven't created any projects yet, why not give it a try?:</p>
-            <a class="btn btn-outline-warning center" [routerLink]="['/projects/new/']+[param]">Start a project</a>
-          </div>
-        </div>
-        <div class="row card mini-space">
-          <div class="card-block">
-            <h4 class="card-title">Your engagement with other projects</h4>
-            <h6 class="card-subtitle mb-2 text-muted center">Filters:</h6>
-            <div class="row center">
-                <div [(ngModel)]="model.status" ngbRadioGroup name="radioBasic">
-                  <label class="btn btn-sm btn-outline-primary">
-                    <input type="radio" value="All"> All
-                  </label>
-                  <label class="btn btn-sm btn-outline-success">
-                    <input type="radio" value="Accepted"> Accepted
-                  </label>
-                  <label class="btn btn-sm btn-outline-warning">
-                    <input type="radio" value="Pending"> Pending
-                  </label>
-                </div>
+      </div>
+      <div class="row">
+    </div>
 
-
-                <div [(ngModel)]="model.coverage" ngbRadioGroup name="radioBasic">
-                  <label class="btn btn-sm btn-outline-primary">
-                    <input type="radio" value="All"> All
-                  </label>
-                  <label class="btn btn-sm btn-outline-info">
-                    <input type="radio" value="Blue"> Soucing
-                  </label>
-                  <label class="btn btn-sm btn-outline-success">
-                    <input type="radio" value="Green"> Funding
-                  </label>
-                </div>
-            </div>
-
-            <div *ngIf="proposals">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Need</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
-                <tbody>
-                <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
-                  <tr>
-                    <td>{{ prop._need.name }} ({{prop._need.cost}} to {{ returnType(prop.coverage) }})</td>
-                    <td>{{ returnStatus(prop.status) }}</td>
-                    <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[prop._need._project]">Review</button>
-                    <button *ngIf="prop.status && prop.coverage==='Green'" class="btn btn-sm btn-outline-success" (click)="open(content, prop)">Fund</button></td>
-                  </tr>
-                </ng-container>
-                </tbody>
-              </table>
-            </div>
-          </div>
+    <template ngbModalContainer #content let-c="close" let-d="dismiss">
+      <div class="maxi-space">
+      </div>
+      <div class="modal-header">
+        <h4 class="modal-title">Payment</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" *ngIf="currentProp">
+        <p>Please make a payment of <strong>{{currentProp.cost}} Euro </strong>to the following bank account:</p>
+        <h3 class="center"><code>{{currentProp._need.accNo}}</code></h3><br>
+        <div class="center">
+          <button class="btn btn-outline-primary"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
+          <button class="btn btn-outline-primary"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Visa</button>
+          <button class="btn btn-outline-primary"><i class="fa fa-cc-paypal" aria-hidden="true"></i> Paypal</button>
         </div>
       </div>
-    </div>
-    <div class="row">
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+      </div>
+    </template>
   </div>
-
-  <template ngbModalContainer #content let-c="close" let-d="dismiss">
-    <div class="maxi-space">
-    </div>
-    <div class="modal-header">
-      <h4 class="modal-title">Payment</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body" *ngIf="currentProp">
-      <p>Please make a payment of <strong>{{currentProp.cost}} Euro </strong>to the following bank account:</p>
-      <h3 class="center"><code>{{currentProp._need.accNo}}</code></h3><br>
-      <div class="center">
-        <button class="btn btn-outline-primary"><i class="fa fa-clipboard" aria-hidden="true"></i></button>
-        <button class="btn btn-outline-primary"><i class="fa fa-credit-card-alt" aria-hidden="true"></i> Visa</button>
-        <button class="btn btn-outline-primary"><i class="fa fa-cc-paypal" aria-hidden="true"></i> Paypal</button>
-      </div>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
-    </div>
-  </template>
 </div>
