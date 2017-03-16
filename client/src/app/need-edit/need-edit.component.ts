@@ -47,10 +47,7 @@ export class NeedEditComponent implements OnInit {
   submitForm(theForm){
     console.log(this.formInfo);
     this.needService.editNeed(this.needID, this.formInfo)
-      .subscribe((need) => {
-        console.log(need);
        this.router.navigate(['/projects/'+this.need._project._id]);
-      });
   }
 
   }

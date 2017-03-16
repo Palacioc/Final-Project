@@ -29,7 +29,6 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { LandingComponent } from './landing/landing.component';
 import { IsProviderPipe } from './pipes/isProvider.pipe';
 import { IsAcceptedPipe } from './pipes/isAccepted.pipe';
-import { AlertModule } from 'ng2-bootstrap';
 import { FooterComponent } from './footer/footer.component';
 
 
