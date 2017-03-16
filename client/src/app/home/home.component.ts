@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { NeedService } from "../need.service";
 import { ProjectService } from "../project.service";
 import { ProposalService } from "../proposal.service";
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
