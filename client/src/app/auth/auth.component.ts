@@ -8,7 +8,7 @@ import { FileUploader } from "ng2-file-upload";
 @Component({
   selector: 'app-auth',
   templateUrl: './auth.component.html',
-  styles: []
+  styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
 
@@ -45,6 +45,8 @@ export class AuthComponent implements OnInit {
     this.uploader.onErrorItem = (item, response, status, headers) => {
       this.feedback = JSON.parse(response).message;
     };
+    window.scrollTo(0,0);
+
   }
 
   submitForm(theForm){

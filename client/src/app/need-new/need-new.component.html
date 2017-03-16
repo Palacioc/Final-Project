@@ -1,39 +1,38 @@
-<div *ngIf="project">
-  {{project | json}}
+<div *ngIf="project" class="backgr">
   <h1> New need for project {{project.name}}</h1>
 
   <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
     <div class="form-group">
-      <label> Title </label>
+      <label> Title </label><br>
       <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
-      <span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+      <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
           You need a name for this need!
       </span>
     </div>
     <div class="form-group">
-      <label> Description </label>
-      <textarea placeholder="Please be concise; the better the description the more likely you are to be matched with the perfect provider!" rows="2" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required></textarea>
-      <span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
+      <label> Description </label><br>
+      <textarea rows="8" cols="80" placeholder="Please be concise; the better the description the more likely you are to be matched with the perfect provider!" rows="2" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required></textarea>
+      <br><span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
           You need a description for this need!
       </span>
     </div>
     <div class="form-group">
-      <label> Image </label>
-      <input type="file" name="file" ng2FileSelect [uploader]="uploader"/>
+      <label> Image </label><br>
+      <input class="verdecillo" type="file" name="file" ng2FileSelect [uploader]="uploader"/>
     </div>
     <div class="form-group">
-      <label> How much do you estimate this will cost? </label>
+      <label> How much do you estimate this will cost? </label><br>
       <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
-      <span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
+      <br><span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
           You need a cost for this need!
       </span>
     </div>
     <div class="form-group hidden">
-      <label> Allocated provider ID </label>
+      <label> Allocated provider ID (optional) </label><br>
       <input type="text" [(ngModel)]="formInfo.provider" name="provider" #myProvider="ngModel"/>
     </div>
     <div class="form-group hidden">
-      <label> Allocated collaborator ID </label>
+      <label> Allocated collaborator ID (optional)</label><br>
       <input type="text" [(ngModel)]="formInfo.collaborator" name="collaborator" #myCollaborator="ngModel"/>
     </div>
     <br><button class="btn btn-primary" type='submit'>

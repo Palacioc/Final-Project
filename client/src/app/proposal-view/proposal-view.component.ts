@@ -9,7 +9,7 @@ import { ProposalService } from "../proposal.service";
 @Component({
   selector: 'app-proposal-view',
   templateUrl: './proposal-view.component.html',
-  styles: []
+  styleUrls: ['./proposal-view.component.css']
 })
 export class ProposalViewComponent implements OnInit {
 
@@ -34,6 +34,8 @@ export class ProposalViewComponent implements OnInit {
         this.getProposalDetails(this.param);
         //comprobar si el autor del proyecto es el usuario y si lo es variable de componente
       });
+      window.scrollTo(0,0);
+
     }
 
     getProposalDetails(id) {

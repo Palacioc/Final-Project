@@ -1,24 +1,27 @@
-<div *ngIf="need">
-  <h1> Edit Need {{need.name}}, from project {{need._project.name}}</h1>
+<div class="backgr">
+  <h1 *ngIf="need"> Edit Need {{need.name}}, from project {{need._project.name}}</h1>
 
-  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" *ngIf="need" novalidate>
     <div class="form-group">
-      <label> Need title (Previously {{need.name}})</label>
-      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
-      <span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+      <label> Need title </label>
+      <span>(Previously {{need.name}})</span>
+      <br><input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
+      <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
           You need a name for your need!
       </span>
     </div>
     <div class="form-group">
       <label> Description (Previously: {{need.description}})</label>
-      <textarea rows="8" cols="80" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required></textarea>
+      <br><textarea rows="8" cols="80" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required></textarea>
+      <br>
       <span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
           You need a description for your need!
       </span>
     </div>
     <div class="form-group">
-      <label> Estimated cost (Previously {{need.cost}} Euro)</label>
+      <label> Estimated cost (Previously {{need.cost}} Euro)</label><br>
       <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
+      <br>
       <span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
           You need a cost for your need!
       </span>

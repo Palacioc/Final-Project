@@ -1,11 +1,9 @@
-<div class="container backgr">
-  <div class="spacer">
-  </div>
-  <div class="container col-sm-10 col-sm-offset-1 animated fadeIn">
+<div class="container backgr" *ngIf="proposals && projects">
+  <div class="container col-sm-10 col-sm-offset-1 animated fadeIn trans">
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <div class="card">
+          <div class="card green-outline">
             <img *ngIf="user" [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
             <div *ngIf="user" class="card-block">
               <h4 class="card-title">{{user.username}}</h4>

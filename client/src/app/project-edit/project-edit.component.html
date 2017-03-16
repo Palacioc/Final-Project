@@ -1,25 +1,28 @@
-<div *ngIf="project">
+<div *ngIf="project" class="backgr">
   <h1> Edit project {{project.name}}</h1>
 
   <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
     <div class="form-group">
-      <label> Project name </label>
-      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/><span>(Previous name: {{project.name}})</span>
-      <span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+      <label> Project name </label><br>
+      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
+      <br><span>(Previous name: {{project.name}})</span>
+      <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
           You need a name for your project!
       </span>
     </div>
     <div class="form-group">
-      <label> Description </label>
-      <input type="textarea" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/><span>(Previous description: {{project.description}})</span>
-      <span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
+      <label> Description </label><br>
+      <input [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/>
+      <br><span>(Previous description: {{project.description}})</span>
+      <br><span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
           You need a description for your project!
       </span>
     </div>
     <div class="form-group">
-      <label> Location </label>
-      <input type="text" [(ngModel)]="formInfo.location" name="location" #myLocation="ngModel" required/><span>(Previous location: {{project.location}})</span>
-      <span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
+      <label> Location </label><br>
+      <input type="text" [(ngModel)]="formInfo.location" name="location" #myLocation="ngModel" required/>
+      <br><span>(Previous location: {{project.location}})</span>
+      <br><span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
           You need a location for your project!
       </span>
     </div>

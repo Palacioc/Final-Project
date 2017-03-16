@@ -41,6 +41,7 @@ export class ProjectViewComponent implements OnInit {
         }
     );
     this.getNeeds();
+    window.scrollTo(0,0);
   }
 
   getNeeds(){

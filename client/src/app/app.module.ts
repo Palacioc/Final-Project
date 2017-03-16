@@ -35,7 +35,7 @@ import { BrowseComponent } from './browse/browse.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'landing', pathMatch: 'full' },
+  { path: '', redirectTo: 'browse', pathMatch: 'full' },
   { path: 'landing',  component: LandingComponent },
   { path: 'auth',  component: AuthComponent },
   { path: 'home',  component: HomeComponent },

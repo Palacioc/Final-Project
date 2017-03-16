@@ -66,8 +66,8 @@ export class HomeComponent implements OnInit {
          this.getAllInfo(user)
        },
        (err) => {this.errorCb(err)}
-
    );
+   window.scrollTo(0,0);
   };
 
   getAllInfo(user){

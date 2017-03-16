@@ -10,7 +10,7 @@ body { padding-top: 50px; }
     font-weight: lighter;
   }
 
-  #slim{
+  .slim{
     width: 300px;
     height: 60px;
     background: transparent;
@@ -24,26 +24,15 @@ body { padding-top: 50px; }
     font-size: 40px;
     font-weight: lighter;
   }
-  #slim-two{
-    width: 60px;
-    height: 60px;
-    background-color: rgb(195,254,170);
-    display: block;
-    margin: auto;
-    border: none;
-    border-radius: 30px;
-    text-align: center;
-    color: rgba(41,43,44,1);
-    vertical-align: middle;
-    font-size: 20px;
-    font-weight: lighter;
-  }
 
-  .verdecillo{
+
+  label, span, .verdecillo{
     background-color: transparent;
     color: rgb(195,254,170);
     border: none;
+    font-weight: lighter;
   }
+
 
 h2{
   font-weight: lighter;
@@ -59,7 +48,7 @@ h2{
   background: linear-gradient(to bottom, rgba(41,43,44,1) 0%, rgba(14,18,61,1) 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#292b2c', endColorstr='#0e123d', GradientType=0 );
   /*background-color: rgb(195,254,170);*/
-  height: 400px;
+  height: 600px;
   left: 0px;
   right: 0px;
   width: 100%;

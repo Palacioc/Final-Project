@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-need-edit',
   templateUrl: './need-edit.component.html',
-  styles: []
+  styleUrls: ['./need-edit.component.css']
 })
 export class NeedEditComponent implements OnInit {
 
@@ -34,6 +34,7 @@ export class NeedEditComponent implements OnInit {
       this.needID = params['id'];
       this.getNeedDetails(this.needID);
     });
+    window.scrollTo(0,0);
   }
 
   getNeedDetails(id) {

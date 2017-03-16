@@ -1,27 +1,24 @@
-
-<div *ngIf="proposal && need">
+<div *ngIf="proposal && need" class="backgr">
   <h1>
     <span *ngIf="proposal.coverage==='Blue'">Sourcing </span>
     <span *ngIf="proposal.coverage==='Green'">Funding </span>
     proposal for need {{need.name}}:
    </h1>
-   <div>
+   <span>
      {{proposal._contributor.username}} can source this need for {{proposal.cost}} Eur
-   </div>
-   <div status>
+   </span><br>
+   <span>
      Status:
      <span *ngIf="proposal.status"> Accepted </span>
      <span *ngIf="!proposal.status"> Pending acceptance </span>
-   </div>
-  <blockquote>
-    <p>{{proposal.comment}}</p>
-    <footer> by {{proposal._contributor.username}} on {{proposal.created_at | date}}</footer>
-  </blockquote>
+   </span><br><br>
+    <span>{{proposal.comment}}</span><br>
+    <span> - {{proposal._contributor.username}} on {{proposal.created_at | date}}</span>
   <div *ngIf="need && user && need.allocatedCollaborator">
-    <div *ngIf="need._allocatedCollaborator._id && user._id===need._allocatedCollaborator._id"> The leader of this project accepted your proposal. You can now make the payment of {{need.cost}} Eur to {{need._allocatedProvider.username}}'s bank account: {{proposal.accountNo}} </div>
+    <span *ngIf="need._allocatedCollaborator._id && user._id===need._allocatedCollaborator._id"> The leader of this project accepted your proposal. You can now make the payment of {{need.cost}} Eur to {{need._allocatedProvider.username}}'s bank account: {{proposal.accountNo}} </span>
   </div>
 
-
+  <br><br>
   <button *ngIf="userIsCreator && !proposal.status" class="btn btn-success" (click)="acceptProposal()">Accept proposal</button>
   <button class="btn btn-default" [routerLink]="['/projects/']+[need._project._id]">Back to project</button>
 </div>

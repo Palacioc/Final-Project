@@ -7,7 +7,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-project-edit',
   templateUrl: './project-edit.component.html',
-  styles: []
+  styleUrls: ['./project-edit.component.css']
 })
 export class ProjectEditComponent implements OnInit {
 
@@ -35,6 +35,7 @@ export class ProjectEditComponent implements OnInit {
        this.projectID = params['id'];
        this.getProjectDetails(this.projectID);
      });
+     window.scrollTo(0,0);
    }
 
    getProjectDetails(id) {

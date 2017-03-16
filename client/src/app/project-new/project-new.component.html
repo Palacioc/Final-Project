@@ -1,33 +1,34 @@
+<div class="backgr">
 <h1> New project </h1>
 
 <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
   <div class="form-group">
-    <label> Project name </label>
+    <label> Project name </label><br>
     <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
-    <span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+    <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
         You need a name for your project!
     </span>
   </div>
   <div class="form-group">
-    <label> Description </label>
+    <label> Description </label><br>
     <input type="textarea" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/>
-    <span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
+    <br><span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
         You need a description for your project!
     </span>
   </div>
   <div class="form-group">
-    <label> Image </label>
-    <input type="file" name="file" ng2FileSelect [uploader]="uploader"/>
+    <label> Image </label><br>
+    <input class="verdecillo" type="file" name="file" ng2FileSelect [uploader]="uploader"/>
   </div>
   <div class="form-group">
-    <label> Location </label>
+    <label> Location </label><br>
     <input type="text" [(ngModel)]="formInfo.location" name="location" #myLocation="ngModel" required/>
-    <span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
+    <br><span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
         You need a location for your project!
     </span>
   </div>
-  //Missing status which should be incomplete to begin with
   <button class="btn btn-primary" type='submit'>
     Create Project
   </button>
 </form>
+</div>

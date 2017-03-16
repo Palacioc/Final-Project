@@ -7,7 +7,7 @@ import { FileUploader } from "ng2-file-upload";
 @Component({
   selector: 'app-project-new',
   templateUrl: './project-new.component.html',
-  styles: []
+  styleUrls: ['./project-new.component.css']
 })
 export class ProjectNewComponent implements OnInit {
   model = 1;

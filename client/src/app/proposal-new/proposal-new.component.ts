@@ -10,7 +10,7 @@ import { FileUploader } from "ng2-file-upload";
 @Component({
   selector: 'app-proposal-new',
   templateUrl: './proposal-new.component.html',
-  styles: []
+  styleUrls: ['./proposal-new.component.css']
 })
 export class ProposalNewComponent implements OnInit {
   formType: string;
@@ -47,6 +47,7 @@ export class ProposalNewComponent implements OnInit {
         this.formInfo.needID = this.param;
         this.getNeedDetails(this.param);
       });
+      window.scrollTo(0,0);
     }
 
     getNeedDetails(id) {

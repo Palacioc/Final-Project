@@ -9,7 +9,7 @@ import { FileUploader } from "ng2-file-upload";
 @Component({
   selector: 'app-need-new',
   templateUrl: './need-new.component.html',
-  styles: []
+  styleUrls: ['./need-new.component.css']
 })
 export class NeedNewComponent implements OnInit {
 
@@ -55,7 +55,7 @@ export class NeedNewComponent implements OnInit {
       this.uploader.onErrorItem = (item, response, status, headers) => {
         this.feedback = JSON.parse(response).message;
       };
-
+      window.scrollTo(0,0);
     }
 
     getProjectDetails(id) {

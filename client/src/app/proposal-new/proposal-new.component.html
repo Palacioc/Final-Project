@@ -1,37 +1,36 @@
-<div *ngIf="need">
-  {{need | json}}
+<div *ngIf="need" class="backgr">
   <h1> New {{type}} proposal for need {{need.name}} (project {{need._project.name}}), from {{user.username}}</h1>
 
   <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
 
 
     <div *ngIf="type==='sourcing'" class="form-group">
-      <label> Cost of sourcing this need </label>
+      <label> Cost of sourcing this need </label><br>
       <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
-      <span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
+      <br><span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
           Please indicate how much funding you will need to source this need
       </span>
       <br><span>The leader of this project estimated that this need would cost {{need.cost}} Euros to be funded</span>
       <br><span *ngIf="formInfo.cost && formInfo.cost<need.cost">You are saving this project {{need.cost-formInfo.cost}} Euros, thank you!</span>
     </div>
 
-    <div *ngIf="type==='funding'" class="form-group">
-      The allocated provider for this need is: {{need._allocatedProvider.username}}<br>
+    <span *ngIf="type==='funding'" class="form-group"><br>
+      The allocated provider for this need is: {{need._allocatedProvider.username}}<br><br>
       {{need._allocatedProvider.username}} offered to source this need for {{need.cost}} Eur
-    </div>
+    </span><br><br>
 
     <div class="form-group">
-      <label> Add a comment </label>
+      <label> Add a comment </label><br>
       <input type="text" [(ngModel)]="formInfo.comment" name="comment" #myComment="ngModel" required/>
-      <span *ngIf="myComment.errors && (myComment.dirty || myComment.touched)">
+      <br><span *ngIf="myComment.errors && (myComment.dirty || myComment.touched)">
           Please make a brief comment of how you plan to source this need
       </span>
     </div>
 
     <div *ngIf="type==='sourcing'" class="form-group" class="form-group">
-      <label> Your bank account number </label>
+      <label> Your bank account number </label><br>
       <input type="textarea" [(ngModel)]="formInfo.accountNo" name="accountNo" #myAccountNo="ngModel" required/>
-      <span *ngIf="myAccountNo.errors && (myAccountNo.dirty || myAccountNo.touched)">
+      <br><span *ngIf="myAccountNo.errors && (myAccountNo.dirty || myAccountNo.touched)">
           You need an account number to receive payment
       </span>
     </div>
