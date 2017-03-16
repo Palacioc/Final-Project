@@ -42,7 +42,7 @@
           <p>Total number of needs: {{total}}</p>
           <div class="input-group input-group-sm">
             <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
-            <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200/'+router.url">
+            <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
           </div>
           <br>
           <a class="btn btn-outline-warning" [routerLink]="['/home/']">Back to my projects</a>
@@ -53,7 +53,7 @@
       <div *ngFor="let need of needs" class="panel-group">
         <app-need-view [need]="need" [project]="project" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
       </div>
-      <button *ngIf="userIsCreator" class="btn btn-default" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
+      <button *ngIf="userIsCreator" class="btn btn-outline-primary center" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
     </div>
   </div>
 </div>

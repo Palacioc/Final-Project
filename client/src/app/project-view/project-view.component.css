@@ -28,6 +28,9 @@
   margin: auto;
   text-align: center;
 }
+.wide{
+  width: 100%;
+}
 
 #bkg{
   object-fit: cover;

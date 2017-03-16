@@ -9,7 +9,7 @@ import { ProposalService } from './../proposal.service';
 @Component({
   selector: 'app-need-view',
   templateUrl: './need-view.component.html',
-  styles: []
+  styleUrls: ['./need-view.component.css']
 })
 export class NeedViewComponent implements OnInit {
   @Input() need: any;

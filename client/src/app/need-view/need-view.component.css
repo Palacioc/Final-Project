@@ -1,0 +1,29 @@
+#panel-title{
+  text-decoration: none;
+}
+
+#panel-title:hover{
+  text-decoration: none;
+}
+
+.float-right{
+  float: right;
+}
+
+.need-thumb{
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.center{
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+
+.margins{
+  padding: 30px;
+}

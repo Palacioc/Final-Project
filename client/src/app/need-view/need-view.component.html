@@ -1,44 +1,58 @@
 <div *ngIf="fundingProposals">
 <ngb-accordion #acc="ngbAccordion">
-  <ngb-panel class="panel panel-default">
-    <template class="panel-heading" ngbPanelTitle>
-      <h3 class="panel-title">{{need.name}}</h3>
+  <ngb-panel>
+    <template id="panel-title" ngbPanelTitle>
+      <span>{{need.name}}</span>
+      <div class="float-right">
+        <span class="container-fluid" *ngIf="need" [ngSwitch]="need.status">
+          <span *ngSwitchCase="'Grey'"><button class="btn btn-sm btn-outline-secondary"> Not sourced </button> <button class="btn btn-sm btn-outline-secondary"> Not funded </button></span>
+          <span *ngSwitchCase="'Blue'"><button class="btn btn-sm btn-outline-info" > Sourced by: {{need._allocatedProvider.username}} </button> <button class="btn btn-sm btn-outline-secondary"> Not funded </button></span>
+          <span *ngSwitchCase="'Green'"><button class="btn btn-sm btn-outline-info"> Sourced by: {{need._allocatedProvider.username}} </button> <button class="btn btn-sm btn-outline-success"> Funded by: {{need._allocatedCollaborator.username}} </button></span>
+        </span>
+        <span>
+          <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-warning" [routerLink]="['/needs/edit/']+[need._id]">Edit</button>
+          <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-danger" (click)="deleteNeed(need._id)">Delete</button>
+        </span>
+      </div>
     </template>
     <template ngbPanelContent>
-      <span class="container-fluid" [ngSwitch]="need.status">
-        <span *ngSwitchCase="'Grey'"><button class="btn btn-xs btn-disabled"> Not sourced </button> <button class="btn btn-xs btn-disabled"> Not funded </button></span>
-        <span *ngSwitchCase="'Blue'"><button class="btn btn-xs btn-info" > Sourced by: {{need._allocatedProvider.username}} </button> <button class="btn btn-xs btn-disabled"> Not funded </button></span>
-        <span *ngSwitchCase="'Green'"><button class="btn btn-xs btn-info"> Sourced by: {{need._allocatedProvider.username}} </button> <button class="btn btn-xs btn-success"> Funded by: {{need._allocatedCollaborator.username}} </button></span>
-      </span>
-      <button *ngIf="userIsCreator" class="btn btn-warning btn-xs" [routerLink]="['/needs/edit/']+[need._id]">Edit need</button>
-      <button *ngIf="userIsCreator" class="btn btn-danger btn-xs" (click)="deleteNeed(need._id)">Delete need</button>
-      <br>
-      {{need.image}}<br>
-      Created on: {{need.created_at | date}}<br>
-      Cost: {{need.cost}}<br>
-      {{need.description}}<br>
-      Status: {{need.status}}<br>
-      allocatedProvider: {{need.allocatedProvider}}<br>
-      allocatedCollaborator: {{need.allocatedCollaborator}}<br>
-      <br><br>
-      <h4>Proposals:</h4>
-      <h5>{{sourcingProposals.length}} sourcing proposals received</h5>
-      <div *ngFor="let prop of sourcingProposals">
-        {{prop._contributor.username}} offered to source this need for {{prop.cost}} Eur
-        <button class="btn btn-info btn-xs" [routerLink]="['/proposals/']+[prop._id]">Review</button>
+      <div class="row">
+        <div class="col-sm-2 col-md-offset-4">
+          <img [src]="'http://localhost:3000/'+need.image" class="need-thumb">
+        </div>
+        <div class="col-sm-6">
+          <h2> Cost: {{need.cost}} € </h2>
+          <p>"{{need.description}}"</p>
+          <p>-{{project._creator.username}} on {{need.created_at | date}}</p>
+        </div>
       </div>
-      <h5>{{fundingProposals.length}} funding proposals received</h5>
-      <div *ngFor="let prop of fundingProposals">
-        {{prop._contributor.username}} offered to finance this need
-        <button class="btn btn-success btn-xs" [routerLink]="['/proposals/']+[prop._id]">Review</button>
+      <hr>
+      <div class="row"><h4 class="center">Proposals:</h4></div>
+      <div class="row">
+        <div class="margins col-sm-6">
+          <h5>{{sourcingProposals.length}} sourcing proposals received</h5>
+          <div *ngFor="let prop of sourcingProposals">
+            {{prop._contributor.username}} offered to source this need for {{prop.cost}} Eur
+            <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/proposals/']+[prop._id]">Review</button>
+            <button *ngIf="prop.status" class="btn btn-sm btn-outline-success" [routerLink]="['/proposals/']+[prop._id]">Accepted</button>
+          </div>
+        </div>
+        <div class="margins col-sm-6">
+          <h5>{{fundingProposals.length}} funding proposals received</h5>
+          <div *ngFor="let prop of fundingProposals">
+            {{prop._contributor.username}} offered to finance this need
+            <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/proposals/']+[prop._id]">Review</button>
+            <button *ngIf="prop.status" class="btn btn-sm btn-outline-success" [routerLink]="['/proposals/']+[prop._id]">Accepted</button>
+          </div>
+        </div>
       </div>
-      <span class="container-fluid" [ngSwitch]="need.status">
-        <span *ngSwitchCase="'Grey'">We need to find a provider for this need, before it can be funded. Think you can help {{project._creator.username}} source this need? <br><button class="btn btn-xs btn-info" [routerLink]="['/proposals/new/']+[need._id]"> Make sourcing proposal </button></span>
-        <span *ngSwitchCase="'Blue'">Yay! This need has an allocated provider. Can you help {{project._creator.username}} fund this need? <br><button class="btn btn-xs btn-success" [routerLink]="['/proposals/new/']+[need._id]"> Make financing proposal </button></span>
-        <span *ngSwitchCase="'Green'">Yay! This need is on the works!</span>
-      </span>
-
-
+      <div class="row">
+        <div class="center" [ngSwitch]="need.status">
+          <div class="alert alert-warning" *ngSwitchCase="'Grey'">We need to find a provider for this need, before it can be funded. Think you can help {{project._creator.username}} source this need? <br><button class="btn btn-xs btn-info" [routerLink]="['/proposals/new/']+[need._id]"> Make sourcing proposal </button></div>
+          <div class="alert alert-warning" *ngSwitchCase="'Blue'">Yay! This need has an allocated provider. Can you help {{project._creator.username}} fund this need? <br><br><button class="btn btn-xs btn-success" [routerLink]="['/proposals/new/']+[need._id]"> Make financing proposal </button></div>
+          <div class="alert alert-success" *ngSwitchCase="'Green'">Yay! This need is on the works!</div>
+        </div>
+      </div>
     </template>
   </ngb-panel>
 </ngb-accordion>
