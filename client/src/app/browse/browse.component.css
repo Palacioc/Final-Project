@@ -65,6 +65,9 @@ h2{
   width: 100%;
   top: 0px;
 }
+.slim{
+  font-weight: lighter;
+}
 
 .latest-thumbnail{
   width: 100%;

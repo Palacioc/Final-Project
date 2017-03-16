@@ -20,12 +20,12 @@
       <hr>
       <div class="card right-height" style="col-sm-3" *ngFor="let proj of searchResult">
         <div class="card-block over">
-          <h4 class="card-title">{{proj.name}}</h4>
-          <p class="card-text">{{proj.description}}</p>
-          <a href="#" class="btn btn-outline-primary">View project</a>
+          <h4 class="card-title slim">{{proj.name}}</h4>
+          <p class="card-text slim">{{proj.description}} - by {{proj.username}} on {{proj.created_at | date}}</p>
         </div>
         <img class="latest-thumbnail" [src]="'http://localhost:3000/'+proj.image" alt="Card image cap">
       </div>
+      <br>
     </div>
   </div>
 
@@ -36,9 +36,8 @@
       <div *ngIf="fourLatest">
         <div class="card right-height" style="col-sm-3" *ngFor="let proj of fourLatest">
           <div class="card-block over">
-            <h4 class="card-title">{{proj.name}}</h4>
-            <p class="card-text">{{proj.description}}</p>
-            <a href="#" class="btn btn-outline-primary">View project</a>
+            <h4 class="card-title slim">{{proj.name}}</h4>
+            <p class="card-text slim">{{proj.description}} - by {{proj.username}} on {{proj.created_at | date}}</p>
           </div>
           <img class="latest-thumbnail" [src]="'http://localhost:3000/'+proj.image" alt="Card image cap">
         </div>
