@@ -19,6 +19,7 @@
     left:0;
 	right:0;
 	bottom:0;
+  font-weight: lighter;
 	text-align:left;
 	padding:10px;
 	background:rgba(0,0,0,0.6);
@@ -26,6 +27,8 @@
 }
 
 #carousel-title {
+  font-weight: lighter;
+
   left:0;
 	right:0;
 	bottom:0;
