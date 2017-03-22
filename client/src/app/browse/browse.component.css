@@ -1,5 +1,9 @@
 body { padding-top: 50px; }
 
+.wide{
+  width: 100%;
+}
+
   h1{
     margin: auto;
     display: block;
