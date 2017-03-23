@@ -1,3 +1,20 @@
+.backgr{
+  background: rgba(41,43,44,1);
+  background: -moz-linear-gradient(top, rgba(41,43,44,1) 0%, rgba(14,18,61,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(41,43,44,1)), color-stop(100%, rgba(14,18,61,1)));
+  background: -webkit-linear-gradient(top, rgba(41,43,44,1) 0%, rgba(14,18,61,1) 100%);
+  background: -o-linear-gradient(top, rgba(41,43,44,1) 0%, rgba(14,18,61,1) 100%);
+  background: -ms-linear-gradient(top, rgba(41,43,44,1) 0%, rgba(14,18,61,1) 100%);
+  background: linear-gradient(to bottom, rgba(41,43,44,1) 0%, rgba(14,18,61,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#292b2c', endColorstr='#0e123d', GradientType=0 );
+  /*background-color: rgb(195,254,170);*/
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  min-height: 600px;
+  padding: 60px 0px 0px 0px;
+}
 
 
 .animated {
@@ -29,5 +46,5 @@
 }
 
 .spacer-top{
-  height: 50px;
+  height: 60px;
 }

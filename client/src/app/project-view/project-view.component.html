@@ -1,4 +1,4 @@
-<div class="backgr" *ngIf="project">
+<div *ngIf="project">
   <div class="container">
   <ngb-carousel>
     <template *ngIf="project" ngbSlide>
@@ -19,8 +19,9 @@
   <div class="row mini-space">
     <div class="col-sm-3">
       <div class="card">
+        <img *ngIf="project" [src]="'http://localhost:3000/'+project._creator.pic" class="profile-left" id="profile-left">
         <div class="card-block" *ngIf="project">
-          <p>Started by {{project._creator.username}}</p>
+          <p>Started by <strong>{{project._creator.username}}</strong></p>
           <p>Last time updated: {{project.updated_at | date}}</p>
           <p>Total number of needs: {{total}}</p>
           <div class="input-group input-group-sm">

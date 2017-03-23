@@ -1,4 +1,4 @@
-<div *ngIf="need" class="backgr">
+<div *ngIf="need">
   <h1> New {{type}} proposal for need {{need.name}} (project {{need._project.name}}), from {{user.username}}</h1>
 
   <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>

@@ -1,17 +1,9 @@
-
+.fixit{
+position: fixed;
+}
 
 .trans{
   padding-top: 30px;
-}
-
-.backgr{
-  background-color: rgba(41,43,44, 1);
-  height: auto;
-  left: 0px;
-  right: 0px;
-  width: 100%;
-  top: 0px;
-  padding-bottom: 30px;
 }
 
 body { padding-top: 50px; }
