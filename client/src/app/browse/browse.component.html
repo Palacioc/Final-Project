@@ -12,13 +12,13 @@
   </div>
 </div>
 <div class="backgr">
-  <div *ngIf="searchResult" class="container col-sm-10 col-sm-offset-1 animated fadeIn card verdecillo">
+  <div *ngIf="searchResult" class="container col-sm-10 col-sm-offset-1 animated fadeIn card verdecillo wide">
     <div class="row">
       <h2>Search results</h2>
       <hr>
-        <div *ngFor="let proj of searchResult">
-        <div class="card right-height">
-          <div class="card-block over">
+        <div *ngFor="let proj of searchResult" class="wide">
+        <div class="card right-height wide">
+          <div class="card-block over wide">
             <h4 [routerLink]="['/projects/']+[proj._id]" class="card-title slim">{{proj.name}}</h4>
             <p class="card-text slim">{{proj.description}} - by {{proj.username}} on {{proj.created_at | date}}</p>
           </div>
