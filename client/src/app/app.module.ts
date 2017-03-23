@@ -12,7 +12,7 @@ import { NeedService } from "./need.service";
 import { AuthComponent } from './auth/auth.component';
 import { RouterModule, Routes } from "@angular/router";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FileSelectDirective } from "ng2-file-upload";
+import { FileUploadModule } from "ng2-file-upload";
 import { HomeComponent } from './home/home.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { ProjectViewComponent } from './project-view/project-view.component';
@@ -74,7 +74,6 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     AuthComponent,
-    FileSelectDirective,
     HomeComponent,
     NavBarComponent,
     ProjectViewComponent,
@@ -100,7 +99,7 @@ const routes: Routes = [
     HttpModule,
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
-    // AlertModule.forRoot(),
+    FileUploadModule,
   ],
   providers: [SessionService, ProjectService, NeedService, ProposalService],
   bootstrap: [AppComponent]

@@ -13,7 +13,7 @@ const upload = require('../../configs/multer');
 //SIGNUP
 authController.post("/signup", upload.single('file'), (req, res, next) => {
   var {username, email, password, role} = req.body;
-  var pic = req.file.path;
+  var pic = "/profile-pics/" + req.file.filename;
   console.log('all data', username, password, email, role, pic);
   if (!username || !password || !email || !role || !pic) {
     console.log('Entered 400!!!');

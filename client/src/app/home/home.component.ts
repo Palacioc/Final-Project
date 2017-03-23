@@ -5,6 +5,7 @@ import { NeedService } from "../need.service";
 import { ProjectService } from "../project.service";
 import { ProposalService } from "../proposal.service";
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -15,7 +16,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 export class HomeComponent implements OnInit {
 
   constructor(private modalService: NgbModal, private session: SessionService, private router: Router, private projectService: ProjectService, private needService: NeedService, private proposalService: ProposalService) { }
-
+  BASEURL = environment.apiURL;
   closeResult: string;
   user: any;
   error: string;

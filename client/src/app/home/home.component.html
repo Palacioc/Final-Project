@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-sm-3">
           <div class="card green-outline">
-            <img *ngIf="user" [src]="'http://localhost:3000/'+user.pic" class="card-img-top" id="profile-left">
+            <img *ngIf="user" [src]="BASEURL+user.pic" class="card-img-top" id="profile-left">
             <div *ngIf="user" class="card-block">
               <h4 class="card-title">{{user.username}}</h4>
               <span>Role: {{user.role}}</span><br>
@@ -34,7 +34,7 @@
                   <tbody>
                   <ng-container class="card mini-space" *ngFor="let proj of projects">
                     <tr>
-                      <td class="image-col"><img [src]="'http://localhost:3000/'+proj.image" class="project-thumb"></td>
+                      <td class="image-col"><img [src]="BASEURL+proj.image" class="project-thumb"></td>
                       <td>{{proj.name}}, {{proj.location}}, on {{proj.created_at | date}}</td>
                       <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[proj._id]">Review</button></td>
                     </tr>
