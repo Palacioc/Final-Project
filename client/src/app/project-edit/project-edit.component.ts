@@ -35,7 +35,6 @@ export class ProjectEditComponent implements OnInit {
        this.projectID = params['id'];
        this.getProjectDetails(this.projectID);
      });
-     window.scrollTo(0,0);
    }
 
    getProjectDetails(id) {

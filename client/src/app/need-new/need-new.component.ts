@@ -55,7 +55,7 @@ export class NeedNewComponent implements OnInit {
       this.uploader.onErrorItem = (item, response, status, headers) => {
         this.feedback = JSON.parse(response).message;
       };
-      window.scrollTo(0,0);
+
     }
 
     getProjectDetails(id) {

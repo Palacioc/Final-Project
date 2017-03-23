@@ -1,37 +1,37 @@
 body { padding-top: 50px; }
 
-  h1{
-    margin: auto;
-    display: block;
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    color: rgb(195,254,170);
-    font-weight: lighter;
-  }
+h1{
+  margin: auto;
+  display: block;
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: rgb(195,254,170);
+  font-weight: lighter;
+}
 
-  .slim{
-    width: 300px;
-    height: 60px;
-    background: transparent;
-    background-color: gba(0,0,0,0);
-    display: block;
-    margin: auto;
-    border: 2px, solid, rgb(195,254,170);
-    border-radius: 30px;
-    text-align: center;
-    color: rgb(195,254,170);
-    font-size: 40px;
-    font-weight: lighter;
-  }
+.slim{
+  width: 300px;
+  height: 60px;
+  background: transparent;
+  background-color: gba(0,0,0,0);
+  display: block;
+  margin: auto;
+  border: 2px, solid, rgb(195,254,170);
+  border-radius: 30px;
+  text-align: center;
+  color: rgb(195,254,170);
+  font-size: 40px;
+  font-weight: lighter;
+}
 
 
-  label, span, .verdecillo{
-    background-color: transparent;
-    color: rgb(195,254,170);
-    border: none;
-    font-weight: lighter;
-  }
+label, span, .verdecillo{
+  background-color: transparent;
+  color: rgb(195,254,170);
+  border: none;
+  font-weight: lighter;
+}
 
 
 h2{

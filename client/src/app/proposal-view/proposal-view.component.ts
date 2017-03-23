@@ -34,8 +34,6 @@ export class ProposalViewComponent implements OnInit {
         this.getProposalDetails(this.param);
         //comprobar si el autor del proyecto es el usuario y si lo es variable de componente
       });
-      window.scrollTo(0,0);
-
     }
 
     getProposalDetails(id) {

@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Welcome! {{showSignup ? 'Signup' : 'Login'}} here:</h1>
-  <div class="searcher">
-    <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" class="center"novalidate>
+  <div>
+    <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
       <div class="form-group">
         <label> Username </label><br>
         <input type="text" [(ngModel)]="formInfo.username" name="username" #myUsername="ngModel" required/>

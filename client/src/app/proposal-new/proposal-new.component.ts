@@ -47,7 +47,6 @@ export class ProposalNewComponent implements OnInit {
         this.formInfo.needID = this.param;
         this.getNeedDetails(this.param);
       });
-      window.scrollTo(0,0);
     }
 
     getNeedDetails(id) {
