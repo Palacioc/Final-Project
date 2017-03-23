@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SessionService } from "../session.service";
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 
 
 
@@ -10,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
+  BASEURL = environment.apiURL;
 
   user: any;
   isGreen: boolean = true;

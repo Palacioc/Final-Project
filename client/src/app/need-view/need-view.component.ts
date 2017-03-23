@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { NeedService } from './../need.service';
 import { Router } from '@angular/router';
 import { ProposalService } from './../proposal.service';
+import { environment } from '../../environments/environment';
 
 
 
@@ -19,6 +20,7 @@ export class NeedViewComponent implements OnInit {
   proposals: any;
   fundingProposals : any;
   sourcingProposals : any;
+  BASEURL = environment.apiURL;
 
   constructor(private proposalService: ProposalService, private router: Router, private needService: NeedService) { }
 
@@ -33,6 +35,10 @@ export class NeedViewComponent implements OnInit {
       console.log('Sourcing', this.sourcingProposals);
     });
 
+  }
+
+  editNeed() {
+    this.router.navigate(['/needs/edit/'+this.need._id]);
   }
 
   deleteNeed(id) {

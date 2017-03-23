@@ -22,7 +22,7 @@
             <h4 [routerLink]="['/projects/']+[proj._id]" class="card-title slim">{{proj.name}}</h4>
             <p class="card-text slim">{{proj.description}} - by {{proj.username}} on {{proj.created_at | date}}</p>
           </div>
-          <img class="latest-thumbnail right-height" [src]="'http://localhost:3000/'+proj.image" alt="Card image cap">
+          <img class="latest-thumbnail right-height" [src]="BASEURL+proj.image" alt="Card image cap">
         </div>
         <br>
       </div>
@@ -41,7 +41,7 @@
               <h4 [routerLink]="['/projects/']+[proj._id]" class="card-title slim">{{proj.name}}</h4>
               <p class="card-text slim">{{proj.description}} - by {{proj.username}} on {{proj.created_at | date}}</p>
             </div>
-            <img class="latest-thumbnail right-height" [src]="'http://localhost:3000/'+proj.image" alt="Card image cap">
+            <img class="latest-thumbnail right-height" [src]="BASEURL+proj.image" alt="Card image cap">
           </div>
           <br>
         </div>

@@ -4,6 +4,7 @@ import { ProjectService } from './../project.service';
 import { NeedService } from './../need.service';
 import { Router } from '@angular/router';
 import { SessionService } from "../session.service";
+import { environment } from '../../environments/environment';
 
 
 @Component({
@@ -13,6 +14,7 @@ import { SessionService } from "../session.service";
 })
 
 export class ProjectViewComponent implements OnInit {
+  BASEURL = environment.apiURL;
 
   userIsCreator : boolean = false;
   user : any;

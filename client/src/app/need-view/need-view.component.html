@@ -10,7 +10,7 @@
           <span *ngSwitchCase="'Green'"><button class="btn btn-sm btn-outline-info"> Sourced by: {{need._allocatedProvider.username}} </button> <button class="btn btn-sm btn-outline-success"> Funded by: {{need._allocatedCollaborator.username}} </button></span>
         </span>
         <span>
-          <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-warning" [routerLink]="['/needs/edit/']+[need._id]">Edit</button>
+          <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-warning" (click)="editNeed()">Edit</button>
           <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-danger" (click)="deleteNeed(need._id)">Delete</button>
         </span>
       </div>
@@ -18,7 +18,7 @@
     <template ngbPanelContent>
       <div class="row">
         <div class="col-sm-2 col-md-offset-4">
-          <img [src]="'http://localhost:3000/'+need.image" class="need-thumb">
+          <img [src]="BASEURL+need.image" class="need-thumb">
         </div>
         <div class="col-sm-6">
           <h2> Cost: {{need.cost}} € </h2>

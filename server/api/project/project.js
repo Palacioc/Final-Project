@@ -50,7 +50,7 @@ router.post('/', upload.single('file'), (req, res) => {
     _creator: req.body.creatorID,
     name: req.body.name,
     description: req.body.description,
-    image: req.file.path || '',
+    image: "/profile-pics/" + req.file.filename || '',
     completed: req.body.completed || false,
     location: req.body.location,
   });

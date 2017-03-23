@@ -2,7 +2,7 @@
   <div class="container">
   <ngb-carousel>
     <template *ngIf="project" ngbSlide>
-      <img [src]="'http://localhost:3000/'+project.image" id="bkg">
+      <img [src]="BASEURL+project.image" id="bkg">
       <div class="carousel-caption">
         <h1 class="carousel-title" id="carousel-title">{{project.name}}</h1>
         <blockquote>
@@ -19,7 +19,7 @@
   <div class="row mini-space">
     <div class="col-sm-3">
       <div class="card">
-        <img *ngIf="project" [src]="'http://localhost:3000/'+project._creator.pic" class="profile-left" id="profile-left">
+        <img *ngIf="project" [src]="BASEURL+project._creator.pic" class="profile-left" id="profile-left">
         <div class="card-block" *ngIf="project">
           <p>Started by <strong>{{project._creator.username}}</strong></p>
           <p>Last time updated: {{project.updated_at | date}}</p>
