@@ -3,6 +3,11 @@ import { SessionService } from "../session.service";
 import { ProjectService } from "../project.service";
 import { Router } from '@angular/router';
 import { FileUploader } from "ng2-file-upload";
+import { environment } from '../../environments/environment';
+
+
+const BASEURL = environment.apiURL;
+
 
 @Component({
   selector: 'app-project-new',
@@ -26,7 +31,7 @@ constructor(private session: SessionService, private project: ProjectService, pr
   user: any;
 
   uploader: FileUploader = new FileUploader({
-     url: `http://localhost:3000/api/projects`
+     url: `${BASEURL}/api/projects`
    });
 
   ngOnInit() {

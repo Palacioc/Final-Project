@@ -2,7 +2,10 @@ import { Component, OnInit, EventEmitter } from '@angular/core';
 import { SessionService } from "../session.service";
 import { Router } from '@angular/router';
 import { FileUploader } from "ng2-file-upload";
+import { environment } from '../../environments/environment';
 
+
+const BASEURL = environment.apiURL;
 
 
 @Component({
@@ -64,7 +67,7 @@ export class AuthComponent implements OnInit {
 
 
  uploader: FileUploader = new FileUploader({
-    url: `http://localhost:3000/api/auth/signup`
+    url: `${BASEURL}/api/auth/signup`
   });
 
 

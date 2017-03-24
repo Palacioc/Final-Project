@@ -87,14 +87,14 @@
                     </tr>
                   </thead>
                   <tbody>
-                  <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
+                  <!-- <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
                     <tr>
                       <td>{{ prop._need.name }} ({{prop._need.cost}} to {{ returnType(prop.coverage) }})</td>
                       <td>{{ returnStatus(prop.status) }}</td>
                       <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[prop._need._project]">Review</button>
                       <button *ngIf="prop.status && prop.coverage==='Green'" class="btn btn-sm btn-outline-success" (click)="open(content, prop)">Fund</button></td>
                     </tr>
-                  </ng-container>
+                  </ng-container> -->
                   </tbody>
                 </table>
               </div>

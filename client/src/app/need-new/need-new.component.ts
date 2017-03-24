@@ -5,6 +5,10 @@ import { NeedService } from "../need.service";
 import { ProjectService } from "../project.service";
 import { Router } from '@angular/router';
 import { FileUploader } from "ng2-file-upload";
+import { environment } from '../../environments/environment';
+
+
+const BASEURL = environment.apiURL;
 
 @Component({
   selector: 'app-need-new',
@@ -18,7 +22,7 @@ export class NeedNewComponent implements OnInit {
   project: any;
   feedback: string;
   uploader: FileUploader = new FileUploader({
-     url: `http://localhost:3000/api/needs`
+     url: `${BASEURL}/api/needs`
    });
 
   formInfo = {
