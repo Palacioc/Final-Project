@@ -1,13 +1,13 @@
 <div *ngIf="fundingProposals">
-<ngb-accordion #acc="ngbAccordion">
-  <ngb-panel>
+<ngb-accordion #acc="ngbAccordion" [activeIds]="openString">
+  <ngb-panel id="true">
     <template id="panel-title" ngbPanelTitle>
       <span>{{need.name}}</span>
       <div class="float-right">
         <span class="container-fluid" *ngIf="need" [ngSwitch]="need.status">
-          <span *ngSwitchCase="'Grey'"><button class="btn btn-sm btn-outline-secondary"> Not sourced </button> <button class="btn btn-sm btn-outline-secondary"> Not funded </button></span>
-          <span *ngSwitchCase="'Blue'"><button class="btn btn-sm btn-outline-info" > Sourced by: {{need._allocatedProvider.username}} </button> <button class="btn btn-sm btn-outline-secondary"> Not funded </button></span>
-          <span *ngSwitchCase="'Green'"><button class="btn btn-sm btn-outline-info"> Sourced by: {{need._allocatedProvider.username}} </button> <button class="btn btn-sm btn-outline-success"> Funded by: {{need._allocatedCollaborator.username}} </button></span>
+          <span *ngSwitchCase="'Grey'"><span class="badge badge-default"> Not sourced </span> <span class="badge badge-default"> Not funded </span></span>
+          <span *ngSwitchCase="'Blue'"><span class="badge badge-info" > Sourced by: {{need._allocatedProvider.username}} </span> <span class="badge badge-default"> Not funded </span></span>
+          <span *ngSwitchCase="'Green'"><span class="badge badge-info"> Sourced by: {{need._allocatedProvider.username}} </span> <span class="badge badge-success"> Funded by: {{need._allocatedCollaborator.username}} </span></span>
         </span>
         <span>
           <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-warning" (click)="editNeed()">Edit</button>
@@ -33,8 +33,8 @@
           <h5>{{sourcingProposals.length}} sourcing proposals received</h5>
           <div *ngFor="let prop of sourcingProposals">
             {{prop._contributor.username}} offered to source this need for {{prop.cost}} Eur
-            <button class="btn btn-sm btn-outline-secondary" [routerLink]="['/proposals/']+[prop._id]">Review</button>
-            <button *ngIf="prop.status" class="btn btn-sm btn-outline-success" [routerLink]="['/proposals/']+[prop._id]">Accepted</button>
+            <span *ngIf="prop.status" class="btn btn-sm btn-outline-success" [routerLink]="['/proposals/']+[prop._id]">Accepted</span>
+            <button class="btn btn-sm btn-outline-info" [routerLink]="['/proposals/']+[prop._id]">Review</button>
           </div>
         </div>
         <div class="margins col-sm-6">

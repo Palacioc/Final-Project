@@ -14,6 +14,7 @@ import { environment } from '../../environments/environment';
 })
 export class NeedViewComponent implements OnInit {
   @Input() need: any;
+  @Input() open: boolean;
   @Input() userIsCreator: boolean;
   @Input() user: any;
   @Input() project: any;
@@ -21,10 +22,12 @@ export class NeedViewComponent implements OnInit {
   fundingProposals : any;
   sourcingProposals : any;
   BASEURL = environment.apiURL;
+  openString : string;
 
   constructor(private proposalService: ProposalService, private router: Router, private needService: NeedService) { }
 
   ngOnInit() {
+    this.openString = this.open + '';
     this.proposalService.getByNeed(this.need._id)
     .subscribe((proposals)=>{
       this.proposals = proposals;

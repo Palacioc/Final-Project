@@ -6,6 +6,10 @@ position: fixed;
   padding-top: 30px;
 }
 
+.right-align{
+  text-align: right;
+}
+
 body { padding-top: 50px; }
 #myCarousel .carousel-caption {
   left:0;

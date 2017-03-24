@@ -18,35 +18,53 @@
   </ngb-carousel>
   <div class="row mini-space">
     <div class="col-sm-3">
-      <div class="card">
-        <img *ngIf="project" [src]="BASEURL+project._creator.pic" class="profile-left" id="profile-left">
-        <div class="card-block" *ngIf="project">
-          <p>Started by <strong>{{project._creator.username}}</strong></p>
-          <p>Last time updated: {{project.updated_at | date}}</p>
-          <p>Total number of needs: {{total}}</p>
-          <div class="input-group input-group-sm">
-            <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
-            <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
+
+        <div class="card">
+          <img *ngIf="project" [src]="BASEURL+project._creator.pic" class="profile-left" id="profile-left">
+          <div class="card-block" *ngIf="project">
+            <p>Started by <strong>{{project._creator.username}}</strong></p>
+            <p>Last update: {{project.updated_at | date}}</p>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
+            </div>
+            <br>
+            <a class="btn btn-outline-warning" [routerLink]="['/home/']">Back to my projects</a>
           </div>
-          <br>
-          <a class="btn btn-outline-warning" [routerLink]="['/home/']">Back to my projects</a>
         </div>
-      </div>
+        <br>
+        <div class="card">
+          <div class="card-block" *ngIf="project">
+            <p>Started by <strong>{{project._creator.username}}</strong></p>
+            <p>Last update: {{project.updated_at | date}}</p>
+            <div class="input-group input-group-sm">
+              <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
+            </div>
+            <br>
+            <a class="btn btn-outline-warning" [routerLink]="['/home/']">Back to my projects</a>
+          </div>
+        </div>
+        <br>
+
     </div>
-    <div class="card col-sm-9">
-      <h2>Project needs</h2>
-      <div class="progress border" *ngIf="percentageGreen>0">
-        <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberGreen}} funded</div>
+    <div class="col-sm-9">
+      <div class="card padded">
+        <h2>Project needs ( {{total}} )</h2>
+        <div class="progress border" *ngIf="percentageGreen>0">
+          <div class="progress-bar bg-success" role="progressbar" [ngStyle]="{ 'width': [percentageGreen*100]+'%' }">{{numberGreen}} funded</div>
+        </div>
+        <div class="progress border" *ngIf="percentageGreen>0">
+          <div class="progress-bar bg-info" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberBlue}} sourced</div>
+        </div>
+        <div *ngFor="let need of needs; let i=index" class="panel-group">
+          <app-need-view [open]="i==0" [need]="need" [project]="project" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
+        </div>
+        <br>
+        <button *ngIf="userIsCreator" class="btn btn-outline-warning" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
       </div>
-      <div class="progress border" *ngIf="percentageGreen>0">
-        <div class="progress-bar bg-info" role="progressbar" [ngStyle]="{ 'width': [percentageBlue*100]+'%' }">{{numberBlue}} sourced</div>
-      </div>
-      <div *ngFor="let need of needs" class="panel-group">
-        <app-need-view [need]="need" [project]="project" [userIsCreator]="userIsCreator" [user]="user"></app-need-view>
-      </div>
-      <br>
-      <button *ngIf="userIsCreator" class="btn btn-outline-warning" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
     </div>
   </div>
 </div>
 </div>
+    <br>

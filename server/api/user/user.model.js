@@ -10,6 +10,18 @@ const userSchema = new Schema({
       enum : ['Collaborator', 'Leader', 'Provider'],
       default : 'Collaborator'
     },
+    isAwareness: Boolean,
+    isEducation: Boolean,
+    isPoverty: Boolean,
+    isAnimals: Boolean,
+    isEcology: Boolean,
+    isHealth: Boolean,
+    isElderly: Boolean,
+    isInmigrationAndDisplacement: Boolean,
+    isWater: Boolean,
+    isPolitics: Boolean,
+    isDisasterRelief: Boolean,
+    isOther: Boolean,
     pic: {
       type: String, default: ''
     }

@@ -36,7 +36,7 @@
                     <tr>
                       <td class="image-col"><img [src]="BASEURL+proj.image" class="project-thumb"></td>
                       <td>{{proj.name}}, {{proj.location}}, on {{proj.created_at | date}}</td>
-                      <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[proj._id]">Review</button></td>
+                      <td class="right-align"><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[proj._id]">Review</button></td>
                     </tr>
                   </ng-container>
                   </tbody>
@@ -82,19 +82,22 @@
                   <thead>
                     <tr>
                       <th>Need</th>
+                      <th>Type of engagement</th>
                       <th>Status</th>
-                      <th>Actions</th>
+                      <th class="right-align">Actions</th>
                     </tr>
                   </thead>
                   <tbody>
-                  <!-- <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
+                  <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
                     <tr>
                       <td>{{ prop._need.name }} ({{prop._need.cost}} to {{ returnType(prop.coverage) }})</td>
+                      <td><span *ngIf="prop.coverage==='Green' ">Funder</span>
+                      <span *ngIf="prop.coverage==='Blue'">Sourcer</span></td>
                       <td>{{ returnStatus(prop.status) }}</td>
-                      <td><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[prop._need._project]">Review</button>
+                      <td class="right-align"><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[prop._need._project]">Review</button>
                       <button *ngIf="prop.status && prop.coverage==='Green'" class="btn btn-sm btn-outline-success" (click)="open(content, prop)">Fund</button></td>
                     </tr>
-                  </ng-container> -->
+                  </ng-container>
                   </tbody>
                 </table>
               </div>
@@ -128,3 +131,4 @@
       </div>
     </template>
 </div>
+<br>
