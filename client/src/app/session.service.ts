@@ -19,6 +19,7 @@ export class SessionService {
   constructor(private http: Http) { }
 
   handleError(e) {
+    console.log(e.json().message);
     return Observable.throw(e.json().message);
   }
 

@@ -38,6 +38,7 @@ app.use(passport.session());
 // Para comunicación entre los dos puertos
 var whitelist = [
     'http://localhost:4200',
+    'https://idtm.herokuapp.com'
 ];
 var corsOptions = {
     origin: function(origin, callback){
