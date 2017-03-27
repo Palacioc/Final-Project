@@ -28,11 +28,7 @@ app.use(session({
   secret: "passport-local-strategy",
   resave: true,
   saveUninitialized: true,
-  cookie : { domain:'localhost', maxAge: 2419200000 },
-  store: new MongoStore({
-    url: config.urlMongo,
-    collection: 'sessions'
-  })
+  cookie : { domain:'localhost', maxAge: 2419200000 }
 }));
 
 //Initialize auth modules

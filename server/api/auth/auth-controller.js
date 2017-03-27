@@ -82,7 +82,6 @@ authController.post("/logout", function(req, res) {
 
 //TO CHECK IF USER IS LOGGED IN
 authController.get("/loggedin", function(req, res) {
-  console.log(req.isAuthenticated());
   if(req.isAuthenticated()) {
     return res.status(200).json(req.user);
   }
