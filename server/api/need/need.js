@@ -34,7 +34,7 @@ router.post('/', upload.single('file'), (req, res) => {
   const need = new Need({
     _project: req.body.projectID,
     name: req.body.name,
-    image: "/profile-pics/" + req.file.filename || '',
+    image: "/dist/db-pictures/" + req.file.filename || '',
     description: req.body.description,
     status: req.body.status,
     allocatedProvider: req.body.providerID,

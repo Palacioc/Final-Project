@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class IsProviderPipe implements PipeTransform {
 
-  transform(items: any[], field: string, value: string, shouldFilter: string): any[] {
+  transform(items: any[], field: string, value: string, shouldFilter: string = 'true'): any[] {
     if (!items) {
       return [];
     }
