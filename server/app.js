@@ -28,17 +28,14 @@ app.use(session({
   secret: "passport-local-strategy",
   resave: true,
   saveUninitialized: true,
-  cookie : { domain:'localhost', maxAge: 2419200000 }
+  // cookie : { domain:'localhost', maxAge: 2419200000 }
 }));
-
-//Initialize auth modules
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Para comunicación entre los dos puertos
 var whitelist = [
     'http://localhost:4200',
-    'https://idtm.herokuapp.com'
+    'https://idtm.herokuapp.com',
+    'http://idtm.herokuapp.com'
 ];
 var corsOptions = {
     origin: function(origin, callback){
@@ -62,6 +59,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/dist',express.static(path.join(__dirname, 'public-dist')));
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Initialize auth modules
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/api/users', users);
 app.use('/api/needs', needs);
