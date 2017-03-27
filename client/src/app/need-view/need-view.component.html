@@ -9,7 +9,7 @@
           <span *ngSwitchCase="'Blue'"><span class="badge badge-info" > Sourced by: {{need._allocatedProvider.username}} </span> <span class="badge badge-default"> Not funded </span></span>
           <span *ngSwitchCase="'Green'"><span class="badge badge-info"> Sourced by: {{need._allocatedProvider.username}} </span> <span class="badge badge-success"> Funded by: {{need._allocatedCollaborator.username}} </span></span>
         </span>
-        <span>
+        <span class="hidden-sm-down">
           <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-warning" (click)="editNeed()">Edit</button>
           <button *ngIf="userIsCreator" class="btn btn-sm btn-outline-danger" (click)="deleteNeed(need._id)">Delete</button>
         </span>
@@ -17,13 +17,19 @@
     </template>
     <template ngbPanelContent>
       <div class="row">
-        <div class="col-sm-2 col-md-offset-4">
-          <img [src]="BASEURL+need.image" class="need-thumb">
+        <div class="col-md-3">
+          <img [src]="BASEURL+need.image" class="need-thumb center">
+          <br class="hidden-md-up">
         </div>
-        <div class="col-sm-6">
+        <div class="col-md-9">
           <h2> Cost: {{need.cost}} € </h2>
           <p>"{{need.description}}"</p>
           <p>-{{project._creator.username}} on {{need.created_at | date}}</p>
+        </div>
+        <div class="hidden-md-up center">
+          
+          <button *ngIf="userIsCreator" class="btn btn-outline-warning" (click)="editNeed()">Edit</button>
+          <button *ngIf="userIsCreator" class="btn btn-outline-danger" (click)="deleteNeed(need._id)">Delete</button>
         </div>
       </div>
       <hr>

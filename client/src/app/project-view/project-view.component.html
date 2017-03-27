@@ -1,5 +1,5 @@
 <div *ngIf="project">
-  <div class="container">
+  <div class="container-fluid">
   <ngb-carousel>
     <template *ngIf="project" ngbSlide>
       <img [src]="BASEURL+project.image" id="bkg">
@@ -10,14 +10,14 @@
           <footer>- {{project._creator.username}}, in {{project.location}}, {{project.created_at | date}}</footer>
         </blockquote>
         <div class="center" *ngIf="userIsCreator">
-          <button class="btn btn-warning" [routerLink]="['/projects/edit/']+[param]">Edit project</button>
-          <button class="btn btn-danger" (click)="deleteProject(project._id)">Delete project</button>
+          <button class="btn btn-warning" [routerLink]="['/projects/edit/']+[param]">Edit</button>
+          <button class="btn btn-danger" (click)="deleteProject(project._id)">Delete</button>
         </div>
       </div>
     </template>
   </ngb-carousel>
   <div class="row mini-space">
-    <div class="col-sm-3">
+    <div class="col-md-3">
 
         <div class="card">
           <img *ngIf="project" [src]="BASEURL+project._creator.pic" class="profile-left" id="profile-left">
@@ -29,7 +29,7 @@
               <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
             </div>
             <br>
-            <a class="btn btn-outline-warning" [routerLink]="['/home/']">Back to my projects</a>
+            <a class="btn btn-outline-warning center" [routerLink]="['/home/']">Back to my projects</a>
           </div>
         </div>
         <br>
@@ -42,13 +42,13 @@
               <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
             </div>
             <br>
-            <a class="btn btn-outline-warning" [routerLink]="['/home/']">Back to my projects</a>
+            <a class="btn btn-outline-warning center" [routerLink]="['/home/']">Back to my projects</a>
           </div>
         </div>
         <br>
 
     </div>
-    <div class="col-sm-9">
+    <div class="col-md-9">
       <div class="card padded">
         <h2>Project needs ( {{total}} )</h2>
         <div class="progress border" *ngIf="percentageGreen>0">

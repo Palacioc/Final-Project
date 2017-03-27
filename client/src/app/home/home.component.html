@@ -1,8 +1,8 @@
-<div class="container" *ngIf="proposals && projects">
-  <div class="container col-sm-12 animated fadeIn trans">
+<div class="container-fluid" *ngIf="proposals && projects">
+  <div class="col-sm-12 animated fadeIn trans">
       <div class="row">
         <div class="col-sm-3">
-          <div class="card green-outline">
+          <div class="card hidden-sm-down">
             <img *ngIf="user" [src]="BASEURL+user.pic" class="card-img-top" id="profile-left">
             <div *ngIf="user" class="card-block">
               <h4 class="card-title">{{user.username}}</h4>
@@ -13,7 +13,7 @@
             </div>
           </div>
         </div>
-        <div id="myCarousel" class="carousel slide col-sm-9" data-ride="carousel">
+        <div id="myCarousel" class="carousel slide col-md-9" data-ride="carousel">
 
           <div class="row">
             <div class="carousel-inner">
@@ -82,8 +82,8 @@
                   <thead>
                     <tr>
                       <th>Need</th>
-                      <th>Type of engagement</th>
-                      <th>Status</th>
+                      <th class="hidden-xs-down">Type of engagement</th>
+                      <th class="hidden-xs-down">Status</th>
                       <th class="right-align">Actions</th>
                     </tr>
                   </thead>
@@ -91,9 +91,9 @@
                   <ng-container class="card mini-space" *ngFor="let prop of proposals | filter: 'coverage' : model.coverage | filterBoolean: 'status' : model.status ; let i = index">
                     <tr>
                       <td>{{ prop._need.name }} ({{prop._need.cost}} to {{ returnType(prop.coverage) }})</td>
-                      <td><span *ngIf="prop.coverage==='Green' ">Funder</span>
+                      <td class="hidden-xs-down"><span *ngIf="prop.coverage==='Green' ">Funder</span>
                       <span *ngIf="prop.coverage==='Blue'">Sourcer</span></td>
-                      <td>{{ returnStatus(prop.status) }}</td>
+                      <td class="hidden-xs-down">{{ returnStatus(prop.status) }}</td>
                       <td class="right-align"><button class="btn btn-sm btn-outline-primary" [routerLink]="['/projects/']+[prop._need._project]">Review</button>
                       <button *ngIf="prop.status && prop.coverage==='Green'" class="btn btn-sm btn-outline-success" (click)="open(content, prop)">Fund</button></td>
                     </tr>
@@ -107,10 +107,7 @@
       </div>
       <div class="row">
     </div>
-
     <template ngbModalContainer #content let-c="close" let-d="dismiss">
-      <div class="maxi-space">
-      </div>
       <div class="modal-header">
         <h4 class="modal-title">Payment</h4>
         <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
