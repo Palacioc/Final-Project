@@ -19,7 +19,8 @@ const projectSchema = new mongoose.Schema({
       default: false,
     },
     location: {
-      type: String,
+      type:Object,
+      required: true
     }
   },{
     timestamps: {

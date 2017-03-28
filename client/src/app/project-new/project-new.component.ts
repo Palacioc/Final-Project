@@ -15,6 +15,9 @@ const BASEURL = environment.apiURL;
   styleUrls: ['./project-new.component.css']
 })
 export class ProjectNewComponent implements OnInit {
+
+  lat: number = 51.678418;
+  lng: number = 7.809007;
   model = 1;
   formInfo = {
     name: '',

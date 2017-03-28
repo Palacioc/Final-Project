@@ -26,6 +26,9 @@
     <br><span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
         You need a location for your project!
     </span>
+    <sebm-google-map [latitude]="lat" [longitude]="lng">
+      <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+    </sebm-google-map>
   </div>
   <button class="btn btn-primary" type='submit'>
     Create Project

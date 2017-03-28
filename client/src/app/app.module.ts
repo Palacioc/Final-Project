@@ -31,6 +31,7 @@ import { IsProviderPipe } from './pipes/isProvider.pipe';
 import { IsAcceptedPipe } from './pipes/isAccepted.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { BrowseComponent } from './browse/browse.component';
+import { AgmCoreModule } from 'angular2-google-maps/core';
 
 
 
@@ -100,6 +101,9 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     NgbModule.forRoot(),
     FileUploadModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCQHk3sapi_a5bWgifWuh2E5hwm_h8zJy8'
+    })
   ],
   providers: [SessionService, ProjectService, NeedService, ProposalService],
   bootstrap: [AppComponent]

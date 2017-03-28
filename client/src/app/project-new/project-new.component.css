@@ -23,3 +23,7 @@ label, span, .verdecillo, h1{
   text-align: center;
   padding: 30px;
 }
+
+.sebm-google-map-container {
+  height: 300px;
+}
