@@ -5,6 +5,7 @@ label, span, .verdecillo, h1{
   font-weight: lighter;
 }
 
+
 .backgr{
   background: rgba(41,43,44,1);
   background: -moz-linear-gradient(top, rgba(41,43,44,1) 0%, rgba(14,18,61,1) 100%);

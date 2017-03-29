@@ -1,97 +1,82 @@
 <div class="container-fluid">
-  <h1>Welcome! {{showSignup ? 'Signup' : 'Login'}} here:</h1>
-  <div>
-    <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
-      <div class="form-group">
-        <label> Username </label><br>
-        <input type="text" [(ngModel)]="formInfo.username" name="username" #myUsername="ngModel" required/>
-        <br><span *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
-            Username is required, please enter a value
-        </span>
-      </div>
-      <div class="form-group">
-        <label> Password </label><br>
-        <input type="password" [(ngModel)]="formInfo.password" name="password" #myPassword="ngModel" required/>
-        <br><span *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
-            Password is required, please enter a value
-        </span>
-      </div>
-      <div class='form-group' *ngIf="showSignup">
-        <label> Email </label><br>
-        <input type="text" [(ngModel)]="formInfo.email" class="text"name="email" #myEmail="ngModel" required/>
-        <br><span *ngIf="myEmail.errors && (myEmail.dirty || myEmail.touched)">
-            Email is required, please enter a value
-        </span>
-      </div>
-      <div *ngIf="showSignup">
-        <div class="form-group">
-          <label> Role </label><br>
-          <div [(ngModel)]='formInfo.role' ngbRadioGroup name="role">
-            <label class="btn btn-success">
-              <input type="radio" value="1"> Collaborator
-            </label>
-            <label class="btn btn-warning">
-              <input type="radio" value="2"> Team Leader
-            </label>
-            <label class="btn btn-info">
-              <input type="radio" value="3"> Provider
-            </label>
-          </div>
-        </div>
-        <div  [ngSwitch]="formInfo.role">
-          <span *ngSwitchCase="1"> If you are looking for a good cause to help out this is your role! </span>
-          <span *ngSwitchCase="2"> Team Leaders use our platform to source and finance their needs in the most transparent way </span>
-          <span *ngSwitchCase="3"> Engage with leaders to provide for their needs, with the help of collaborators </span>
-          <span *ngSwitchDefault> Choose a role to see a description </span>
-        </div>
-      </div>
-      <br>
-      <div class="form-group" *ngIf="showSignup">
-        <label> Profile picture </label>
-        <!-- <input type="text" [(ngModel)]="formInfo.pic" class="text" name="pic" #myPic="ngModel" required/> -->
-         <input class="verdecillo" type="file" name="file" ng2FileSelect [uploader]="uploader" />
-        <!-- <span *ngIf="myPic.errors && (myPic.dirty || myPic.touched)">
-            Profile pic is required
-        </span> -->
-      </div>
-      <div class="form-group">
-        <button class="btn btn-outline-primary" type='submit'>
-          {{showSignup ? 'Signup' : 'Login'}}
-        </button>
-        <span> or </span>
-        <button (click)="toggleSignup()" class="btn btn-outline-primary" type='button'>
-           {{showSignup ? 'Login' : 'Signup'}}
-        </button>
-      </div>
-
-    </form>
-
-
-
-    <!-- <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
-      <div class="form-group">
-        <input id="slim" type="text" [(ngModel)]="formInfo" name="search" #mySearch="ngModel" required/>
-      </div>
-      <button id="slim-two" class="btn btn-outline-primary" type="submit">
-        <i class="fa fa-search" aria-hidden="true"></i>
-      </button>
-    </form> -->
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6">
+      <h1>Welcome! {{showSignup ? 'Signup' : 'Login'}} here:</h1>
+    </div>
   </div>
+  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+    <div class="row">
+      <div class="offset-sm-2 col-sm-8">
+        <div>
+          <div class="form-group">
+            <input class="green-line" placeholder="Username" type="text" [(ngModel)]="formInfo.username" name="username" #myUsername="ngModel" required/>
+            <br><span *ngIf="myUsername.errors && (myUsername.dirty || myUsername.touched)">
+                    Username is required, please enter a value
+                </span>
+          </div>
+          <div class="form-group">
+            <input class="green-line" placeholder="Password" type="password" [(ngModel)]="formInfo.password" name="password" #myPassword="ngModel" required/>
+            <br><span *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+                    Password is required, please enter a value
+                </span>
+          </div>
+          <div class='form-group' *ngIf="showSignup">
+            <input class="green-line" placeholder="e-mail" type="text" [(ngModel)]="formInfo.email" name="email" #myEmail="ngModel" required/>
+            <br><span *ngIf="myEmail.errors && (myEmail.dirty || myEmail.touched)">
+                    Email is required, please enter a value
+                </span>
+          </div>
+          <div *ngIf="showSignup">
+            <div class="form-group">
+              <label class="center"> Choose a role: </label><br>
+              <div [(ngModel)]='formInfo.role' ngbRadioGroup name="role" class="center">
+                <label class="btn btn-success">
+                      <input type="radio" value="1"> Collaborator
+                    </label>
+                <label class="btn btn-warning">
+                      <input type="radio" value="2"> Team Leader
+                    </label>
+                <label class="btn btn-info">
+                      <input type="radio" value="3"> Provider
+                    </label>
+              </div>
+            </div>
+            <div [ngSwitch]="formInfo.role" class="center">
+              <span *ngSwitchCase="1"> If you are looking for a good cause to help out this is your role! </span>
+              <span *ngSwitchCase="2"> Team Leaders use our platform to source and finance their needs in the most transparent way </span>
+              <span *ngSwitchCase="3"> Engage with leaders to provide for their needs, with the help of collaborators </span>
+              <span *ngSwitchDefault> Choosing a role won't limit your user to any functionality  </span>
+            </div>
+          </div>
+          <br>
+          <div class="form-group" *ngIf="showSignup" class="center">
+            <label> Profile picture </label>
+            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
+          </div>
+          <br>
+          <div class="form-group center">
+            <div>
+              <button class="btn btn-outline-primary" type='submit'>
+                {{showSignup ? 'Signup' : 'Login'}}
+              </button>
+            </div>
+            <div>
+              <span>or</span>
+            </div>
+            <div>
+              <button (click)="toggleSignup()" class="btn btn-sm btn-outline-success" type='button'>
+                 {{showSignup ? 'Login' : 'Signup'}}
+              </button>
+            </div>
+          </div>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+
 </div>
-
-
-
-<!-- <ngb-alert [dismissible]="false" *ngIf="error"> {{ error }} </ngb-alert>
-
-
-<div *ngIf="user">
-  <h2> You are now logged in as {{ user.username }}!! </h2>
-  <p> Here's the user object </p>
-  <pre> {{ user | json }} </pre>
-
-  <p *ngIf="privateData"> Here's some data fetched from a protected API </p>
-  <pre> {{ privateData | json }} </pre>
-
-  <button (click)="logout()"> logout </button>
-  <button (click)="getPrivateData()"> Get private data </button>
-</div> -->

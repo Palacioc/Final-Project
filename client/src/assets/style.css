@@ -8,6 +8,7 @@
   margin: 0;
   width: 100%;
   font-family: sans-serif;
+  font-weight: lighter;
   font-size: 18px;
   appearance: none;
   box-shadow: none;
@@ -15,11 +16,11 @@
   background-color: transparent;
   padding: 10px;
   border: none;
-  border-bottom: solid 2px #c9c9c9;
+  border-bottom: solid 1px #c9c9c9;
   transition: border 0.3s;
   color: rgb(195,254,170);
 }
 .green-line:focus {
   outline: none;
-  border-bottom: solid 2px #969696;
+  border-bottom: solid 2px rgb(195,254,170);
 }

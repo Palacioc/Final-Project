@@ -1,14 +1,14 @@
 <div class="backgr">
   <div class="container-fluid">
     <div class="row">
-      <div class="col center">
+      <div class="col-sm-6 offset-sm-3">
         <h1> New project </h1>
         <br>
       </div>
     </div>
     <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
       <div class="row">
-        <div class="col-sm-offset-3 col-sm-6">
+        <div class="offset-sm-1 col-sm-5">
           <div class="form-group">
             <input class="green-line" type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" placeholder="Project name" required/>
             <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
@@ -21,12 +21,12 @@
               You need a description for your project!
           </span>
           </div>
-          <div class="form-group green-line center">
+          <div class="form-group green-line">
             <label> Image </label>
-            <input class="green-line verdecillo inline" type="file" name="file" ng2FileSelect [uploader]="uploader" />
+            <input type="file" name="file" ng2FileSelect [uploader]="uploader" id="upld"/>
           </div>
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-5">
           <div class="form-group">
             <input [(ngModel)]="formInfo.location.address" name="address" #myAddress="ngModel" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" class="form-control green-line" #search required/>
             <br><span *ngIf="myAddress.errors && (myAddress.dirty || myAddress.touched)">
