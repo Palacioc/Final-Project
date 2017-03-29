@@ -53,7 +53,6 @@ export class NeedNewComponent implements OnInit {
       });
       this.uploader.onSuccessItem = (item, response) => {
         this.feedback = JSON.parse(response).message;
-        console.log('need created:', JSON.parse(response));
         this.router.navigate(['/projects/'+this.param]);
       };
       this.uploader.onErrorItem = (item, response, status, headers) => {
@@ -70,7 +69,6 @@ export class NeedNewComponent implements OnInit {
     }
 
     submitForm(theForm){
-      console.log(this.formInfo);
       this.uploader.onBuildItemForm = (item, form) => {
         form.append('projectID', this.formInfo.projectID);
         form.append('name', this.formInfo.name);

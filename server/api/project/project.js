@@ -23,6 +23,15 @@ router.get('/by-creator/:id', (req, res, next) => {
   });
 });
 
+router.post('/nearby-projects', (req, res, next) => {
+  Project.find({location: {
+    $near : { $geometry : { type : "Point", coordinates : [req.body.longitude, req.body.latitude] }, $maxDistance : '10000' }}},
+    (err, Projects) => {
+    if(err) { return res.send(err); }
+    return res.json(Projects);
+  });
+});
+
 router.get('/search/:term', (req, res, next) => {
   if((req.params.term)==='') {
     return res.status(400).json({ message: 'No search term' });
@@ -46,13 +55,18 @@ router.get('/four-latest', (req, res, next) => {
 
 /* CREATE a new Project. */
 router.post('/', upload.single('file'), (req, res) => {
+  let location = {
+    type: 'Point',
+    coordinates: [req.body.latitude, req.body.longitude]
+  };
   const project = new Project({
     _creator: req.body.creatorID,
     name: req.body.name,
     description: req.body.description,
     image: "/dist/db-pictures/" + req.file.filename || '',
     completed: req.body.completed || false,
-    location: req.body.location,
+    location: location,
+    address: req.body.address,
   });
   project.save((err, project) => {
     if (err) { return res.send(err); }

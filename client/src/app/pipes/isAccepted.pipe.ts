@@ -13,8 +13,6 @@ export class IsAcceptedPipe implements PipeTransform {
     if (!value) {
       return items;
     }
-    console.log("pipe");
-    console.log(value)
     if(value==='All'){
       return items;
     }else if(value==='Accepted'){

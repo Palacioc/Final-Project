@@ -57,7 +57,6 @@ export class ProposalNewComponent implements OnInit {
       this.needService.get(id)
         .subscribe((need) => {
           this.need = need;
-          console.log(this.need);
           if(this.need.status==="Grey"){
             this.type = "sourcing";
           }
@@ -80,7 +79,6 @@ export class ProposalNewComponent implements OnInit {
         this.formInfo.cost = this.need.cost;
         this.formInfo.accountNo = '0';
       }
-      console.log(this.formInfo);
       this.proposalService.createProposal(this.formInfo)
         .subscribe((proposal) => {
          this.router.navigate(['/projects/'+this.need._project._id]);

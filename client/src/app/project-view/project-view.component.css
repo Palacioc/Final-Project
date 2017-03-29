@@ -3,6 +3,10 @@
   padding: 20px;
 }
 
+.sebm-google-map-container {
+  height: 300px;
+}
+
 .profile-left{
   object-fit: cover;
   height: 200px;

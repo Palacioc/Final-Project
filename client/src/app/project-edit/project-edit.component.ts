@@ -45,7 +45,6 @@ export class ProjectEditComponent implements OnInit {
    }
 
    submitForm(theForm){
-     console.log(this.formInfo);
      this.projectService.editProject(this.projectID, this.formInfo)
        .subscribe((project) => {
         this.router.navigate(['/projects/'+this.projectID]);

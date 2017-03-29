@@ -20,7 +20,7 @@ export class NavBarComponent implements OnInit {
   constructor(private session: SessionService, private router: Router) { }
 
   ngOnInit() {
-    this.session.getLoginEventEmitter().subscribe((user)=>{console.log('user received',user);this.user = user === null || user === undefined || user.message === 'Logged out' ? null : user});
+    this.session.getLoginEventEmitter().subscribe((user)=>{this.user = user === null || user === undefined || user.message === 'Logged out' ? null : user});
     this.session.isLoggedIn()
       .subscribe(
         (user) => this.successCb(user)

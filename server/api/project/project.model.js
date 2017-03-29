@@ -18,10 +18,8 @@ const projectSchema = new mongoose.Schema({
       type: Boolean,
       default: false,
     },
-    location: {
-      type:Object,
-      required: true
-    }
+    location: { type: { type: String }, coordinates: [Number] },
+    address:{type:String}
   },{
     timestamps: {
       createdAt: "created_at",
@@ -29,5 +27,7 @@ const projectSchema = new mongoose.Schema({
     }
   }
 );
+
+projectSchema.index({ location: '2dsphere' });
 
 module.exports = mongoose.model('Project', projectSchema);

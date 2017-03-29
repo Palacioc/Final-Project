@@ -32,6 +32,10 @@ import { IsAcceptedPipe } from './pipes/isAccepted.pipe';
 import { FooterComponent } from './footer/footer.component';
 import { BrowseComponent } from './browse/browse.component';
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import { GooglePlaceModule } from 'ng2-google-place-autocomplete';
+import { SebmGoogleMap } from 'angular2-google-maps/core';
+
+import { AutocompleteService } from "./autocomplete.service";
 
 
 
@@ -102,10 +106,12 @@ const routes: Routes = [
     NgbModule.forRoot(),
     FileUploadModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCQHk3sapi_a5bWgifWuh2E5hwm_h8zJy8'
-    })
+      apiKey: 'AIzaSyCQHk3sapi_a5bWgifWuh2E5hwm_h8zJy8',
+      libraries: ['places']
+    }),
+    GooglePlaceModule
   ],
-  providers: [SessionService, ProjectService, NeedService, ProposalService],
+  providers: [SessionService, ProjectService, NeedService, ProposalService, AutocompleteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

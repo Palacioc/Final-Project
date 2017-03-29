@@ -41,12 +41,10 @@ export class NeedEditComponent implements OnInit {
     this.needService.get(id)
       .subscribe((need) => {
         this.need = need;
-        console.log(this.need)
       });
   }
 
   submitForm(theForm){
-    console.log(this.formInfo);
     this.needService.editNeed(this.needID, this.formInfo)
        this.needService.getDeletedEventEmitter().emit();
        this.router.navigate(['/projects/'+this.need._project._id]);

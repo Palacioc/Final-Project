@@ -33,9 +33,6 @@ export class NeedViewComponent implements OnInit {
       this.proposals = proposals;
       this.fundingProposals = this.proposals.filter((elem)=>(elem.coverage === 'Green'))
       this.sourcingProposals = this.proposals.filter((elem)=>(elem.coverage === 'Blue'))
-      console.log('Todos los proposals: ', this.proposals);
-      console.log('Funding: ', this.fundingProposals);
-      console.log('Sourcing', this.sourcingProposals);
     });
 
   }
@@ -47,7 +44,6 @@ export class NeedViewComponent implements OnInit {
   deleteNeed(id) {
     this.needService.deleteNeed(id)
       .subscribe((response) => {
-        console.log(response);
         this.needService.getDeletedEventEmitter().emit();
       });
   }

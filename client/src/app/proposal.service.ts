@@ -30,7 +30,7 @@ export class ProposalService {
 
   editProposal(id, info){
     this.http.put(`${this.BASEURL}/api/proposals/${id}`, info)
-      .map(res => res.json()).subscribe((response)=>{console.log('response is', response)})
+      .map(res => res.json()).subscribe((response)=>{})
   }
 
   getByNeed(id) {

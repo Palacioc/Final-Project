@@ -7,7 +7,7 @@
         <h1 class="carousel-title" id="carousel-title">{{project.name}}</h1>
         <blockquote>
           <p>{{project.description}}</p>
-          <footer>- {{project._creator.username}}, in {{project.location}}, {{project.created_at | date}}</footer>
+          <footer>- {{project._creator.username}}, on {{project.created_at | date}}</footer>
         </blockquote>
         <div class="center" *ngIf="userIsCreator">
           <button class="btn btn-warning" [routerLink]="['/projects/edit/']+[param]">Edit</button>
@@ -22,30 +22,27 @@
         <div class="card">
           <img *ngIf="project" [src]="BASEURL+project._creator.pic" class="profile-left" id="profile-left">
           <div class="card-block" *ngIf="project">
-            <p>Started by <strong>{{project._creator.username}}</strong></p>
-            <p>Last update: {{project.updated_at | date}}</p>
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
-            </div>
-            <br>
-            <a class="btn btn-outline-warning center" [routerLink]="['/home/']">Back to my projects</a>
+            Started by <strong>{{project._creator.username}}</strong><br>
+            Last update: {{project.updated_at | date}}
           </div>
         </div>
         <br>
         <div class="card">
+          <div *ngIf="project">
+            <sebm-google-map [latitude]="project.location.coordinates[0]" [longitude]="project.location.coordinates[1]">
+              <sebm-google-map-marker [latitude]="project.location.coordinates[0]" [longitude]="project.location.coordinates[1]"></sebm-google-map-marker>
+            </sebm-google-map>
+          </div>
           <div class="card-block" *ngIf="project">
-            <p>Started by <strong>{{project._creator.username}}</strong></p>
-            <p>Last update: {{project.updated_at | date}}</p>
-            <div class="input-group input-group-sm">
-              <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://localhost:4200'+router.url">
-            </div>
-            <br>
-            <a class="btn btn-outline-warning center" [routerLink]="['/home/']">Back to my projects</a>
+            This project is based in {{project.address}}
           </div>
         </div>
         <br>
+        <div class="card hidden-xs-down">
+          <div class="card-block" *ngIf="project">
+            <a class="btn btn-outline-warning center" [routerLink]="['/home/']">Back to my projects</a>
+          </div>
+        </div>
 
     </div>
     <div class="col-md-9">
@@ -62,6 +59,17 @@
         </div>
         <br>
         <button *ngIf="userIsCreator" class="btn btn-outline-warning" [routerLink]="['/needs/new/']+[param]">Add a new need</button>
+      </div>
+      <br>
+      <div class="card">
+        <div class="card-block" *ngIf="project">
+          <h2>Think you know someone who can participate in this project?</h2>
+          <p>Share this link with friends and family:</p>
+          <div class="input-group input-group-sm">
+            <span class="input-group-addon  btn-outline-warning " id="basic-addon3"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+            <input type="text" class="form-control" placeholder="Link" aria-describedby="basic-addon1" [value]="'http://www.idtm.co'+router.url">
+          </div>
+        </div>
       </div>
     </div>
   </div>

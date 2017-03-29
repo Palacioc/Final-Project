@@ -14,9 +14,7 @@ const upload = require('../../configs/multer');
 authController.post("/signup", upload.single('file'), (req, res, next) => {
   var {username, email, password, role} = req.body;
   var pic = "/dist/db-pictures/" + req.file.filename;
-  console.log('all data', username, password, email, role, pic);
   if (!username || !password || !email || !role || !pic) {
-    console.log('Entered 400!!!');
     res.status(400).json({ message: "Please provide all data for user creation" });
     return;
   }
@@ -38,7 +36,6 @@ authController.post("/signup", upload.single('file'), (req, res, next) => {
       password: hashPass
     });
 
-    console.log('new user pic is' + newUser.pic);
     newUser.save((err) => {
       if (err) {
         res.status(400).json({ message: "Something went wrong" });
@@ -90,7 +87,6 @@ authController.get("/loggedin", function(req, res) {
 
 //PRIVATE MESSAGE
 authController.get("/private", (req, res) => {
-  console.log(req.sessionID);
   if(req.isAuthenticated() && req.user.role==='Collaborator') {
     return res.json({ message: 'This is a private message' });
   }

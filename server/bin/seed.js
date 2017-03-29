@@ -36,7 +36,6 @@ const users = [
 User.create(users, (err, docs) => {
   if (err) { throw err; }
   docs.forEach( (user) => {
-    console.log(user.username);
   });
   mongoose.connection.close();
 });

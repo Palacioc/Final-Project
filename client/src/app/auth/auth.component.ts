@@ -72,7 +72,6 @@ export class AuthComponent implements OnInit {
 
 
  login() {
-   console.log(this.formInfo);
    this.session.login(this.formInfo)
      .subscribe(
        (user) => {this.successCb(user);this.router.navigate(['/home']);},
@@ -82,7 +81,6 @@ export class AuthComponent implements OnInit {
 
  signup() {
    const roles = ['Collaborator', 'Leader', 'Provider'];
-   console.log('the number captured',this.formInfo.role);
    this.formInfo.role = roles[Number(this.formInfo.role)-1];
    if(this.showSignup){
     this.uploader.onBuildItemForm = (item, form) => {
