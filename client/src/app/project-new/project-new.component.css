@@ -5,6 +5,30 @@ label, span, .verdecillo, h1{
   font-weight: lighter;
 }
 
+.bordered{
+  border: 1px solid rgba(195,254,170,.5);
+}
+
+:checked + label {
+  font-weight: bold;
+  color: rgb(195,254,170);
+}
+
+input[type=checkbox] {
+  display: none;
+}
+
+ul{
+  list-style-type: none;
+  columns: 2;
+  -webkit-columns: 2;
+  -moz-columns: 2;
+  text-align: left;
+}
+
+li > label{
+  color: rgba(195,254,170,.5);
+}
 
 .backgr{
   background: rgba(41,43,44,1);

@@ -26,34 +26,104 @@
                     Email is required, please enter a value
                 </span>
           </div>
-          <div *ngIf="showSignup">
-            <div class="form-group">
-              <label class="center"> Choose a role: </label><br>
-              <div [(ngModel)]='formInfo.role' ngbRadioGroup name="role" class="center">
-                <label class="btn btn-success">
-                      <input type="radio" value="1"> Collaborator
-                    </label>
-                <label class="btn btn-warning">
-                      <input type="radio" value="2"> Team Leader
-                    </label>
-                <label class="btn btn-info">
-                      <input type="radio" value="3"> Provider
-                    </label>
+          <div class="row">
+            <div class="col-sm-6">
+
+
+              <div *ngIf="showSignup" class="bordered">
+                <div class="form-group">
+                  <label class="center"> Choose a role: </label><br>
+                  <div [(ngModel)]='formInfo.role' ngbRadioGroup name="role" class="center">
+                    <label class="btn btn-success">
+                          <input type="radio" value="1"> Collaborator
+                        </label>
+                    <label class="btn btn-warning">
+                          <input type="radio" value="2"> Team Leader
+                        </label>
+                    <label class="btn btn-info">
+                          <input type="radio" value="3"> Provider
+                        </label>
+                  </div>
+                </div>
+                <div [ngSwitch]="formInfo.role" class="center">
+                  <span *ngSwitchCase="1"> If you are looking for a good cause to help out this is your role! </span>
+                  <span *ngSwitchCase="2"> Team Leaders use our platform to source and finance their needs in the most transparent way </span>
+                  <span *ngSwitchCase="3"> Engage with leaders to provide for their needs, with the help of collaborators </span>
+                  <span *ngSwitchDefault> Choosing a role won't limit your user to any functionality  </span>
+                </div>
+                <br>
+              </div>
+              <br>
+              <div class="form-group" *ngIf="showSignup" class="center bordered">
+                <label> Profile picture </label><br><br>
+                <input type="file" name="file" ng2FileSelect [uploader]="uploader" class="verdecillo"/><br><br>
+              </div>
+              <br>
+            </div>
+            <div class="col-sm-6">
+
+              <div class='form-group bordered' *ngIf="showSignup">
+                <p class="verdecillo center">Select your interests: </p><br>
+                <ul>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isAwareness" name="isAwareness" id="isAwareness" #myAwareness="ngModel"/>
+                    <label for="isAwareness"><i class="fa fa-bullhorn" aria-hidden="true"></i> Awareness</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isEducation" name="isEducation" id="isEducation" #myEducation="ngModel"/>
+                    <label for="isEducation"><i class="fa fa-book" aria-hidden="true"></i> Education</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isPoverty" name="isPoverty" id="isPoverty" #myPoverty="ngModel"/>
+                    <label for="isPoverty"><i class="fa fa-adjust" aria-hidden="true"></i> Poverty</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isAnimals" name="isAnimals" id="isAnimals" #myAnimals="ngModel"/>
+                    <label for="isAnimals"> <i class="fa fa-paw" aria-hidden="true"></i> Animals</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isEcology" name="isEcology" id="isEcology" #myEcology="ngModel"/>
+                    <label for="isEcology"><i class="fa fa-leaf" aria-hidden="true"></i> Ecology</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isHealth" name="isHealth" id="isHealth" #myHealth="ngModel"/>
+                    <label for="isHealth"><i class="fa fa-medkit" aria-hidden="true"></i> Health</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isElderly" name="isElderly" id="isElderly" #myElderly="ngModel"/>
+                    <label for="isElderly"><i class="fa fa-blind" aria-hidden="true"></i> Elderly</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isImmigrationAndDisplacement" name="isImmigrationAndDisplacement" id="isImmigrationAndDisplacement" #myImmigrationAndDisplacement="ngModel"/>
+                    <label for="isImmigrationAndDisplacement"><i class="fa fa-users" aria-hidden="true"></i> Immigration and Displacement</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isDisabled" name="isDisabled" id="isDisabled" #myDisabled="ngModel"/>
+                    <label for="isDisabled"><i class="fa fa-wheelchair" aria-hidden="true"></i> Disabled</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isWater" name="isWater" id="isWater" #myWater="ngModel"/>
+                    <label for="isWater"><i class="fa fa-tint" aria-hidden="true"></i> Water</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isPolitics" name="isPolitics" id="isPolitics" #myPolitics="ngModel"/>
+                    <label for="isPolitics"><i class="fa fa-envelope-open" aria-hidden="true"></i> Politics</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isDisasterRelief" name="isDisasterRelief" id="isDisasterRelief" #myDisasterRelief="ngModel"/>
+                    <label for="isDisasterRelief"><i class="fa fa-ambulance" aria-hidden="true"></i> Disaster Relief</label>
+                  </li>
+                  <li>
+                    <input type="checkbox" [(ngModel)]="formInfo.isOther" name="isOther" id="isOther" #myOther="ngModel"/>
+                    <label for="isOther"><i class="fa fa-hand-peace-o" aria-hidden="true"></i> Other</label>
+                  </li>
+                </ul>
               </div>
             </div>
-            <div [ngSwitch]="formInfo.role" class="center">
-              <span *ngSwitchCase="1"> If you are looking for a good cause to help out this is your role! </span>
-              <span *ngSwitchCase="2"> Team Leaders use our platform to source and finance their needs in the most transparent way </span>
-              <span *ngSwitchCase="3"> Engage with leaders to provide for their needs, with the help of collaborators </span>
-              <span *ngSwitchDefault> Choosing a role won't limit your user to any functionality  </span>
-            </div>
+
           </div>
-          <br>
-          <div class="form-group" *ngIf="showSignup" class="center">
-            <label> Profile picture </label>
-            <input type="file" name="file" ng2FileSelect [uploader]="uploader" />
-          </div>
-          <br>
+
+
           <div class="form-group center">
             <div>
               <button class="btn btn-outline-primary" type='submit'>

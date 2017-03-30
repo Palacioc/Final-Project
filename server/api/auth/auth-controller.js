@@ -12,7 +12,25 @@ const upload = require('../../configs/multer');
 
 //SIGNUP
 authController.post("/signup", upload.single('file'), (req, res, next) => {
-  var {username, email, password, role} = req.body;
+  var {
+    username,
+    email,
+    password,
+    role,
+    isAwareness,
+    isEducation,
+    isPoverty,
+    isAnimals,
+    isEcology,
+    isHealth,
+    isElderly,
+    isImmigrationAndDisplacement,
+    isWater,
+    isPolitics,
+    isDisasterRelief,
+    isDisabled,
+    isOther,
+  } = req.body;
   var pic = "/dist/db-pictures/" + req.file.filename;
   if (!username || !password || !email || !role || !pic) {
     res.status(400).json({ message: "Please provide all data for user creation" });
@@ -33,8 +51,22 @@ authController.post("/signup", upload.single('file'), (req, res, next) => {
       email,
       role,
       pic,
-      password: hashPass
+      password: hashPass,
+      isAwareness,
+      isEducation,
+      isPoverty,
+      isAnimals,
+      isEcology,
+      isHealth,
+      isElderly,
+      isImmigrationAndDisplacement,
+      isWater,
+      isPolitics,
+      isDisasterRelief,
+      isDisabled,
+      isOther,
     });
+    console.log(newUser);
 
     newUser.save((err) => {
       if (err) {

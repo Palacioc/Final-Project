@@ -17,10 +17,11 @@ const userSchema = new Schema({
     isEcology: Boolean,
     isHealth: Boolean,
     isElderly: Boolean,
-    isInmigrationAndDisplacement: Boolean,
+    isImmigrationAndDisplacement: Boolean,
     isWater: Boolean,
     isPolitics: Boolean,
     isDisasterRelief: Boolean,
+    isDisabled: Boolean,
     isOther: Boolean,
     pic: {
       type: String, default: ''

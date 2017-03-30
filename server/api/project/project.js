@@ -67,6 +67,19 @@ router.post('/', upload.single('file'), (req, res) => {
     completed: req.body.completed || false,
     location: location,
     address: req.body.address,
+    isAwareness: req.body.isAwareness,
+    isEducation: req.body.isEducation,
+    isPoverty: req.body.isPoverty,
+    isAnimals: req.body.isAnimals,
+    isEcology: req.body.isEcology,
+    isHealth: req.body.isHealth,
+    isElderly: req.body.isElderly,
+    isImmigrationAndDisplacement: req.body.isImmigrationAndDisplacement,
+    isWater: req.body.isWater,
+    isPolitics: req.body.isPolitics,
+    isDisasterRelief: req.body.isDisasterRelief,
+    isDisabled: req.body.isDisabled,
+    isOther: req.body.isOther,
   });
   project.save((err, project) => {
     if (err) { return res.send(err); }

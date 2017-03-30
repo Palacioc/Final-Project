@@ -19,7 +19,20 @@ const projectSchema = new mongoose.Schema({
       default: false,
     },
     location: { type: { type: String }, coordinates: [Number] },
-    address:{type:String}
+    address:{type:String},
+    isAwareness: Boolean,
+    isEducation: Boolean,
+    isPoverty: Boolean,
+    isAnimals: Boolean,
+    isEcology: Boolean,
+    isHealth: Boolean,
+    isElderly: Boolean,
+    isImmigrationAndDisplacement: Boolean,
+    isWater: Boolean,
+    isPolitics: Boolean,
+    isDisasterRelief: Boolean,
+    isDisabled: Boolean,
+    isOther: Boolean,
   },{
     timestamps: {
       createdAt: "created_at",

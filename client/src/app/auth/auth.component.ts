@@ -26,6 +26,19 @@ export class AuthComponent implements OnInit {
     email: '',
     pic: '',
     role: '',
+    isAwareness : false,
+    isEducation: false,
+    isPoverty: false,
+    isAnimals: false,
+    isEcology: false,
+    isHealth: false,
+    isElderly: false,
+    isImmigrationAndDisplacement: false,
+    isWater: false,
+    isPolitics: false,
+    isDisasterRelief: false,
+    isDisabled: false,
+    isOther: false,
   };
 
   showSignup: boolean = false;
@@ -89,6 +102,19 @@ export class AuthComponent implements OnInit {
       form.append('password', this.formInfo.password);
       form.append('pic', this.formInfo.pic);
       form.append('role', this.formInfo.role);
+      form.append('isAwareness', this.formInfo.isAwareness);
+      form.append('isEducation', this.formInfo.isEducation);
+      form.append('isPoverty', this.formInfo.isPoverty);
+      form.append('isAnimals', this.formInfo.isAnimals);
+      form.append('isEcology', this.formInfo.isEcology);
+      form.append('isHealth', this.formInfo.isHealth);
+      form.append('isElderly', this.formInfo.isElderly);
+      form.append('isImmigrationAndDisplacement', this.formInfo.isImmigrationAndDisplacement);
+      form.append('isWater', this.formInfo.isWater);
+      form.append('isPolitics', this.formInfo.isPolitics);
+      form.append('isDisasterRelief', this.formInfo.isDisasterRelief);
+      form.append('isDisabled', this.formInfo.isDisabled);
+      form.append('isOther', this.formInfo.isOther);
     };
     this.uploader.uploadAll()
    }else{

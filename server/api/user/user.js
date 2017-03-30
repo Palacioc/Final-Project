@@ -19,7 +19,20 @@ router.post('/', (req, res) => {
     email: req.body.email,
     password: req.body.password,
     role: req.body.role || 'Collaborator',
-    pic: req.body.pic || ''
+    pic: req.body.pic || '',
+    isAwareness: req.body.isAwareness,
+    isEducation: req.body.isEducation,
+    isPoverty: req.body.isPoverty,
+    isAnimals: req.body.isAnimals,
+    isEcology: req.body.isEcology,
+    isHealth: req.body.isHealth,
+    isElderly: req.body.isElderly,
+    isImmigrationAndDisplacement: req.body.isImmigrationAndDisplacement,
+    isWater: req.body.isWater,
+    isPolitics: req.body.isPolitics,
+    isDisasterRelief: req.body.isDisasterRelief,
+    isDisabled: req.body.isDisabled,
+    isOther: req.body.isOther,
   });
 
   user.save((err) => {
