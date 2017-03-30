@@ -1,33 +1,27 @@
-<div *ngIf="project">
-  <h1> Edit project {{project.name}}</h1>
+<div *ngIf="project" class="container-fluid">
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6">
+      <h1> Edit project {{project.name}}</h1>
 
-  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
-    <div class="form-group">
-      <label> Project name </label><br>
-      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
-      <br><span>(Previous name: {{project.name}})</span>
-      <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
-          You need a name for your project!
-      </span>
+      <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+        <div class="form-group">
+          <input type="text" class="green-line" placeholder="Project name" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
+          <br><span>(Previous name: {{project.name}})</span>
+          <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+              You need a name for your project!
+          </span>
+        </div>
+        <div class="form-group">
+          <input class="green-line" placeholder="Project description (please be concise)" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/>
+          <br><span>(Previous description: {{project.description}})</span>
+          <br><span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
+              You need a description for your project!
+          </span>
+        </div>
+        <button class="btn btn-primary" type='submit'>
+          Edit Project
+        </button>
+      </form>
     </div>
-    <div class="form-group">
-      <label> Description </label><br>
-      <input [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required/>
-      <br><span>(Previous description: {{project.description}})</span>
-      <br><span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
-          You need a description for your project!
-      </span>
-    </div>
-    <div class="form-group">
-      <label> Location </label><br>
-      <input type="text" [(ngModel)]="formInfo.location" name="location" #myLocation="ngModel" required/>
-      <br><span>(Previous location: {{project.location}})</span>
-      <br><span *ngIf="myLocation.errors && (myLocation.dirty || myLocation.touched)">
-          You need a location for your project!
-      </span>
-    </div>
-    <button class="btn btn-primary" type='submit'>
-      Edit Project
-    </button>
-  </form>
+  </div>
 </div>

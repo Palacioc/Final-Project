@@ -1,24 +1,28 @@
-<div *ngIf="proposal && need">
-  <h1>
+<div *ngIf="proposal && need" class="container-fluid">
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6">
+      <h1>
     <span *ngIf="proposal.coverage==='Blue'">Sourcing </span>
     <span *ngIf="proposal.coverage==='Green'">Funding </span>
     proposal for need {{need.name}}:
    </h1>
-   <span>
+      <span>
      {{proposal._contributor.username}} can source this need for {{proposal.cost}} Eur
    </span><br>
-   <span>
+      <span>
      Status:
      <span *ngIf="proposal.status"> Accepted </span>
-     <span *ngIf="!proposal.status"> Pending acceptance </span>
-   </span><br><br>
-    <span>{{proposal.comment}}</span><br>
-    <span> - {{proposal._contributor.username}} on {{proposal.created_at | date}}</span>
-  <div *ngIf="need && user && need.allocatedCollaborator">
-    <span *ngIf="need._allocatedCollaborator._id && user._id===need._allocatedCollaborator._id"> The leader of this project accepted your proposal. You can now make the payment of {{need.cost}} Eur to {{need._allocatedProvider.username}}'s bank account: {{proposal.accountNo}} </span>
-  </div>
+      <span *ngIf="!proposal.status"> Pending acceptance </span>
+      </span><br><br>
+      <span>{{proposal.comment}}</span><br>
+      <span> - {{proposal._contributor.username}} on {{proposal.created_at | date}}</span>
+      <div *ngIf="need && user && need.allocatedCollaborator">
+        <span *ngIf="need._allocatedCollaborator._id && user._id===need._allocatedCollaborator._id"> The leader of this project accepted your proposal. You can now make the payment of {{need.cost}} Eur to {{need._allocatedProvider.username}}'s bank account: {{proposal.accountNo}} </span>
+      </div>
 
-  <br><br>
-  <button *ngIf="userIsCreator && !proposal.status" class="btn btn-success" (click)="acceptProposal()">Accept proposal</button>
-  <button class="btn btn-default" [routerLink]="['/projects/']+[need._project._id]">Back to project</button>
+      <br><br>
+      <button *ngIf="userIsCreator && !proposal.status" class="btn btn-success" (click)="acceptProposal()">Accept proposal</button>
+      <button class="btn btn-default" [routerLink]="['/projects/']+[need._project._id]">Back to project</button>
+    </div>
+  </div>
 </div>

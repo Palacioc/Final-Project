@@ -1,42 +1,41 @@
-<div *ngIf="project">
-  <h1> New need for project {{project.name}}</h1>
+<div *ngIf="project" class="container-fluid">
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6">
+      <h1> New need for project {{project.name}}</h1>
 
-  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
-    <div class="form-group">
-      <label> Title </label><br>
-      <input type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
-      <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
+      <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+        <div class="form-group">
+          <input class="green-line" placeholder="Need title" type="text" [(ngModel)]="formInfo.name" name="name" #myName="ngModel" required/>
+          <br><span *ngIf="myName.errors && (myName.dirty || myName.touched)">
           You need a name for this need!
       </span>
-    </div>
-    <div class="form-group">
-      <label> Description </label><br>
-      <textarea rows="8" cols="80" placeholder="Please be concise; the better the description the more likely you are to be matched with the perfect provider!" rows="2" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required></textarea>
-      <br><span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
+        </div>
+        <div class="form-group">
+          <textarea class="green-line" placeholder="Need description (please be concise)" rows="8" cols="80" placeholder="Please be concise; the better the description the more likely you are to be matched with the perfect provider!" rows="2" [(ngModel)]="formInfo.description" name="description" #myDescription="ngModel" required></textarea>
+          <br><span *ngIf="myDescription.errors && (myDescription.dirty || myDescription.touched)">
           You need a description for this need!
       </span>
-    </div>
-    <div class="form-group">
-      <label> Image </label><br>
-      <input class="verdecillo" type="file" name="file" ng2FileSelect [uploader]="uploader"/>
-    </div>
-    <div class="form-group">
-      <label> How much do you estimate this will cost? </label><br>
-      <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
-      <br><span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
+        </div>
+        <div class="form-group">
+          <label> Image </label><br>
+          <input class="verdecillo" type="file" name="file" ng2FileSelect [uploader]="uploader" />
+        </div>
+        <div class="form-group">
+          <input type="text" class="green-line" placeholder="How much do you estimate this will cost?" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
+          <br><span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
           You need a cost for this need!
       </span>
-    </div>
-    <div class="form-group hidden">
-      <label> Allocated provider ID (optional) </label><br>
-      <input type="text" [(ngModel)]="formInfo.provider" name="provider" #myProvider="ngModel"/>
-    </div>
-    <div class="form-group hidden">
-      <label> Allocated collaborator ID (optional)</label><br>
-      <input type="text" [(ngModel)]="formInfo.collaborator" name="collaborator" #myCollaborator="ngModel"/>
-    </div>
-    <br><button class="btn btn-primary" type='submit'>
+        </div>
+        <div class="form-group hidden">
+          <input class="green-line" placeholder="Allocated provider ID (optional)" type="text" [(ngModel)]="formInfo.provider" name="provider" #myProvider="ngModel" />
+        </div>
+        <div class="form-group hidden">
+          <input class="green-line" placeholder="Allocated collaborator ID (optional)" type="text" [(ngModel)]="formInfo.collaborator" name="collaborator" #myCollaborator="ngModel" />
+        </div>
+        <br><button class="btn btn-primary" type='submit'>
       Create Need
     </button>
-  </form>
+      </form>
+    </div>
+  </div>
 </div>

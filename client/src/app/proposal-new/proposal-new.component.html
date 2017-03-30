@@ -1,43 +1,44 @@
-<div *ngIf="need">
-  <h1> New {{type}} proposal for need {{need.name}} (project {{need._project.name}}), from {{user.username}}</h1>
+<div *ngIf="need" class="container-fluid">
+  <div class="row">
+    <div class="offset-sm-3 col-sm-6">
+      <h1> New {{type}} proposal for need {{need.name}} (project {{need._project.name}}), from {{user.username}}</h1>
 
-  <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
+      <form (ngSubmit)="submitForm(theForm)" #theForm="ngForm" novalidate>
 
 
-    <div *ngIf="type==='sourcing'" class="form-group">
-      <label> Cost of sourcing this need </label><br>
-      <input type="text" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
-      <br><span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
+        <div *ngIf="type==='sourcing'" class="form-group">
+          <input type="text" class="green-line" placeholder="Cost of sourcing this need" [(ngModel)]="formInfo.cost" name="cost" #myCost="ngModel" required/>
+          <br><span *ngIf="myCost.errors && (myCost.dirty || myCost.touched)">
           Please indicate how much funding you will need to source this need
       </span>
-      <br><span>The leader of this project estimated that this need would cost {{need.cost}} Euros to be funded</span>
-      <br><span *ngIf="formInfo.cost && formInfo.cost<need.cost">You are saving this project {{need.cost-formInfo.cost}} Euros, thank you!</span>
-    </div>
+          <br><span>The leader of this project estimated that this need would cost {{need.cost}} Euros to be funded</span>
+          <br><span *ngIf="formInfo.cost && formInfo.cost<need.cost">You are saving this project {{need.cost-formInfo.cost}} Euros, thank you!</span>
+        </div>
 
-    <span *ngIf="type==='funding'" class="form-group"><br>
+        <span *ngIf="type==='funding'" class="form-group"><br>
       The allocated provider for this need is: {{need._allocatedProvider.username}}<br><br>
       {{need._allocatedProvider.username}} offered to source this need for {{need.cost}} Eur
     </span><br><br>
 
-    <div class="form-group">
-      <label> Add a comment </label><br>
-      <input type="text" [(ngModel)]="formInfo.comment" name="comment" #myComment="ngModel" required/>
-      <br><span *ngIf="myComment.errors && (myComment.dirty || myComment.touched)">
+        <div class="form-group">
+          <input type="text" class="green-line" placeholder="Add a comment" [(ngModel)]="formInfo.comment" name="comment" #myComment="ngModel" required/>
+          <br><span *ngIf="myComment.errors && (myComment.dirty || myComment.touched)">
           Please make a brief comment of how you plan to source this need
       </span>
-    </div>
+        </div>
 
-    <div *ngIf="type==='sourcing'" class="form-group" class="form-group">
-      <label> Your bank account number </label><br>
-      <input type="textarea" [(ngModel)]="formInfo.accountNo" name="accountNo" #myAccountNo="ngModel" required/>
-      <br><span *ngIf="myAccountNo.errors && (myAccountNo.dirty || myAccountNo.touched)">
+        <div *ngIf="type==='sourcing'" class="form-group" class="form-group">
+          <input type="textarea" class="green-line" placeholder="Your bank account number" [(ngModel)]="formInfo.accountNo" name="accountNo" #myAccountNo="ngModel" required/>
+          <br><span *ngIf="myAccountNo.errors && (myAccountNo.dirty || myAccountNo.touched)">
           You need an account number to receive payment
       </span>
-    </div>
+        </div>
 
-    <br><button class="btn btn-primary" type='submit'>
+        <br><button class="btn btn-primary" type='submit'>
       Create proposal
     </button>
 
-  </form>
+      </form>
+    </div>
+  </div>
 </div>
