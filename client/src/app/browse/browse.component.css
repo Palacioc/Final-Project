@@ -67,6 +67,12 @@ h2 {
   top: 0px;
 }
 
+.wide{
+  width: 100%;
+  left:0;
+  right:0;
+}
+
 .slim {
   font-weight: lighter;
 }

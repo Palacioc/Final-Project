@@ -6,8 +6,22 @@
             <img *ngIf="user" [src]="BASEURL+user.pic" class="card-img-top" id="profile-left">
             <div *ngIf="user" class="card-block">
               <h4 class="card-title">{{user.username}}</h4>
+              <span>Interests:</span>&nbsp;
+              <i *ngIf="user.isAwareness" class="fa fa-bullhorn" aria-hidden="true" placement="bottom" ngbTooltip="Awareness">  &nbsp;</i>
+              <i *ngIf="user.isEducation" class="fa fa-book" aria-hidden="true" placement="bottom" ngbTooltip="Education">  &nbsp;</i>
+              <i *ngIf="user.isPoverty" class="fa fa-adjust" aria-hidden="true" placement="bottom" ngbTooltip="Poverty">  &nbsp;</i>
+              <i *ngIf="user.isAnimals" class="fa fa-paw" aria-hidden="true" placement="bottom" ngbTooltip="Animals">  &nbsp;</i>
+              <i *ngIf="user.isEcology" class="fa fa-leaf" aria-hidden="true" placement="bottom" ngbTooltip="Ecology">  &nbsp;</i>
+              <i *ngIf="user.isHealth" class="fa fa-medkit" aria-hidden="true" placement="bottom" ngbTooltip="Health">  &nbsp;</i>
+              <i *ngIf="user.isElderly" class="fa fa-blind" aria-hidden="true" placement="bottom" ngbTooltip="Elderly">  &nbsp;</i>
+              <i *ngIf="user.isImmigrationAndDisplacement" class="fa fa-users" aria-hidden="true" placement="bottom" ngbTooltip="Immigration and Displacement">  &nbsp;</i>
+              <i *ngIf="user.isWater" class="fa fa-wheelchair" aria-hidden="true" placement="bottom" ngbTooltip="Water">  &nbsp;</i>
+              <i *ngIf="user.isPolitics" class="fa fa-tint" aria-hidden="true" placement="bottom" ngbTooltip="Politics">  &nbsp;</i>
+              <i *ngIf="user.isDisasterRelief" class="fa fa-envelope-open" aria-hidden="true" placement="bottom" ngbTooltip="Disaster Relief">  &nbsp;</i>
+              <i *ngIf="user.isDisabled" class="fa fa-ambulance" aria-hidden="true" placement="bottom" ngbTooltip="Disabled">  &nbsp;</i>
+              <i *ngIf="user.isOther" class="fa fa-hand-peace-o" aria-hidden="true" placement="bottom" ngbTooltip="Other">  &nbsp;</i>
+              <br>
               <span>Role: {{user.role}}</span><br>
-              <span>Email: {{user.email}}</span><br>
               <span *ngIf="projects">Projects: {{projects.length}}</span><br>
               <span *ngIf="proposals">Proposals: {{proposals.length}}</span><br>
             </div>

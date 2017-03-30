@@ -42,10 +42,25 @@ router.get('/search/:term', (req, res, next) => {
   });
 });
 
+router.get('/by-tag/:tag', (req, res, next) => {
+  if((req.params.tag)==='') {
+    return res.status(400).json({ message: 'No tag received' });
+  }
+  var query = {};
+  query[req.params.tag] = true;
+  Project.find( query )
+    .sort({'updated_at': -1})
+    .limit(2)
+    .exec((err, Projects) => {
+    if(err) { return res.send(err); }
+    return res.json(Projects);
+  });
+});
+
 router.get('/four-latest', (req, res, next) => {
   Project.find({})
   .sort({'updated_at': -1})
-  .limit(8)
+  .limit(4)
   .exec((err, Projects) => {
     if(err) { return res.send(err); }
     return res.json(Projects);

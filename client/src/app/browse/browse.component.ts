@@ -17,6 +17,7 @@ export class BrowseComponent implements OnInit {
   constructor(private session: SessionService, private router: Router, private projectService: ProjectService, private needService: NeedService, private proposalService: ProposalService) { }
   BASEURL = environment.apiURL;
 
+  projectsByTag: any;
   formInfo: string;
   closeResult: string;
   user: any;
@@ -30,7 +31,6 @@ export class BrowseComponent implements OnInit {
     status: 'All',
     coverage: 'All',
   };
-  currentProp: any;
 
   shouldFilterByStatus: boolean = this.model.status!=='All';
   shouldFilterByType: boolean = this.model.coverage!=='All';
@@ -60,6 +60,7 @@ export class BrowseComponent implements OnInit {
    this.projectService.getFourLatest().subscribe((projects)=>{
      this.fourLatest = projects;
    })
+
   };
 
   getAllInfo(user){
@@ -71,6 +72,12 @@ export class BrowseComponent implements OnInit {
       this.proposals = proposals;
     })
   }
+
+  getByTag(tag){
+    this.projectService.getByTag(tag)
+    .subscribe((projects)=>{
+      this.projectsByTag = projects;
+    })};
 
   search(term){
     this.projectService.search(term).subscribe((projects)=>{

@@ -24,7 +24,7 @@
           <h2>Search results</h2>
         </div>
         <div class="row">
-          <div *ngFor="let proj of searchResult">
+          <div *ngFor="let proj of searchResult" class="wide">
             <div class="card right-height wide">
               <div class="card-block over wide">
                 <h4 [routerLink]="['/projects/']+[proj._id]" class="card-title slim">{{proj.name}}</h4>
@@ -38,12 +38,13 @@
         <br>
       </div>
 
+
       <div class="container-fluid">
         <div class="row">
           <h2>Recently created projects</h2>
-          <div *ngIf="fourLatest">
-            <div *ngFor="let proj of fourLatest">
-              <div class="card right-height" >
+          <div *ngIf="fourLatest" class="wide">
+            <div *ngFor="let proj of fourLatest" class="wide">
+              <div class="card right-height">
                 <div class="card-block over">
                   <h4 [routerLink]="['/projects/']+[proj._id]" class="card-title slim">{{proj.name}}</h4>
                   <p class="card-text slim">{{proj.description}} - in {{proj.address}}, on {{proj.created_at | date}}</p>
@@ -56,6 +57,40 @@
         </div>
       </div>
 
+      <div class="container-fluid">
+        <div class="row">
+          <h2>Browse by category: <br class="hidden-sm-up">
+            <i class="fa fa-bullhorn" aria-hidden="true" placement="bottom" ngbTooltip="Awareness" (click)="getByTag('isAwareness')">  &nbsp;</i>
+            <i class="fa fa-book" aria-hidden="true" placement="bottom" ngbTooltip="Education" (click)="getByTag('isEducation')">  &nbsp;</i>
+            <i class="fa fa-adjust" aria-hidden="true" placement="bottom" ngbTooltip="Poverty" (click)="getByTag('isPoverty')">  &nbsp;</i>
+            <i class="fa fa-paw" aria-hidden="true" placement="bottom" ngbTooltip="Animals" (click)="getByTag('isAnimals')">  &nbsp;</i>
+            <i class="fa fa-leaf" aria-hidden="true" placement="bottom" ngbTooltip="Ecology" (click)="getByTag('isEcology')">  &nbsp;</i>
+            <i class="fa fa-medkit" aria-hidden="true" placement="bottom" ngbTooltip="Health" (click)="getByTag('isHealth')">  &nbsp;</i>
+            <i class="fa fa-blind" aria-hidden="true" placement="bottom" ngbTooltip="Elderly" (click)="getByTag('isElderly')">  &nbsp;</i>
+            <i class="fa fa-users" aria-hidden="true" placement="bottom" ngbTooltip="Immigration and Displacement" (click)="getByTag('isImmigrationAndDisplacement')">  &nbsp;</i>
+            <i class="fa fa-wheelchair" aria-hidden="true" placement="bottom" ngbTooltip="Water" (click)="getByTag('isWater')">  &nbsp;</i>
+            <i class="fa fa-tint" aria-hidden="true" placement="bottom" ngbTooltip="Politics" (click)="getByTag('isPolitics')">  &nbsp;</i>
+            <i class="fa fa-envelope-open" aria-hidden="true" placement="bottom" ngbTooltip="Disaster Relief" (click)="getByTag('isDisasterRelief')">  &nbsp;</i>
+            <i class="fa fa-ambulance" aria-hidden="true" placement="bottom" ngbTooltip="Disabled" (click)="getByTag('isDisabled')">  &nbsp;</i>
+            <i class="fa fa-hand-peace-o" aria-hidden="true" placement="bottom" ngbTooltip="Other" (click)="getByTag('isOther')">  &nbsp;</i>
+          </h2>
+        </div>
+        <div class="row">
+          <div *ngIf="projectsByTag" class="wide">
+            <div *ngFor="let proj of projectsByTag" class="wide">
+              <div class="card right-height">
+                <div class="card-block over">
+                  <h4 [routerLink]="['/projects/']+[proj._id]" class="card-title slim">{{proj.name}}</h4>
+                  <p class="card-text slim">{{proj.description}} - in {{proj.address}}, on {{proj.created_at | date}}</p>
+                </div>
+                <img class="latest-thumbnail right-height" [src]="BASEURL+proj.image" alt="Card image cap">
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+        <br><br>
+      </div>
 
     </div>
   </div>

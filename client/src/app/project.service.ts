@@ -38,6 +38,11 @@ export class ProjectService {
       .map((res) => res.json());
   }
 
+  getByTag(tag) {
+    return this.http.get(`${this.BASEURL}/api/projects/by-tag/${tag}`)
+      .map((res) => res.json());
+  }
+
   search(term) {
     return this.http.get(`${this.BASEURL}/api/projects/search/${term}`)
       .map((res) => res.json());
