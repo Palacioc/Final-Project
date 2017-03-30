@@ -121,8 +121,8 @@ export class ProjectNewComponent implements OnInit {
           this.zoom = 10;
           if(place.address_components.length === 7){
             this.address = place.address_components[1].long_name + ", " + place.address_components[0].long_name + ", " + place.address_components[2].long_name + ", " + place.address_components[5].long_name;
-          }else{
-            this.address = place.address_components[0].long_name + ", " + place.address_components[5].long_name + ", "+ place.address_components[2].long_name + ", " + place.address_components[4].long_name;
+          }else if(place.address_components.length > 4 ){
+            this.address = place.address_components[0].long_name + ", " + place.address_components[2].long_name + ", " + place.address_components[4].long_name;
           }
           this.formInfo.location.latitude = place.geometry.location.lat();
           this.formInfo.location.longitude = place.geometry.location.lng();
