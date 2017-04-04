@@ -40,7 +40,7 @@ import { AutocompleteService } from "./autocomplete.service";
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'browse', pathMatch: 'full' },
+  { path: '', redirectTo: 'landing', pathMatch: 'full' },
   { path: 'landing',  component: LandingComponent },
   { path: 'auth',  component: AuthComponent },
   { path: 'home',  component: HomeComponent },

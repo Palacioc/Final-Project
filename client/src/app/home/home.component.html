@@ -1,3 +1,6 @@
+<div *ngIf="!user" class="container-fluid center green">
+  ¡You must be <span [routerLink]="auth">logged in</span> to access your home panel!
+</div>
 <div class="container-fluid" *ngIf="proposals && projects">
   <div class="col-sm-12 animated fadeIn">
       <div class="row">

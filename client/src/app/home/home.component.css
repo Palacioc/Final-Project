@@ -17,6 +17,11 @@ body { padding-top: 50px; }
 	text-shadow:none;
 }
 
+.green{
+  color: rgb(195,254,170);
+  font-weight: lighter;
+}
+
 .project-thumb{
   object-fit: cover;
   height: 50px;
