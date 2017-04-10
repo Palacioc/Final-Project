@@ -13,10 +13,23 @@
   display: block;
 }
 
+.circle{
+  width: 115px;
+  height: 115px;
+  border: 2px solid black;
+  border-radius: 10%;
+}
+
 .buttons{
   margin:auto;
   display: block;
   text-align: center;
+}
+
+.diagram{
+  display: block;
+  margin: auto;
+  height: 250px;
 }
 
 h1{
@@ -35,6 +48,11 @@ p{
   text-align: right;
 }
 
+.center{
+  display: block;
+  text-align: center;
+}
+
 .centered{
   display: block;
   margin: auto;
@@ -46,7 +64,6 @@ p{
 
 #spacer{
   height: 600px;
-  padding: 200px 0px;
   text-align: center;
   font-size: 60px;
   font-weight: lighter;
@@ -55,8 +72,12 @@ p{
   position: fixed;
 }
 
-#spacer-top{
-  height: 600px;
+.maxi-spacer{
+  height: 200px;
+}
+
+.mini-spacer{
+  height: 100px;
 }
 
 h1{

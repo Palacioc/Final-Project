@@ -1,24 +1,83 @@
 <video id="video-background" preload="" muted="" autoplay="" loop="">
   <source src="../../assets/videos/Landing.mp4" type="video/mp4">
 </video>
-<div class="container col-sm-12" id="spacer">
+<div class="container-fluid col-sm-12" id="spacer">
+  <div class="mini-spacer hidden-sm-down"></div>
+  <div class="mini-spacer hidden-sm-down"></div>
   <span id="before-typer">Don't take <span class="crossed">money</span></span><br><span class="element typer" id="typer"></span>
 </div>
-<div id="spacer-top"></div>
+<div class="maxi-spacer hidden-sm-down"></div>
+<div class="maxi-spacer"></div>
+<div class="maxi-spacer"></div>
+<div class="col-sm-10 offset-sm-1 animated fadeIn black">
+  <div class="row">
+    <h1>Why this matters</h1>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+      <p>
+        We believe that the large majority of people care about things like hunger, poverty, natural disasters, disability, rights or refugees. These are just a few of the things we constantly hear about on the media
+      </p>
+      <br>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-center">
+        <i class="fa fa-bullhorn" aria-hidden="true" placement="bottom" ngbTooltip="Awareness">  &nbsp;</i>
+        <i class="fa fa-book" aria-hidden="true" placement="bottom" ngbTooltip="Education">  &nbsp;</i><br>
+        <i class="fa fa-adjust" aria-hidden="true" placement="bottom" ngbTooltip="Poverty">  &nbsp;</i>
+        <i class="fa fa-paw" aria-hidden="true" placement="bottom" ngbTooltip="Animals">  &nbsp;</i>
+        <i class="fa fa-leaf" aria-hidden="true" placement="bottom" ngbTooltip="Ecology">  &nbsp;</i>
+        <i class="fa fa-medkit" aria-hidden="true" placement="bottom" ngbTooltip="Health">  &nbsp;</i><br>
+        <i class="fa fa-blind" aria-hidden="true" placement="bottom" ngbTooltip="Elderly">  &nbsp;</i>
+        <i class="fa fa-users" aria-hidden="true" placement="bottom" ngbTooltip="Immigration and Displacement">  &nbsp;</i>
+        <i class="fa fa-tint" aria-hidden="true" placement="bottom" ngbTooltip="Water">  &nbsp;</i>
+        <i class="fa fa-envelope-open" aria-hidden="true" placement="bottom" ngbTooltip="Politics">  &nbsp;</i><br>
+        <i class="fa fa-ambulance" aria-hidden="true" placement="bottom" ngbTooltip="Disaster Relief">  &nbsp;</i>
+        <i class="fa fa-wheelchair" aria-hidden="true" placement="bottom" ngbTooltip="Disabled">  &nbsp;</i>
+        <i class="fa fa-hand-peace-o" aria-hidden="true" placement="bottom" ngbTooltip="Other">  &nbsp;</i>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="offset-sm-2 col-sm-8 text-center">
+      <p>But sometimes we can feel a little helpless. <br><strong>The reason lies in the way projects are funded.</strong> <br>And this is what <i>I dont take money</i> seeks to change:</p>
+    <br>
+    </div>
+  </div>
+  <div class="row text-center">
+    <div [ngSwitch]="state" class="col">
+      <span *ngSwitchCase="1"> <img src="../../assets/diagram1.jpg" alt="" class="diagram"> </span>
+      <span *ngSwitchCase="2"> <img src="../../assets/diagram2bw.jpg" alt="" class="diagram"> </span>
+    </div>
+  </div><br>
+  <div class="row">
+    <div class="col form-group">
+      <div [(ngModel)]='state' ngbRadioGroup name="state" class="center">
+        <label class="btn btn-primary">
+              <input type="radio" value="1"> Before
+            </label>
+        <label class="btn btn-success">
+              <input type="radio" value="2"> After
+            </label>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="offset-sm-1 col-sm-10 text-center">
+      <p>This simple idea could make certain projects, which otherwise would never exist, viable</p>
+      <p>As you may know, this is just a teaser, an MVP. But we are working hard to make it a reality. If you would like to know more, participate or give us feedback, please get in touch at <strong>hello@idtm.co</strong></p>
+    <br>
+    </div>
+  </div>
 
-<div class="container col-sm-10 col-sm-offset-1 animated fadeIn black">
-  <!-- <img src="../../assets/logoBig.png" alt="" class="centered"> -->
-  <h1>Why this matters</h1>
-  <p>
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-  </p>
   <p class="quote">- The IDTM team</p>
 
   <h1>Think you can help?</h1>
   <div class="buttons">
-    <button [routerLink]="['/projects/new']" class="btn btn-outline-warning">Start your own project</button>
-    <button [routerLink]="['/home']" class="btn btn-outline-info">Source a project</button>
-    <button [routerLink]="['/auth']" class="btn btn-outline-success">Fund a project</button>
+    <button [routerLink]="['/auth']" class="btn btn-outline-warning">Start your own project</button><br class="hidden-md-up"><br class="hidden-md-up">
+    <button [routerLink]="['/auth']" class="btn btn-outline-info">Source a project</button><br class="hidden-md-up"><br class="hidden-md-up">
+    <button [routerLink]="['/auth']" class="btn btn-outline-success">Fund a project</button><br class="hidden-md-up"><br class="hidden-md-up">
   </div>
 
   <h1>Here are some 👶 projects:</h1>
