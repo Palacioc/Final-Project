@@ -62,13 +62,9 @@ p{
   height: 150px;
 }
 
-#spacer{
+.spacer{
   height: 600px;
   text-align: center;
-  font-size: 60px;
-  font-weight: lighter;
-  color: white;
-  text-shadow: 2px 2px 4px black;
   position: fixed;
 }
 
@@ -129,12 +125,12 @@ h1{
 }
 
 .typer{
-  font-size: 60px;
+  font-size: 8vmin;
   font-weight: lighter;
   color: white;
   text-shadow: 2px 2px 4px black;
 }
-#before-typer{
+.before-typer{
   font-size: 60px;
   font-weight: lighter;
   color: white;
