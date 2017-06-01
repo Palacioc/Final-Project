@@ -1,155 +1,161 @@
 <!-- <video id="video-background" preload="" muted="" autoplay="" loop="">
   <source src="../../assets/videos/Landing.mp4" type="video/mp4">
 </video> -->
-<div class="container-fluid col-sm-12 spacer typer" id="">
-  <div class="mini-spacer"></div>
+<div class="bckg-img">
+
+  </div>
+
+  <div class="container-fluid col-sm-12 spacer typer" id="">
+    <div class="mini-spacer"></div>
+    <div class="mini-spacer hidden-sm-down"></div>
+    <span id="before-typer" class="typer">Don't take <span class="crossed">money</span></span><br><span class="element typer" id="typer"></span>
+  </div>
+  <div class="maxi-spacer hidden-sm-down"></div>
   <div class="mini-spacer hidden-sm-down"></div>
-  <span id="before-typer" class="typer">Don't take <span class="crossed">money</span></span><br><span class="element typer" id="typer"></span>
-</div>
-<div class="maxi-spacer hidden-sm-down"></div>
-<div class="mini-spacer hidden-sm-down"></div>
-<div class="mini-spacer"></div>
-<div class="maxi-spacer"></div>
-<div class="col-sm-10 offset-sm-1 animated fadeIn black">
-  <div class="row">
-    <h1>Why this matters</h1>
-  </div>
-  <div class="row">
-    <div class="text-center">
-      <p>
-        We believe that the large majority of people care about things like hunger, poverty, natural disasters, disability, rights or refugees. These are just a few of the things we constantly hear about on the media
-      </p>
-      <br>
+  <div class="mini-spacer"></div>
+  <div class="maxi-spacer"></div>
+  <div class="col-sm-12 offset-sm-0 animated fadeIn black">
+    <div class="row">
+      <h1>Why this matters</h1>
     </div>
-  </div>
-  <div class="row">
-    <div class="col text-center">
-        <i class="fa fa-bullhorn" aria-hidden="true" placement="bottom" ngbTooltip="Awareness">  &nbsp;</i>
-        <i class="fa fa-book" aria-hidden="true" placement="bottom" ngbTooltip="Education">  &nbsp;</i><br>
-        <i class="fa fa-adjust" aria-hidden="true" placement="bottom" ngbTooltip="Poverty">  &nbsp;</i>
-        <i class="fa fa-paw" aria-hidden="true" placement="bottom" ngbTooltip="Animals">  &nbsp;</i>
-        <i class="fa fa-leaf" aria-hidden="true" placement="bottom" ngbTooltip="Ecology">  &nbsp;</i>
-        <i class="fa fa-medkit" aria-hidden="true" placement="bottom" ngbTooltip="Health">  &nbsp;</i><br>
-        <i class="fa fa-blind" aria-hidden="true" placement="bottom" ngbTooltip="Elderly">  &nbsp;</i>
-        <i class="fa fa-users" aria-hidden="true" placement="bottom" ngbTooltip="Immigration and Displacement">  &nbsp;</i>
-        <i class="fa fa-tint" aria-hidden="true" placement="bottom" ngbTooltip="Water">  &nbsp;</i>
-        <i class="fa fa-envelope-open" aria-hidden="true" placement="bottom" ngbTooltip="Politics">  &nbsp;</i><br>
-        <i class="fa fa-ambulance" aria-hidden="true" placement="bottom" ngbTooltip="Disaster Relief">  &nbsp;</i>
-        <i class="fa fa-wheelchair" aria-hidden="true" placement="bottom" ngbTooltip="Disabled">  &nbsp;</i>
-        <i class="fa fa-hand-peace-o" aria-hidden="true" placement="bottom" ngbTooltip="Other">  &nbsp;</i>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-12 text-center">
-      <p>But sometimes we can feel a little helpless <br><strong>The reason lies in the way projects are funded</strong><br>And this is what <i>I dont take money</i> seeks to change:</p>
-    <br>
-    </div>
-  </div>
-  <div class="row text-center">
-    <div [ngSwitch]="state" class="col">
-      <span *ngSwitchCase="1"> <img src="../../assets/diagram1.jpg" alt="" class="diagram"> </span>
-      <span *ngSwitchCase="2"> <img src="../../assets/diagram2bw.jpg" alt="" class="diagram"> </span>
-    </div>
-  </div><br>
-  <div class="row">
-    <div class="col form-group">
-      <div [(ngModel)]='state' ngbRadioGroup name="state" class="center">
-        <label class="btn btn-primary">
-              <input type="radio" value="1"> Before
-            </label>
-        <label class="btn btn-success">
-              <input type="radio" value="2"> After
-            </label>
+    <div class="row">
+      <div class="text-center">
+        <div class="col-sm-8 offset-sm-2">
+        <p>
+          We believe that the large majority of people care about things like hunger, poverty, natural disasters, disability, rights or refugees. These are just a few of the things we constantly hear about on the media
+        </p>
+        </div>
+        <br>
       </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="offset-sm-1 col-sm-10 text-center">
-      <p>This simple idea could make certain projects, which otherwise would never exist, viable</p><br>
-      <p>As you may know, this is just a teaser, an MVP. But we are working hard to make it a reality. If you would like to know more, participate or give us feedback, please get in touch at <strong>hello@idtm.co</strong></p>
-    <br>
+    <div class="row">
+      <div class="col text-center">
+          <i class="fa fa-bullhorn" aria-hidden="true" placement="bottom" ngbTooltip="Awareness">  &nbsp;</i>
+          <i class="fa fa-book" aria-hidden="true" placement="bottom" ngbTooltip="Education">  &nbsp;</i><br>
+          <i class="fa fa-adjust" aria-hidden="true" placement="bottom" ngbTooltip="Poverty">  &nbsp;</i>
+          <i class="fa fa-paw" aria-hidden="true" placement="bottom" ngbTooltip="Animals">  &nbsp;</i>
+          <i class="fa fa-leaf" aria-hidden="true" placement="bottom" ngbTooltip="Ecology">  &nbsp;</i>
+          <i class="fa fa-medkit" aria-hidden="true" placement="bottom" ngbTooltip="Health">  &nbsp;</i><br>
+          <i class="fa fa-blind" aria-hidden="true" placement="bottom" ngbTooltip="Elderly">  &nbsp;</i>
+          <i class="fa fa-users" aria-hidden="true" placement="bottom" ngbTooltip="Immigration and Displacement">  &nbsp;</i>
+          <i class="fa fa-tint" aria-hidden="true" placement="bottom" ngbTooltip="Water">  &nbsp;</i>
+          <i class="fa fa-envelope-open" aria-hidden="true" placement="bottom" ngbTooltip="Politics">  &nbsp;</i><br>
+          <i class="fa fa-ambulance" aria-hidden="true" placement="bottom" ngbTooltip="Disaster Relief">  &nbsp;</i>
+          <i class="fa fa-wheelchair" aria-hidden="true" placement="bottom" ngbTooltip="Disabled">  &nbsp;</i>
+          <i class="fa fa-hand-peace-o" aria-hidden="true" placement="bottom" ngbTooltip="Other">  &nbsp;</i>
+      </div>
     </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <p>But sometimes we can feel a little helpless <br><strong>The reason lies in the way projects are funded</strong><br>And this is what <i>I dont take money</i> seeks to change:</p>
+      <br>
+      </div>
+    </div>
+    <div class="row text-center">
+      <div [ngSwitch]="state" class="col">
+        <span *ngSwitchCase="1"> <img src="../../assets/diagram1.jpg" alt="" class="diagram"> </span>
+        <span *ngSwitchCase="2"> <img src="../../assets/diagram2bw.jpg" alt="" class="diagram"> </span>
+      </div>
+    </div><br>
+    <div class="row">
+      <div class="col form-group">
+        <div [(ngModel)]='state' ngbRadioGroup name="state" class="center">
+          <label class="btn btn-primary">
+                <input type="radio" value="1"> Before
+              </label>
+          <label class="btn btn-success">
+                <input type="radio" value="2"> After
+              </label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="offset-sm-2 col-sm-8 text-center">
+        <p>This simple idea could make certain projects, which otherwise would never exist, viable</p><br>
+        <p>As you may know, this is just a teaser, an MVP. But we are working hard to make it a reality. If you would like to know more, participate or give us feedback, please get in touch at <strong>hello@idtm.co</strong></p>
+      <br>
+      </div>
+    </div>
+
+    <p class="quote">- The IDTM team</p>
+
+    <h1>Think you can help?</h1>
+    <div class="buttons">
+      <button [routerLink]="['/auth']" class="btn btn-outline-warning">Start your own project</button><br class="hidden-md-up"><br class="hidden-md-up">
+      <button [routerLink]="['/auth']" class="btn btn-outline-info">Source a project</button><br class="hidden-md-up"><br class="hidden-md-up">
+      <button [routerLink]="['/auth']" class="btn btn-outline-success">Fund a project</button><br class="hidden-md-up"><br class="hidden-md-up">
+    </div>
+
+    <h1>Here are some 👶 projects:</h1>
+    <div class="container">
+    	<div class="row">
+            <!-- Boxes de Acoes -->
+        	<div class="col-xs-12 col-sm-6 col-lg-4">
+    			<div class="box">
+    				<div class="icon">
+    					<div class="image">
+    					  <img src="../../assets/featured.jpg" class="profile-img"/>
+    					</div>
+    					<div class="info">
+                <br>
+    						<h3 class="title">Order of Malta + Götze Foundation</h3>
+    						<p>
+    							Our personal volunteering is the first early adopter for this platform. A group of volunteers from the Order of Malta run weekly 'escapades' with guests of the Götze Foundation. They will now use the IDTM platform to finance their needs seamlessly.
+    						</p>
+    						<div class="more">
+    							<a href="#" title="Title Link">
+    								View project <i class="fa fa-angle-double-right"></i>
+    							</a>
+    						</div>
+    					</div>
+    				</div>
+    				<div class="space"></div>
+    			</div>
+    		</div>
+
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+    			<div class="box">
+    				<div class="icon">
+    					<div class="image"><img src="../../assets/profile2.jpeg" class="profile-img"/></div>
+    					<div class="info">
+                <br>
+    						<h3 class="title">School for the children of the Orominya Community in Kibre Mengist</h3>
+        					<p>
+    							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
+    						</p>
+    						<div class="more">
+    							<a href="#" title="Title Link">
+    								View project <i class="fa fa-angle-double-right"></i>
+    							</a>
+    						</div>
+    					</div>
+    				</div>
+    				<div class="space"></div>
+    			</div>
+    		</div>
+
+            <div class="col-xs-12 col-sm-6 col-lg-4">
+    			<div class="box">
+    				<div class="icon">
+    					<div class="image"><img src="../../assets/project-here.jpg" class="profile-img"/></div>
+    					<div class="info">
+                <br>
+    						<h3 class="title">Want to join early adopters?</h3>
+        					<p>
+    							Please do! We will give you great visibility and you can help us with constant feedback. <strong>Let's grow together!</strong>. <br> Email us at <strong>hello@idtm.co</strong>
+    						</p>
+    						<div class="more">
+    							<a href="#" title="Title Link">
+    								View project <i class="fa fa-angle-double-right"></i>
+    							</a>
+    						</div>
+    					</div>
+    				</div>
+    			</div><br>
+    		</div>
+    		<!-- /Boxes de Acoes -->
+    	</div>
+    </div>
+
   </div>
-
-  <p class="quote">- The IDTM team</p>
-
-  <h1>Think you can help?</h1>
-  <div class="buttons">
-    <button [routerLink]="['/auth']" class="btn btn-outline-warning">Start your own project</button><br class="hidden-md-up"><br class="hidden-md-up">
-    <button [routerLink]="['/auth']" class="btn btn-outline-info">Source a project</button><br class="hidden-md-up"><br class="hidden-md-up">
-    <button [routerLink]="['/auth']" class="btn btn-outline-success">Fund a project</button><br class="hidden-md-up"><br class="hidden-md-up">
-  </div>
-
-  <h1>Here are some 👶 projects:</h1>
-  <div class="container">
-  	<div class="row">
-          <!-- Boxes de Acoes -->
-      	<div class="col-xs-12 col-sm-6 col-lg-4">
-  			<div class="box">
-  				<div class="icon">
-  					<div class="image">
-  					  <img src="../../assets/featured.jpg" class="profile-img"/>
-  					</div>
-  					<div class="info">
-              <br>
-  						<h3 class="title">Order of Malta + Götze Foundation</h3>
-  						<p>
-  							Our personal volunteering is the first early adopter for this platform. A group of volunteers from the Order of Malta run weekly 'escapades' with guests of the Götze Foundation. They will now use the IDTM platform to finance their needs seamlessly.
-  						</p>
-  						<div class="more">
-  							<a href="#" title="Title Link">
-  								View project <i class="fa fa-angle-double-right"></i>
-  							</a>
-  						</div>
-  					</div>
-  				</div>
-  				<div class="space"></div>
-  			</div>
-  		</div>
-
-          <div class="col-xs-12 col-sm-6 col-lg-4">
-  			<div class="box">
-  				<div class="icon">
-  					<div class="image"><img src="../../assets/profile2.jpeg" class="profile-img"/></div>
-  					<div class="info">
-              <br>
-  						<h3 class="title">School for the children of the Orominya Community in Kibre Mengist</h3>
-      					<p>
-  							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in lobortis nisl, vitae iaculis sapien. Phasellus ultrices gravida massa luctus ornare. Suspendisse blandit quam elit, eu imperdiet neque semper.
-  						</p>
-  						<div class="more">
-  							<a href="#" title="Title Link">
-  								View project <i class="fa fa-angle-double-right"></i>
-  							</a>
-  						</div>
-  					</div>
-  				</div>
-  				<div class="space"></div>
-  			</div>
-  		</div>
-
-          <div class="col-xs-12 col-sm-6 col-lg-4">
-  			<div class="box">
-  				<div class="icon">
-  					<div class="image"><img src="../../assets/project-here.jpg" class="profile-img"/></div>
-  					<div class="info">
-              <br>
-  						<h3 class="title">Want to join early adopters?</h3>
-      					<p>
-  							Please do! We will give you great visibility and you can help us with constant feedback. <strong>Let's grow together!</strong>. <br> Email us at <strong>hello@idtm.co</strong>
-  						</p>
-  						<div class="more">
-  							<a href="#" title="Title Link">
-  								View project <i class="fa fa-angle-double-right"></i>
-  							</a>
-  						</div>
-  					</div>
-  				</div>
-  			</div><br>
-  		</div>
-  		<!-- /Boxes de Acoes -->
-  	</div>
-  </div>
-
-</div><br>

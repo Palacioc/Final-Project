@@ -1,7 +1,18 @@
 .black{
   background-color: white;
-  border-radius: 8px;
   margin-bottom: 0px;
+}
+
+.bckg-img{
+  background-image: url("../../assets/background2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
 }
 
 .profile-img{
